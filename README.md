@@ -1,5 +1,4 @@
-# TexTy
+# Modablag
 
-[repo link](https://github.com/ElsebaiyMohamed/TexTy)
+[repo link](https://github.com/ElsebaiyMohamed/Modablag)
 
-This is the first model of two to solve Dumpping video from native language to forigen language
