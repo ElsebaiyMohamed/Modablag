@@ -1,84 +1,35 @@
 [
     {
-        "label": "layers",
-        "importPath": "tensorflow.keras",
-        "description": "tensorflow.keras",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras",
-        "documentation": {}
-    },
-    {
-        "label": "layers",
-        "importPath": "tensorflow.keras",
-        "description": "tensorflow.keras",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras",
-        "documentation": {}
-    },
-    {
-        "label": "layers",
-        "importPath": "tensorflow.keras",
-        "description": "tensorflow.keras",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras",
-        "documentation": {}
-    },
-    {
-        "label": "__version__",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "__version__",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "__version__",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "BaseAttention",
-        "importPath": "selfAttention",
-        "description": "selfAttention",
-        "isExtraImport": true,
-        "detail": "selfAttention",
-        "documentation": {}
-    },
-    {
-        "label": "BaseAttention",
-        "importPath": "selfAttention",
-        "description": "selfAttention",
-        "isExtraImport": true,
-        "detail": "selfAttention",
-        "documentation": {}
-    },
-    {
-        "label": "CrossAttention",
+        "label": "os",
         "kind": 6,
-        "importPath": "attention.crossAttention",
-        "description": "attention.crossAttention",
-        "peekOfCode": "class CrossAttention(BaseAttention):\n    def call(self, x, context):\n        attn_output, attn_scores = self.mha(\n                                            query= x,\n                                            key= context,\n                                            value= context,\n                                            return_attention_scores=True)\n        # Cache the attention scores for plotting later.\n        self.last_attn_scores = attn_scores\n        x = self.add([x, attn_output])",
-        "detail": "attention.crossAttention",
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
-        "label": "MaskedSelfAttention",
-        "kind": 6,
-        "importPath": "attention.maskedAttention",
-        "description": "attention.maskedAttention",
-        "peekOfCode": "class MaskedSelfAttention(BaseAttention):\n    def call(self, x, mask=None):\n        attn_output = self.mha(\n                                query=x,\n                                value=x,\n                                key=x,\n                                attention_mask=mask)#\n        x = self.add([x, attn_output])\n        x = self.layernorm(x)\n        return x",
-        "detail": "attention.maskedAttention",
+        "label": "layers",
+        "importPath": "tensorflow.keras",
+        "description": "tensorflow.keras",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras",
+        "documentation": {}
+    },
+    {
+        "label": "__version__",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "list_physical_devices",
+        "importPath": "tensorflow.config",
+        "description": "tensorflow.config",
+        "isExtraImport": true,
+        "detail": "tensorflow.config",
         "documentation": {}
     },
     {
@@ -86,7 +37,7 @@
         "kind": 6,
         "importPath": "attention.selfAttention",
         "description": "attention.selfAttention",
-        "peekOfCode": "class BaseAttention(layers.Layer):\n    def __init__(self, **kwargs):\n        super(BaseAttention, self).__init__()\n        self.mha = layers.MultiHeadAttention(**kwargs)\n        self.layernorm = layers.LayerNormalization()\n        self.add = layers.Add()\nclass SelfAttention(BaseAttention):\n    def call(self, x):\n        attn_output = self.mha(\n                                query=x,",
+        "peekOfCode": "class BaseAttention(layers.Layer):\n    def __init__(self, *args, **kwargs):\n        '''\n        num_heads,\n        key_dim,\n        value_dim=None,\n        dropout=0.0,\n        use_bias=True,\n        output_shape=None,\n        attention_axes=None,",
         "detail": "attention.selfAttention",
         "documentation": {}
     },
@@ -95,7 +46,16 @@
         "kind": 6,
         "importPath": "attention.selfAttention",
         "description": "attention.selfAttention",
-        "peekOfCode": "class SelfAttention(BaseAttention):\n    def call(self, x):\n        attn_output = self.mha(\n                                query=x,\n                                value=x,\n                                key=x)\n        x = self.add([x, attn_output])\n        x = self.layernorm(x)\n        return x\nif __name__ == '__main__':",
+        "peekOfCode": "class SelfAttention(BaseAttention):\n    def call(self, query, key, value, causal_mask=False, attention_mask=None, \n             return_score=False, training=False, **kwargs):\n        '''\n            query                   |  Query Tensor of shape (B, T, dim).\n            value                   |  Value Tensor of shape (B, S, dim).\n            key                     |  Optional key Tensor of shape (B, S, dim). If not given, will use value for both key and value, which is the most common case.\n            attention_mask\t        |  a boolean mask of shape (B, T, S), that prevents attention to certain positions. The boolean mask specifies which query elements can attend to which key elements, 1 indicates attention and 0 indicates no attention. Broadcasting can happen for the missing batch dimensions and the head dimension.\n            return_scores |  A boolean to indicate whether the output should be (attention_output, attention_scores) if True, or attention_output if False. Defaults to False.\n            training\t            |  Python boolean indicating whether the layer should behave in training mode (adding dropout) or in inference mode (no dropout). Defaults to either using the training mode of the parent layer/model, or False (inference) if there is no parent layer.",
+        "detail": "attention.selfAttention",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
+        "kind": 5,
+        "importPath": "attention.selfAttention",
+        "description": "attention.selfAttention",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers\nfrom tensorflow import __version__\nfrom tensorflow.config import list_physical_devices\nclass BaseAttention(layers.Layer):\n    def __init__(self, *args, **kwargs):\n        '''\n        num_heads,\n        key_dim,\n        value_dim=None,",
         "detail": "attention.selfAttention",
         "documentation": {}
     }
