@@ -1,0 +1,102 @@
+[
+    {
+        "label": "layers",
+        "importPath": "tensorflow.keras",
+        "description": "tensorflow.keras",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras",
+        "documentation": {}
+    },
+    {
+        "label": "layers",
+        "importPath": "tensorflow.keras",
+        "description": "tensorflow.keras",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras",
+        "documentation": {}
+    },
+    {
+        "label": "layers",
+        "importPath": "tensorflow.keras",
+        "description": "tensorflow.keras",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras",
+        "documentation": {}
+    },
+    {
+        "label": "__version__",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "__version__",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "__version__",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "BaseAttention",
+        "importPath": "selfAttention",
+        "description": "selfAttention",
+        "isExtraImport": true,
+        "detail": "selfAttention",
+        "documentation": {}
+    },
+    {
+        "label": "BaseAttention",
+        "importPath": "selfAttention",
+        "description": "selfAttention",
+        "isExtraImport": true,
+        "detail": "selfAttention",
+        "documentation": {}
+    },
+    {
+        "label": "CrossAttention",
+        "kind": 6,
+        "importPath": "attention.crossAttention",
+        "description": "attention.crossAttention",
+        "peekOfCode": "class CrossAttention(BaseAttention):\n    def call(self, x, context):\n        attn_output, attn_scores = self.mha(\n                                            query= x,\n                                            key= context,\n                                            value= context,\n                                            return_attention_scores=True)\n        # Cache the attention scores for plotting later.\n        self.last_attn_scores = attn_scores\n        x = self.add([x, attn_output])",
+        "detail": "attention.crossAttention",
+        "documentation": {}
+    },
+    {
+        "label": "MaskedSelfAttention",
+        "kind": 6,
+        "importPath": "attention.maskedAttention",
+        "description": "attention.maskedAttention",
+        "peekOfCode": "class MaskedSelfAttention(BaseAttention):\n    def call(self, x, mask=None):\n        attn_output = self.mha(\n                                query=x,\n                                value=x,\n                                key=x,\n                                attention_mask=mask)#\n        x = self.add([x, attn_output])\n        x = self.layernorm(x)\n        return x",
+        "detail": "attention.maskedAttention",
+        "documentation": {}
+    },
+    {
+        "label": "BaseAttention",
+        "kind": 6,
+        "importPath": "attention.selfAttention",
+        "description": "attention.selfAttention",
+        "peekOfCode": "class BaseAttention(layers.Layer):\n    def __init__(self, **kwargs):\n        super(BaseAttention, self).__init__()\n        self.mha = layers.MultiHeadAttention(**kwargs)\n        self.layernorm = layers.LayerNormalization()\n        self.add = layers.Add()\nclass SelfAttention(BaseAttention):\n    def call(self, x):\n        attn_output = self.mha(\n                                query=x,",
+        "detail": "attention.selfAttention",
+        "documentation": {}
+    },
+    {
+        "label": "SelfAttention",
+        "kind": 6,
+        "importPath": "attention.selfAttention",
+        "description": "attention.selfAttention",
+        "peekOfCode": "class SelfAttention(BaseAttention):\n    def call(self, x):\n        attn_output = self.mha(\n                                query=x,\n                                value=x,\n                                key=x)\n        x = self.add([x, attn_output])\n        x = self.layernorm(x)\n        return x\nif __name__ == '__main__':",
+        "detail": "attention.selfAttention",
+        "documentation": {}
+    }
+]
