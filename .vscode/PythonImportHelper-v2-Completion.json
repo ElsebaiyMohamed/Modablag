@@ -17,7 +17,23 @@
         "documentation": {}
     },
     {
-        "label": "__version__",
+        "label": "Layer",
+        "importPath": "tensorflow.keras.layers",
+        "description": "tensorflow.keras.layers",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "Embedding",
+        "importPath": "tensorflow.keras.layers",
+        "description": "tensorflow.keras.layers",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "cast",
         "importPath": "tensorflow",
         "description": "tensorflow",
         "isExtraImport": true,
@@ -25,38 +41,81 @@
         "documentation": {}
     },
     {
-        "label": "list_physical_devices",
-        "importPath": "tensorflow.config",
-        "description": "tensorflow.config",
+        "label": "float32",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
         "isExtraImport": true,
-        "detail": "tensorflow.config",
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "newaxis",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "sqrt",
+        "importPath": "tensorflow.math",
+        "description": "tensorflow.math",
+        "isExtraImport": true,
+        "detail": "tensorflow.math",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
         "documentation": {}
     },
     {
         "label": "BaseAttention",
         "kind": 6,
-        "importPath": "attention.selfAttention",
-        "description": "attention.selfAttention",
+        "importPath": "transformer.attention.selfAttention",
+        "description": "transformer.attention.selfAttention",
         "peekOfCode": "class BaseAttention(layers.Layer):\n    def __init__(self, *args, **kwargs):\n        '''\n        num_heads,\n        key_dim,\n        value_dim=None,\n        dropout=0.0,\n        use_bias=True,\n        output_shape=None,\n        attention_axes=None,",
-        "detail": "attention.selfAttention",
+        "detail": "transformer.attention.selfAttention",
         "documentation": {}
     },
     {
         "label": "SelfAttention",
         "kind": 6,
-        "importPath": "attention.selfAttention",
-        "description": "attention.selfAttention",
+        "importPath": "transformer.attention.selfAttention",
+        "description": "transformer.attention.selfAttention",
         "peekOfCode": "class SelfAttention(BaseAttention):\n    def call(self, query, key, value, causal_mask=False, attention_mask=None, \n             return_score=False, training=False, **kwargs):\n        '''\n            query                   |  Query Tensor of shape (B, T, dim).\n            value                   |  Value Tensor of shape (B, S, dim).\n            key                     |  Optional key Tensor of shape (B, S, dim). If not given, will use value for both key and value, which is the most common case.\n            attention_mask\t        |  a boolean mask of shape (B, T, S), that prevents attention to certain positions. The boolean mask specifies which query elements can attend to which key elements, 1 indicates attention and 0 indicates no attention. Broadcasting can happen for the missing batch dimensions and the head dimension.\n            return_scores |  A boolean to indicate whether the output should be (attention_output, attention_scores) if True, or attention_output if False. Defaults to False.\n            training\t            |  Python boolean indicating whether the layer should behave in training mode (adding dropout) or in inference mode (no dropout). Defaults to either using the training mode of the parent layer/model, or False (inference) if there is no parent layer.",
-        "detail": "attention.selfAttention",
+        "detail": "transformer.attention.selfAttention",
         "documentation": {}
     },
     {
         "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
         "kind": 5,
-        "importPath": "attention.selfAttention",
-        "description": "attention.selfAttention",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers\nfrom tensorflow import __version__\nfrom tensorflow.config import list_physical_devices\nclass BaseAttention(layers.Layer):\n    def __init__(self, *args, **kwargs):\n        '''\n        num_heads,\n        key_dim,\n        value_dim=None,",
-        "detail": "attention.selfAttention",
+        "importPath": "transformer.attention.selfAttention",
+        "description": "transformer.attention.selfAttention",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers\nclass BaseAttention(layers.Layer):\n    def __init__(self, *args, **kwargs):\n        '''\n        num_heads,\n        key_dim,\n        value_dim=None,\n        dropout=0.0,\n        use_bias=True,",
+        "detail": "transformer.attention.selfAttention",
+        "documentation": {}
+    },
+    {
+        "label": "SinuSoidal",
+        "kind": 6,
+        "importPath": "transformer.posEncoder.encoders",
+        "description": "transformer.posEncoder.encoders",
+        "peekOfCode": "class SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 \n    '''\n    def __init__(self, input_dim, output_dim, max_sent_lenght, mask_zero=False, **kwargs):\n        '''instantiate Empedding layer and static positional encoding matrix\n        @params:\n                input_dim:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.\n                output_dim:      Integer. Dimension of the dense embedding.",
+        "detail": "transformer.posEncoder.encoders",
+        "documentation": {}
+    },
+    {
+        "label": "Dog",
+        "kind": 6,
+        "importPath": "tricks",
+        "description": "tricks",
+        "peekOfCode": "class Dog:\n    def __init__(self, name) -> None:\n        self.name = name\n    @property\n    def name(self):\n        return self._name\n    @name.setter\n    def name(self, name):\n        assert name.isalpha()\n        self._name = name",
+        "detail": "tricks",
         "documentation": {}
     }
 ]

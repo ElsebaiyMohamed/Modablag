@@ -1,8 +1,7 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow.keras import layers
-from tensorflow import __version__
-from tensorflow.config import list_physical_devices
+
 
 
 
@@ -70,9 +69,13 @@ class SelfAttention(BaseAttention):
         
 
 if __name__ == '__main__':
+    from tensorflow import __version__
+    from tensorflow.config import list_physical_devices 
     print(__version__)
     print(list_physical_devices())
     import numpy as np
+    
+    
     dummy = np.random.randn(3, 5, 10)
     # sa = SelfAttention(8, 10)
     # x = sa(dummy, dummy, dummy)
