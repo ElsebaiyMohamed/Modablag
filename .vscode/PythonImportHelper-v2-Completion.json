@@ -153,6 +153,55 @@
         "documentation": {}
     },
     {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "ndarray",
+        "importPath": "numpy",
+        "description": "numpy",
+        "isExtraImport": true,
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "ndarray",
+        "importPath": "numpy",
+        "description": "numpy",
+        "isExtraImport": true,
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "SelfAttention",
+        "importPath": "attentions",
+        "description": "attentions",
+        "isExtraImport": true,
+        "detail": "attentions",
+        "documentation": {}
+    },
+    {
         "label": "Layer",
         "importPath": "tensorflow.keras.layers",
         "description": "tensorflow.keras.layers",
@@ -177,75 +226,75 @@
         "documentation": {}
     },
     {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
         "label": "BaseAttention",
         "kind": 6,
-        "importPath": "transformer.attention.selfAttention",
-        "description": "transformer.attention.selfAttention",
-        "peekOfCode": "class BaseAttention(layers.Layer):\n    def __init__(self, *args, **kwargs):\n        '''\n        num_heads,\n        key_dim,\n        value_dim=None,\n        dropout=0.0,\n        use_bias=True,\n        output_shape=None,\n        attention_axes=None,",
-        "detail": "transformer.attention.selfAttention",
+        "importPath": "transformer.utils.attentions",
+        "description": "transformer.utils.attentions",
+        "peekOfCode": "class BaseAttention(layers.Layer):\n    def __init__(self, num_heads:int, key_dim:int, *args, **kwargs):\n        '''\n        @params:\n                num_heads:                          int.    Number of attention heads. \n                key_dim:                            int.    Size of each attention head for query and key.\n                value_dim=None:                     int.    Size of each attention head for value.\n                dropout=0.0:                        float.  Dropout probability.\n                use_bias=True:                      bool.   whether the dense layers use bias vectors/matrices.\n                output_shape=None:                  int.  The expected shape of an output tensor, besides the ",
+        "detail": "transformer.utils.attentions",
         "documentation": {}
     },
     {
         "label": "SelfAttention",
         "kind": 6,
-        "importPath": "transformer.attention.selfAttention",
-        "description": "transformer.attention.selfAttention",
-        "peekOfCode": "class SelfAttention(BaseAttention):\n    def call(self, query:Tensor[Tensor[float32]], key: Tensor[Tensor[float32]],\n             value: Tensor[Tensor[float32]], causal_mask: bool=False, \n             attention_mask: Tensor[Tensor[bool]]=None, \n             return_score=False, training=False, **kwargs)->Tensor[Tensor[float32]]:\n        '''\n            query                   |  Query Tensor of shape (B, T, dim).\n            value                   |  Value Tensor of shape (B, S, dim).\n            key                     |  Optional key Tensor of shape (B, S, dim). If not given, will use value for both key and value, which is the most common case.\n            attention_mask\t        |  a boolean mask of shape (B, T, S), that prevents attention to certain positions. The boolean mask specifies which query elements can attend to which key elements, 1 indicates attention and 0 indicates no attention. Broadcasting can happen for the missing batch dimensions and the head dimension.",
-        "detail": "transformer.attention.selfAttention",
+        "importPath": "transformer.utils.attentions",
+        "description": "transformer.utils.attentions",
+        "peekOfCode": "class SelfAttention(BaseAttention):\n    def call(self, query:Union[Tensor, ndarray], key: Union[Tensor, ndarray],\n             value: Union[Tensor, ndarray], causal_mask: bool=False, \n             return_score=False, training=False, **kwargs)->Tensor: #attention_mask: Union[Tensor, ndarray]=None, \n        '''\n        @params\n            query:          3D matrix.  Query Tensor of shape (B, T, dim).\n            value:          3D matrix.  Value Tensor of shape (B, S, dim).\n            key:            3D matrix.  Optional key Tensor of shape (B, S, dim). If not given, \n                                            will use value for both key and value, which is the most ",
+        "detail": "transformer.utils.attentions",
         "documentation": {}
     },
     {
         "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
         "kind": 5,
-        "importPath": "transformer.attention.selfAttention",
-        "description": "transformer.attention.selfAttention",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nclass BaseAttention(layers.Layer):\n    def __init__(self, *args, **kwargs):\n        '''\n        num_heads,\n        key_dim,\n        value_dim=None,\n        dropout=0.0,",
-        "detail": "transformer.attention.selfAttention",
+        "importPath": "transformer.utils.attentions",
+        "description": "transformer.utils.attentions",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nfrom numpy import ndarray\nfrom typing import Union\nclass BaseAttention(layers.Layer):\n    def __init__(self, num_heads:int, key_dim:int, *args, **kwargs):\n        '''\n        @params:\n                num_heads:                          int.    Number of attention heads. ",
+        "detail": "transformer.utils.attentions",
         "documentation": {}
     },
     {
         "label": "FeedForward",
         "kind": 6,
-        "importPath": "transformer.encoder.base_encoder",
-        "description": "transformer.encoder.base_encoder",
+        "importPath": "transformer.utils.encoders",
+        "description": "transformer.utils.encoders",
         "peekOfCode": "class FeedForward(layers.Layer):\n    def __init__(self, units: list, dropout=0.1):\n        '''\n        @params:\n                units:   list.  Number of units at each dense layer, make sure that the number of\n                                      units at the last layer same as the inputs to the layer.\n                dropout: float. dropout ratio before Add&Normlize layer\n        '''\n        super(FeedForward, self).__init__()\n        self.seq = Sequential([layers.Dense(u) for u in units])",
-        "detail": "transformer.encoder.base_encoder",
+        "detail": "transformer.utils.encoders",
+        "documentation": {}
+    },
+    {
+        "label": "EncoderLayer",
+        "kind": 6,
+        "importPath": "transformer.utils.encoders",
+        "description": "transformer.utils.encoders",
+        "peekOfCode": "class EncoderLayer(layers.Layer):\n    def __init__(self, key_dim, num_heads, output_shape, dropout=0.1):\n        super().__init__()\n        self.self_attention = SelfAttention(num_heads=num_heads,\n                                            key_dim=key_dim,\n                                            dropout=dropout,\n                                            output_shape=output_shape)\n        self.ffn = FeedForward([key_dim, output_shape])\n    def call(self, x, training=False, **kwargs):\n        x = self.self_attention(query=x, key=x, value=x, training=training, **kwargs)",
+        "detail": "transformer.utils.encoders",
         "documentation": {}
     },
     {
         "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
         "kind": 5,
-        "importPath": "transformer.encoder.base_encoder",
-        "description": "transformer.encoder.base_encoder",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers, Sequential\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nclass FeedForward(layers.Layer):\n    def __init__(self, units: list, dropout=0.1):\n        '''\n        @params:\n                units:   list.  Number of units at each dense layer, make sure that the number of\n                                      units at the last layer same as the inputs to the layer.\n                dropout: float. dropout ratio before Add&Normlize layer",
-        "detail": "transformer.encoder.base_encoder",
+        "importPath": "transformer.utils.encoders",
+        "description": "transformer.utils.encoders",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers, Sequential\nfrom attentions import SelfAttention\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union\nclass FeedForward(layers.Layer):\n    def __init__(self, units: list, dropout=0.1):\n        '''\n        @params:",
+        "detail": "transformer.utils.encoders",
         "documentation": {}
     },
     {
         "label": "SinuSoidal",
         "kind": 6,
-        "importPath": "transformer.posEncoder.encoders",
-        "description": "transformer.posEncoder.encoders",
+        "importPath": "transformer.utils.posEncoders",
+        "description": "transformer.utils.posEncoders",
         "peekOfCode": "class SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 \n    '''\n    def __init__(self, input_dim: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:\n        '''instantiate Empedding layer and static positional encoding matrix\n        @params:\n                input_dim:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.\n                output_dim:      Integer. Dimension of the dense embedding.",
-        "detail": "transformer.posEncoder.encoders",
+        "detail": "transformer.utils.posEncoders",
         "documentation": {}
     },
     {
         "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
         "kind": 5,
-        "importPath": "transformer.posEncoder.encoders",
-        "description": "transformer.posEncoder.encoders",
+        "importPath": "transformer.utils.posEncoders",
+        "description": "transformer.utils.posEncoders",
         "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers\nfrom tensorflow.keras.layers import Layer, Embedding\nfrom tensorflow import cast, float32, newaxis, Tensor, is_tensor, convert_to_tensor\nfrom tensorflow.math import sqrt\nimport numpy as np\nclass SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 ",
-        "detail": "transformer.posEncoder.encoders",
+        "detail": "transformer.utils.posEncoders",
         "documentation": {}
     },
     {
