@@ -1,8 +1,12 @@
 '''
 '''
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+from tensorflow.keras import layers
 
 from tensorflow.keras.layers import Layer, Embedding
-from tensorflow import cast, float32, newaxis, Tensor
+from tensorflow import cast, float32, newaxis, Tensor, is_tensor, convert_to_tensor
+
 from tensorflow.math import sqrt
 
 import numpy as np
@@ -43,7 +47,8 @@ class SinuSoidal(Layer):
         @return:
                 3D matrix of shape [batch_size, time_step, empedding _dim] 
         '''
-        
+        if not is_tensor(x):
+            x = convert_to_tensor(x, dtype=float32)
         length = x.shape[1]   #[batch_size, timestep]
         
         x = self.embedding(x, **kwargs) #[batch_size, timestep, depth]
