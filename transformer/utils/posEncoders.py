@@ -8,6 +8,9 @@ from tensorflow.keras.layers import Layer, Embedding
 from tensorflow import cast, float32, newaxis, Tensor, is_tensor, convert_to_tensor
 
 from tensorflow.math import sqrt
+from tensorflow import float32, Tensor, is_tensor, convert_to_tensor
+from numpy import ndarray
+from typing import Union, List
 
 import numpy as np
 
@@ -38,7 +41,7 @@ class SinuSoidal(Layer):
         
         self.pos_encoding = self._get_positional_encoding(length=max_sent_lenght, depth=output_dim)
 
-    def call(self, x: Tensor[Tensor[float32]], **kwargs)->Tensor[Tensor[Tensor[float32]]]:
+    def call(self, x: Union[Tensor, ndarray, List], **kwargs) ->Union[Tensor, ndarray, List]:
         '''get the postional empedding of x tokens
         @params:
                 x: 2D matrix of shape [batch_size, time_step], each row represent one sentenece,
@@ -54,7 +57,7 @@ class SinuSoidal(Layer):
         x = self.embedding(x, **kwargs) #[batch_size, timestep, depth]
         # This factor sets the relative scale of the embedding and positonal_encoding.
         x *= sqrt(cast(self.depth, float32))
-        
+
         x = x + self.pos_encoding[newaxis, :length, :] 
 
         return x
@@ -63,7 +66,7 @@ class SinuSoidal(Layer):
         return self.embedding.compute_mask(*args, **kwargs)
 
     
-    def _get_positional_encoding(self, length: int, depth: int, n: int=10000)->Tensor[Tensor[Tensor[float32]]]: 
+    def _get_positional_encoding(self, length: int, depth: int, n: int=10000) ->Union[Tensor, ndarray, List]: 
         
         '''create positionalemppeding matrix
         @params:
@@ -102,9 +105,12 @@ class SinuSoidal(Layer):
 if __name__ == '__main__':
     from tensorflow import __version__
     from tensorflow.config import list_physical_devices
+    import numpy as np
     
     print('tf version:', __version__)
     print('Available devices:', end='\n\t\t\t\t')
     print('\n\t\t\t\t'.join(map(str, list_physical_devices())))
     
-    print(SinuSoidal(20, 60, 100)._get_positional_encoding())
+    dummy = np.random.randn(2, 3)
+    s = SinuSoidal(20, 60, 100)
+    print(s(dummy))

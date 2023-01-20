@@ -3,7 +3,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow.keras import layers
 from tensorflow import is_tensor, convert_to_tensor, float32, Tensor
 from numpy import ndarray
-from typing import Union
+from typing import Union, List
 
 
 
@@ -38,9 +38,9 @@ class BaseAttention(layers.Layer):
         self.add = layers.Add()
         
 class SelfAttention(BaseAttention):
-    def call(self, query:Union[Tensor, ndarray], key: Union[Tensor, ndarray],
-             value: Union[Tensor, ndarray], causal_mask: bool=False, 
-             return_score=False, training=False, **kwargs)->Tensor: #attention_mask: Union[Tensor, ndarray]=None, 
+    def call(self, query: Union[Tensor, ndarray, List], key: Union[Tensor, ndarray, List],
+             value: Union[Tensor, ndarray, List], causal_mask: bool=False, 
+             return_score=False, training=False, **kwargs)->Tensor: #attention_mask: Union[Tensor, ndarray, List]=None, 
         '''
         @params
             query:          3D matrix.  Query Tensor of shape (B, T, dim).
