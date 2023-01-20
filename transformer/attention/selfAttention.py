@@ -1,6 +1,7 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow.keras import layers
+from tensorflow import is_tensor, convert_to_tensor, float32, Tensor
 
 
 
@@ -30,8 +31,10 @@ class BaseAttention(layers.Layer):
         self.add = layers.Add()
         
 class SelfAttention(BaseAttention):
-    def call(self, query, key, value, causal_mask=False, attention_mask=None, 
-             return_score=False, training=False, **kwargs):
+    def call(self, query:Tensor[Tensor[float32]], key: Tensor[Tensor[float32]],
+             value: Tensor[Tensor[float32]], causal_mask: bool=False, 
+             attention_mask: Tensor[Tensor[bool]]=None, 
+             return_score=False, training=False, **kwargs)->Tensor[Tensor[float32]]:
         '''
             query                   |  Query Tensor of shape (B, T, dim).
             value                   |  Value Tensor of shape (B, S, dim).
@@ -41,6 +44,13 @@ class SelfAttention(BaseAttention):
             training	            |  Python boolean indicating whether the layer should behave in training mode (adding dropout) or in inference mode (no dropout). Defaults to either using the training mode of the parent layer/model, or False (inference) if there is no parent layer.
             causal_mask	        |  A boolean to indicate whether to apply a causal mask to prevent tokens from attending to future tokens (e.g., used in a decoder Transformer).
             '''
+        if not is_tensor(query):
+            query = convert_to_tensor(query, dtype=float32)
+        if not is_tensor(value):
+            value = convert_to_tensor(value, dtype=float32)
+        if not is_tensor(key):
+            key = convert_to_tensor(key, dtype=float32)
+            
         if return_score:
             attn_output, score = self.mha(query, value, key, use_causal_mask=causal_mask, training=training,
                                           attention_mask=attention_mask, return_attention_scores=return_score,
@@ -49,8 +59,8 @@ class SelfAttention(BaseAttention):
             query = self.layernorm(query)
             return query, score
         attn_output = self.mha(query, value, key, use_causal_mask=causal_mask, training=training,
-                                          attention_mask=attention_mask, return_attention_scores=return_score,
-                                          **kwargs)
+                                attention_mask=attention_mask, return_attention_scores=return_score,
+                                    **kwargs)
         query = self.add([query, attn_output])
         query = self.layernorm(query)
         return query
