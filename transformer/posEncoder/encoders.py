@@ -2,7 +2,7 @@
 '''
 
 from tensorflow.keras.layers import Layer, Embedding
-from tensorflow import cast, float32, newaxis
+from tensorflow import cast, float32, newaxis, Tensor
 from tensorflow.math import sqrt
 
 import numpy as np
@@ -15,7 +15,7 @@ class SinuSoidal(Layer):
     
     '''
     
-    def __init__(self, input_dim, output_dim, max_sent_lenght, mask_zero=False, **kwargs):
+    def __init__(self, input_dim: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:
         '''instantiate Empedding layer and static positional encoding matrix
         @params:
                 input_dim:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.
@@ -34,11 +34,19 @@ class SinuSoidal(Layer):
         
         self.pos_encoding = self._get_positional_encoding(length=max_sent_lenght, depth=output_dim)
 
-    def call(self, x):
+    def call(self, x: Tensor[Tensor[float32]], **kwargs)->Tensor[Tensor[Tensor[float32]]]:
+        '''get the postional empedding of x tokens
+        @params:
+                x: 2D matrix of shape [batch_size, time_step], each row represent one sentenece,
+                   each time step represent idx equivelant token.
+                   
+        @return:
+                3D matrix of shape [batch_size, time_step, empedding _dim] 
+        '''
         
         length = x.shape[1]   #[batch_size, timestep]
         
-        x = self.embedding(x) #[batch_size, timestep, depth]
+        x = self.embedding(x, **kwargs) #[batch_size, timestep, depth]
         # This factor sets the relative scale of the embedding and positonal_encoding.
         x *= sqrt(cast(self.depth, float32))
         
@@ -50,7 +58,16 @@ class SinuSoidal(Layer):
         return self.embedding.compute_mask(*args, **kwargs)
 
     
-    def _get_positional_encoding(self, length, depth, n=10000):
+    def _get_positional_encoding(self, length: int, depth: int, n: int=10000)->Tensor[Tensor[Tensor[float32]]]: 
+        
+        '''create positionalemppeding matrix
+        @params:
+                length:  Max number of tokens in as sentence that the model will deal with it during inference.
+                depth:   Empeddingdim
+                n:       Hyper-parameter from the paper 
+        '''
+        
+        
         depth = depth
 
         positions = np.arange(length)[:, np.newaxis]     # (seq, 1)  [0, 1, 2, 3 ... length-1]
@@ -67,6 +84,8 @@ class SinuSoidal(Layer):
         angle_rads[:, 1::2] = np.cos(angle_rads[:, 1::2])
 #         print(angle_rads.shape)
         return cast(angle_rads, dtype=float32)
+    
+    
 
 
 
@@ -82,3 +101,5 @@ if __name__ == '__main__':
     print('tf version:', __version__)
     print('Available devices:', end='\n\t\t\t\t')
     print('\n\t\t\t\t'.join(map(str, list_physical_devices())))
+    
+    print(SinuSoidal(20, 60, 100)._get_positional_encoding())

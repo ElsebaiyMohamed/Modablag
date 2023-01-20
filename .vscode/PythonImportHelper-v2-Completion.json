@@ -57,6 +57,14 @@
         "documentation": {}
     },
     {
+        "label": "Tensor",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
         "label": "sqrt",
         "importPath": "tensorflow.math",
         "description": "tensorflow.math",
@@ -105,7 +113,7 @@
         "kind": 6,
         "importPath": "transformer.posEncoder.encoders",
         "description": "transformer.posEncoder.encoders",
-        "peekOfCode": "class SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 \n    '''\n    def __init__(self, input_dim, output_dim, max_sent_lenght, mask_zero=False, **kwargs):\n        '''instantiate Empedding layer and static positional encoding matrix\n        @params:\n                input_dim:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.\n                output_dim:      Integer. Dimension of the dense embedding.",
+        "peekOfCode": "class SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 \n    '''\n    def __init__(self, input_dim: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:\n        '''instantiate Empedding layer and static positional encoding matrix\n        @params:\n                input_dim:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.\n                output_dim:      Integer. Dimension of the dense embedding.",
         "detail": "transformer.posEncoder.encoders",
         "documentation": {}
     },
