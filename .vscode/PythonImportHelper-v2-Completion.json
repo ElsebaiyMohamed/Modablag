@@ -273,46 +273,6 @@
         "documentation": {}
     },
     {
-        "label": "keras",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "float32",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "Tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "is_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "convert_to_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -362,14 +322,6 @@
         "documentation": {}
     },
     {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
         "label": "Union",
         "importPath": "typing",
         "description": "typing",
@@ -403,22 +355,6 @@
     },
     {
         "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -490,11 +426,11 @@
         "documentation": {}
     },
     {
-        "label": "SinuSoidal",
-        "importPath": "utils.posEncoders",
-        "description": "utils.posEncoders",
+        "label": "EncoderLayer",
+        "importPath": "utils.encoders",
+        "description": "utils.encoders",
         "isExtraImport": true,
-        "detail": "utils.posEncoders",
+        "detail": "utils.encoders",
         "documentation": {}
     },
     {
@@ -503,14 +439,6 @@
         "description": "utils.decoders",
         "isExtraImport": true,
         "detail": "utils.decoders",
-        "documentation": {}
-    },
-    {
-        "label": "EncoderLayer",
-        "importPath": "utils.encoders",
-        "description": "utils.encoders",
-        "isExtraImport": true,
-        "detail": "utils.encoders",
         "documentation": {}
     },
     {
@@ -604,39 +532,39 @@
         "documentation": {}
     },
     {
-        "label": "Decoder",
-        "kind": 6,
-        "importPath": "transformer.transDecoder",
-        "description": "transformer.transDecoder",
-        "peekOfCode": "class Decoder(keras.Model):\n    #TODO -> docstring\n    def __init__(self, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1) -> None:\n        #TODO -> docstring\n        super(Decoder, self).__init__()\n        self.n_layers = n_layers\n        self.pos_encoder = SinuSoidal(vocab_size, emp_dim, max_sent_lenght)\n        self.dec = [DecoderLayer(key_dim, n_heads, emp_dim) for _ in range(n_layers)]\n    def call(self, x, context, training=False, **kwargs):\n        #TODO -> docstring",
-        "detail": "transformer.transDecoder",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
-        "kind": 5,
-        "importPath": "transformer.transDecoder",
-        "description": "transformer.transDecoder",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom utils.posEncoders import SinuSoidal\nfrom utils.decoders import DecoderLayer\nclass Decoder(keras.Model):\n    #TODO -> docstring\n    def __init__(self, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1) -> None:",
-        "detail": "transformer.transDecoder",
-        "documentation": {}
-    },
-    {
         "label": "Encoder",
         "kind": 6,
-        "importPath": "transformer.transEncoder",
-        "description": "transformer.transEncoder",
+        "importPath": "transformer.baseT",
+        "description": "transformer.baseT",
         "peekOfCode": "class Encoder(keras.Model):\n    #TODO -> docstring\n    def __init__(self, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1) -> None:\n        #TODO -> docstring\n        super(Encoder, self).__init__()\n        self.pos_encoder = SinuSoidal(vocab_size, emp_dim, max_sent_lenght)\n        self.enc = keras.Sequential([EncoderLayer(key_dim, n_heads, emp_dim) \n                                     for _ in range(n_layers)])\n    def call(self, x, training=False, **kwargs):\n        #TODO -> docstring",
-        "detail": "transformer.transEncoder",
+        "detail": "transformer.baseT",
+        "documentation": {}
+    },
+    {
+        "label": "Decoder",
+        "kind": 6,
+        "importPath": "transformer.baseT",
+        "description": "transformer.baseT",
+        "peekOfCode": "class Decoder(keras.Model):\n    #TODO -> docstring\n    def __init__(self, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1) -> None:\n        #TODO -> docstring\n        super(Decoder, self).__init__()\n        self.n_layers = n_layers\n        self.pos_encoder = SinuSoidal(vocab_size, emp_dim, max_sent_lenght)\n        self.dec = [DecoderLayer(key_dim, n_heads, emp_dim) for _ in range(n_layers)]\n    def call(self, x, context, training=False, **kwargs):\n        #TODO -> docstring",
+        "detail": "transformer.baseT",
+        "documentation": {}
+    },
+    {
+        "label": "BTransformer",
+        "kind": 6,
+        "importPath": "transformer.baseT",
+        "description": "transformer.baseT",
+        "peekOfCode": "class BTransformer(keras.Model):\n    def __init__(self, e_config: tuple, d_config: tuple) -> None:\n        super().__init__()\n        self.max_len = e_config[2]\n        self.enc = Encoder(*e_config)\n        self.dec = Decoder(*d_config)\n        self.final_layer = keras.layers.Dense(d_config[0])\n    def call(self, src, training=False):\n        # To use a Keras model with `.fit` you must pass all your inputs in the\n        # first argument.",
+        "detail": "transformer.baseT",
         "documentation": {}
     },
     {
         "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
         "kind": 5,
-        "importPath": "transformer.transEncoder",
-        "description": "transformer.transEncoder",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom utils.posEncoders import SinuSoidal\nfrom utils.encoders import EncoderLayer\nclass Encoder(keras.Model):\n    #TODO -> docstring\n    def __init__(self, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1) -> None:",
-        "detail": "transformer.transEncoder",
+        "importPath": "transformer.baseT",
+        "description": "transformer.baseT",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom utils.posEncoders import SinuSoidal\nfrom utils.encoders import EncoderLayer\nfrom utils.decoders import DecoderLayer\nclass Encoder(keras.Model):\n    #TODO -> docstring",
+        "detail": "transformer.baseT",
         "documentation": {}
     },
     {

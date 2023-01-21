@@ -19,7 +19,6 @@ class SinuSoidal(Layer):
     '''
     Custom layer that get the emppeding of words with positons info
     as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 
-    
     '''
     
     def __init__(self, input_dim: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:
