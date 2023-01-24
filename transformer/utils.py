@@ -1,6 +1,7 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-from tensorflow.keras import layers
+from tensorflow.keras.layers import (Layer, Sequential, MultiHeadAttention, LayerNormalization, 
+                              Add, serialize, deserialize, Dropout, Dense)
 from tensorflow import is_tensor, convert_to_tensor, float32, Tensor
 from numpy import ndarray
 from typing import Union, List
@@ -8,7 +9,7 @@ from typing import Union, List
 
 
 
-class BaseAttention(layers.Layer):
+class BaseAttention(Layer):
     def __init__(self, num_heads:int, key_dim:int, *args, **kwargs):
         '''
         @params:
@@ -33,9 +34,9 @@ class BaseAttention(layers.Layer):
                 **kwargs
         '''
         super(BaseAttention, self).__init__()
-        self.mha = layers.MultiHeadAttention(num_heads=num_heads, key_dim=key_dim, *args, **kwargs)
-        self.layernorm = layers.LayerNormalization()
-        self.add = layers.Add()
+        self.mha = MultiHeadAttention(num_heads=num_heads, key_dim=key_dim, *args, **kwargs)
+        self.layernorm = LayerNormalization()
+        self.add = Add()
         
 class SelfAttention(BaseAttention):
     def call(self, query: Union[Tensor, ndarray, List], key: Union[Tensor, ndarray, List],
@@ -93,14 +94,98 @@ class SelfAttention(BaseAttention):
     def get_config(self):
         config = super().get_config()
         config.update({
-            "mha": layers.serialize(self.mha)
+            "mha": serialize(self.mha)
         })
         return config    
 
     @classmethod
     def from_config(cls, config):
-      config['mha'] = layers.deserialize(config['mha'])
+      config['mha'] = deserialize(config['mha'])
       return super().from_config(config)
+  
+  
+  
+  
+class FeedForward(Layer):
+    def __init__(self, units: list, dropout=0.1):
+        '''
+        @params:
+                units:   list.  Number of units at each dense layer, make sure that the number of
+                                      units at the last layer same as the inputs to the layer.
+                dropout: float. dropout ratio before Add&Normlize layer
+        '''
+        super(FeedForward, self).__init__()
+        self.seq = Sequential([Dense(u) for u in units])
+        self.seq.add(Dropout(dropout))
+        self.add = Add()
+        self.layer_norm = LayerNormalization()
+
+    def call(self, x: Union[Tensor, ndarray], training: bool=False)->Tensor:
+        '''
+        @params:
+                x       : 2D float32 matrix.
+                training: bool.               behave in training or inference mode
+        @return:
+                2D float32 matrix with the same shape as the inputs
+        '''
+        if not is_tensor(x):
+            x = convert_to_tensor(x, dtype=float32)
+        
+        x = self.add([x, self.seq(x, training=training)])
+        x = self.layer_norm(x, training=training) 
+        return x
+    
+    
+class EncoderLayer(Layer):
+    def __init__(self, key_dim, num_heads, output_shape, dropout=0.1):
+        #TODO -> docstring
+        super().__init__()
+
+        self.self_attention = SelfAttention(num_heads=num_heads,
+                                            key_dim=key_dim,
+                                            dropout=dropout,
+                                            output_shape=output_shape)
+
+        self.ffn = FeedForward([key_dim, output_shape])
+
+    def call(self, x, training=False, **kwargs):
+        #TODO -> docstring
+        x = self.self_attention(query=x, key=x, value=x, training=training, **kwargs)
+        x = self.ffn(x, training=training)
+        return x
+  
+  
+  
+
+class DecoderLayer(Layer):
+    #TODO -> docstring
+    def __init__(self, key_dim, num_heads, output_shape: int, dropout=0.1):
+        #TODO -> docstring
+        super().__init__()
+
+        self.self_attention  = SelfAttention(num_heads=num_heads,
+                                             key_dim=key_dim,
+                                             dropout=dropout,
+                                             output_shape=output_shape)
+        
+        self.cross_attention = SelfAttention(num_heads=num_heads,
+                                             key_dim=key_dim,
+                                             dropout=dropout,
+                                             output_shape=output_shape)
+
+        self.ffn = FeedForward([key_dim, output_shape])
+        self.layernorm = LayerNormalization()
+        self.add = Add()
+
+    def call(self, x, context, training=False, causal_mask=True, **kwargs):
+        #TODO -> docstring
+        x = self.self_attention(query=x, key=x, value=x, training=training, causal_mask=causal_mask, **kwargs)
+        x = self.cross_attention(query=x, key=context, value=context, training=training, 
+                                 causal_mask=causal_mask, **kwargs)
+        return self.ffn(x, training=training)
+
+  
+  
         
 
 if __name__ == '__main__':
