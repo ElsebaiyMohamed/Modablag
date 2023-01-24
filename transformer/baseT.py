@@ -10,9 +10,9 @@ from tensorflow import float32, Tensor, is_tensor, convert_to_tensor
 from numpy import ndarray
 from typing import Union, List
 
-from utils.posEncoders import SinuSoidal
-from utils.encoders import EncoderLayer
-from utils.decoders import DecoderLayer
+from posEncoders import SinuSoidal
+
+from utils import EncoderLayer, DecoderLayer
 
 
 class Encoder(keras.Model):
