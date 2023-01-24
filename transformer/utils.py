@@ -1,6 +1,7 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-from tensorflow.keras.layers import (Layer, Sequential, MultiHeadAttention, LayerNormalization, 
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import (Layer, MultiHeadAttention, LayerNormalization, 
                               Add, serialize, deserialize, Dropout, Dense)
 from tensorflow import is_tensor, convert_to_tensor, float32, Tensor
 from numpy import ndarray
