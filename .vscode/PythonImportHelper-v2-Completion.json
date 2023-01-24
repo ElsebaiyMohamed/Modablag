@@ -274,6 +274,14 @@
         "documentation": {}
     },
     {
+        "label": "Sequential",
+        "importPath": "tensorflow.keras",
+        "description": "tensorflow.keras",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras",
+        "documentation": {}
+    },
+    {
         "label": "Layer",
         "importPath": "tensorflow.keras.layers",
         "description": "tensorflow.keras.layers",
@@ -291,14 +299,6 @@
     },
     {
         "label": "Layer",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Sequential",
         "importPath": "tensorflow.keras.layers",
         "description": "tensorflow.keras.layers",
         "isExtraImport": true,
@@ -473,7 +473,7 @@
         "kind": 5,
         "importPath": "transformer.utils",
         "description": "transformer.utils",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras.layers import (Layer, Sequential, MultiHeadAttention, LayerNormalization, \n                              Add, serialize, deserialize, Dropout, Dense)\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nclass BaseAttention(Layer):\n    def __init__(self, num_heads:int, key_dim:int, *args, **kwargs):\n        '''\n        @params:",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import Sequential\nfrom tensorflow.keras.layers import (Layer, MultiHeadAttention, LayerNormalization, \n                              Add, serialize, deserialize, Dropout, Dense)\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nclass BaseAttention(Layer):\n    def __init__(self, num_heads:int, key_dim:int, *args, **kwargs):\n        '''",
         "detail": "transformer.utils",
         "documentation": {}
     },

@@ -80,9 +80,7 @@ class BTransformer(keras.Model):
             src = self.dec(src, target)
             src = self.final_layer(src)
             src = np.argmax(src, 2)
-            print(len(sent[0]))
             sent[0].append(src[0, -1])
-            print(sent)
             src = np.array(sent)
             
             if sent[0][-1] == 1:
@@ -109,8 +107,8 @@ if __name__ == '__main__':
     
     #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1
     #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1
-    config_e = (100, 50, 2000, 25, 8, 3)
-    config_d = (200, 50, 2000, 25, 8, 3)
+    config_e = (100, 50, 200, 25, 8, 3)
+    config_d = (200, 50, 200, 25, 8, 3)
     f = Decoder(*config_d)
     
     
