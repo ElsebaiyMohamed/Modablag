@@ -250,6 +250,14 @@
         "documentation": {}
     },
     {
+        "label": "SinuSoidal",
+        "importPath": "posEncoders",
+        "description": "posEncoders",
+        "isExtraImport": true,
+        "detail": "posEncoders",
+        "documentation": {}
+    },
+    {
         "label": "EncoderLayer",
         "importPath": "utils",
         "description": "utils",
@@ -259,6 +267,14 @@
     },
     {
         "label": "DecoderLayer",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "*",
         "importPath": "utils",
         "description": "utils",
         "isExtraImport": true,
@@ -370,6 +386,14 @@
         "documentation": {}
     },
     {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
         "label": "Encoder",
         "kind": 6,
         "importPath": "transformer.baseT",
@@ -410,7 +434,7 @@
         "kind": 6,
         "importPath": "transformer.posEncoders",
         "description": "transformer.posEncoders",
-        "peekOfCode": "class SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 \n    '''\n    def __init__(self, input_dim: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:\n        '''instantiate Empedding layer and static positional encoding matrix\n        @params:\n                input_dim:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.\n                output_dim:      Integer. Dimension of the dense embedding.",
+        "peekOfCode": "class SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 \n    '''\n    def __init__(self, voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:\n        '''instantiate Empedding layer and static positional encoding matrix\n        @params:\n                voc_size:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.\n                output_dim:      Integer. Dimension of the dense embedding.",
         "detail": "transformer.posEncoders",
         "documentation": {}
     },
@@ -421,6 +445,87 @@
         "description": "transformer.posEncoders",
         "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers\nfrom tensorflow.keras.layers import Layer, Embedding\nfrom tensorflow import cast, float32, newaxis, Tensor, is_tensor, convert_to_tensor\nfrom tensorflow.math import sqrt\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nimport numpy as np\nclass SinuSoidal(Layer):",
         "detail": "transformer.posEncoders",
+        "documentation": {}
+    },
+    {
+        "label": "create_dummy",
+        "kind": 2,
+        "importPath": "transformer.unit_test",
+        "description": "transformer.unit_test",
+        "peekOfCode": "def create_dummy(voc_size, batch, time_step, feature=None):\n    if feature is None:\n        return np.random.randint(0, voc_size, (batch, time_step))\n    return np.random.randn(batch, time_step, feature)\ndef test_SinuSoidal(): #voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero\n    for v in tqdm(np.arange(1_000, 70_000, 1_000)):          #voc_size: int,\n        for o in np.arange(100, 700, 100):  #output_dim: int,\n            for m in np.arange(0, 2_000, 200):      #max_sent_lenght: int,\n                dummy = create_dummy(v, 128, m)\n                # for ms in mask_zero:",
+        "detail": "transformer.unit_test",
+        "documentation": {}
+    },
+    {
+        "label": "test_SinuSoidal",
+        "kind": 2,
+        "importPath": "transformer.unit_test",
+        "description": "transformer.unit_test",
+        "peekOfCode": "def test_SinuSoidal(): #voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero\n    for v in tqdm(np.arange(1_000, 70_000, 1_000)):          #voc_size: int,\n        for o in np.arange(100, 700, 100):  #output_dim: int,\n            for m in np.arange(0, 2_000, 200):      #max_sent_lenght: int,\n                dummy = create_dummy(v, 128, m)\n                # for ms in mask_zero:\n                opj = SinuSoidal(v, o, m)\n                try:\n                    opj(dummy)\n                    # opj.compute_mask(dummy)",
+        "detail": "transformer.unit_test",
+        "documentation": {}
+    },
+    {
+        "label": "test_self_attention",
+        "kind": 2,
+        "importPath": "transformer.unit_test",
+        "description": "transformer.unit_test",
+        "peekOfCode": "def test_self_attention():\n    pass\ndef test_feed_forward():\n    pass\ndef test_enc_layer():\n    pass\ndef test_dec_layer():\n    pass\ndef test_enc():\n    pass",
+        "detail": "transformer.unit_test",
+        "documentation": {}
+    },
+    {
+        "label": "test_feed_forward",
+        "kind": 2,
+        "importPath": "transformer.unit_test",
+        "description": "transformer.unit_test",
+        "peekOfCode": "def test_feed_forward():\n    pass\ndef test_enc_layer():\n    pass\ndef test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass",
+        "detail": "transformer.unit_test",
+        "documentation": {}
+    },
+    {
+        "label": "test_enc_layer",
+        "kind": 2,
+        "importPath": "transformer.unit_test",
+        "description": "transformer.unit_test",
+        "peekOfCode": "def test_enc_layer():\n    pass\ndef test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    pass",
+        "detail": "transformer.unit_test",
+        "documentation": {}
+    },
+    {
+        "label": "test_dec_layer",
+        "kind": 2,
+        "importPath": "transformer.unit_test",
+        "description": "transformer.unit_test",
+        "peekOfCode": "def test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    pass\nif __name__ == '__main__':\n    test_SinuSoidal()",
+        "detail": "transformer.unit_test",
+        "documentation": {}
+    },
+    {
+        "label": "test_enc",
+        "kind": 2,
+        "importPath": "transformer.unit_test",
+        "description": "transformer.unit_test",
+        "peekOfCode": "def test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    pass\nif __name__ == '__main__':\n    test_SinuSoidal()",
+        "detail": "transformer.unit_test",
+        "documentation": {}
+    },
+    {
+        "label": "test_dec",
+        "kind": 2,
+        "importPath": "transformer.unit_test",
+        "description": "transformer.unit_test",
+        "peekOfCode": "def test_dec():\n    pass\ndef test_model():\n    pass\nif __name__ == '__main__':\n    test_SinuSoidal()",
+        "detail": "transformer.unit_test",
+        "documentation": {}
+    },
+    {
+        "label": "test_model",
+        "kind": 2,
+        "importPath": "transformer.unit_test",
+        "description": "transformer.unit_test",
+        "peekOfCode": "def test_model():\n    pass\nif __name__ == '__main__':\n    test_SinuSoidal()",
+        "detail": "transformer.unit_test",
         "documentation": {}
     },
     {
