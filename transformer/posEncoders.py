@@ -21,10 +21,10 @@ class SinuSoidal(Layer):
     as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 
     '''
     
-    def __init__(self, input_dim: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:
+    def __init__(self, voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:
         '''instantiate Empedding layer and static positional encoding matrix
         @params:
-                input_dim:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.
+                voc_size:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.
                 output_dim:      Integer. Dimension of the dense embedding.
                 mask_zero:       Bool.    Get the Mask of inputs or not, 
                                           more info are here -> https://www.tensorflow.org/guide/keras/masking_and_padding.
@@ -35,37 +35,41 @@ class SinuSoidal(Layer):
         super(SinuSoidal, self).__init__()
 
         self.depth = output_dim
-        
-        self.embedding = Embedding(input_dim, output_dim, mask_zero=mask_zero, **kwargs) 
+        self.max_len = max_sent_lenght
+        self.embedding = Embedding(voc_size, output_dim, mask_zero=mask_zero, **kwargs) 
         
         self.pos_encoding = self._get_positional_encoding(length=max_sent_lenght, depth=output_dim)
 
-    def call(self, x: Union[Tensor, ndarray, List], **kwargs) ->Union[Tensor, ndarray, List]:
+    def call(self, x: Union[Tensor, ndarray, List], **kwargs):
         '''get the postional empedding of x tokens
         @params:
                 x: 2D matrix of shape [batch_size, time_step], each row represent one sentenece,
                    each time step represent idx equivelant token.
                    
         @return:
-                3D matrix of shape [batch_size, time_step, empedding _dim] 
+                3D Tensor of shape [batch_size, time_step, output_dim] 
         '''
+        
+        assert x.shape[1] <= self.max_len, f'Maximume length of the sentence shoulde not exceed {self.max_len}'
         if not is_tensor(x):
             x = convert_to_tensor(x, dtype=float32)
-        length = x.shape[1]   #[batch_size, timestep]
-        
+            
+        length = x.shape[1] #[batch_size, timestep]
+        # print(x.shape)
         x = self.embedding(x, **kwargs) #[batch_size, timestep, depth]
         # This factor sets the relative scale of the embedding and positonal_encoding.
-        x *= sqrt(cast(self.depth, float32))
+        x = x / sqrt(cast(self.depth, float32))
 
         x = x + self.pos_encoding[newaxis, :length, :] 
 
         return x
     
+    
     def compute_mask(self, *args, **kwargs):
         return self.embedding.compute_mask(*args, **kwargs)
 
     
-    def _get_positional_encoding(self, length: int, depth: int, n: int=10000) ->Union[Tensor, ndarray, List]: 
+    def _get_positional_encoding(self, length: int, depth: int, n: int=10000): 
         
         '''create positionalemppeding matrix
         @params:
@@ -74,8 +78,6 @@ class SinuSoidal(Layer):
                 n:       Hyper-parameter from the paper 
         '''
         
-        
-        depth = depth
 
         positions = np.arange(length)[:, np.newaxis]     # (seq, 1)  [0, 1, 2, 3 ... length-1]
 
@@ -94,13 +96,6 @@ class SinuSoidal(Layer):
     
     
 
-
-
-
-
-
-
-
 if __name__ == '__main__':
     from tensorflow import __version__
     from tensorflow.config import list_physical_devices
@@ -110,6 +105,6 @@ if __name__ == '__main__':
     print('Available devices:', end='\n\t\t\t\t')
     print('\n\t\t\t\t'.join(map(str, list_physical_devices())))
     
-    dummy = np.random.randn(2, 3)
-    s = SinuSoidal(20, 60, 100)
+    dummy = np.random.randn(2, 500)
+    s = SinuSoidal(20, 5, 100)
     print(s(dummy))
