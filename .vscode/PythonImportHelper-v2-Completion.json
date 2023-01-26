@@ -390,7 +390,7 @@
         "kind": 6,
         "importPath": "transformer.baseT",
         "description": "transformer.baseT",
-        "peekOfCode": "class Encoder(keras.Model):\n    #TODO -> docstring\n    def __init__(self, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1) -> None:\n        #TODO -> docstring\n        super(Encoder, self).__init__()\n        self.pos_encoder = SinuSoidal(vocab_size, emp_dim, max_sent_lenght)\n        self.enc = keras.Sequential([EncoderLayer(key_dim, n_heads, emp_dim) \n                                     for _ in range(n_layers)])\n    def call(self, x, training=False, **kwargs):\n        #TODO -> docstring",
+        "peekOfCode": "class Encoder(keras.Model):\n    '''\n    the encoder Module from the paper. consist of many stacked Encoder Layer\n    '''\n    def __init__(self, vocab_size: int, emp_dim: int, max_sent_lenght: int,\n                 key_dim: int, n_heads: int, n_layers: int=1):\n        '''\n        @params:\n                vocab_size:        int.  Size of the vocabulary, i.e. maximum integer index + 1.\n                emp_dim:         int.  Dimension of the dense embedding.",
         "detail": "transformer.baseT",
         "documentation": {}
     },
@@ -399,7 +399,7 @@
         "kind": 6,
         "importPath": "transformer.baseT",
         "description": "transformer.baseT",
-        "peekOfCode": "class Decoder(keras.Model):\n    #TODO -> docstring\n    def __init__(self, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1) -> None:\n        #TODO -> docstring\n        super(Decoder, self).__init__()\n        self.n_layers = n_layers\n        self.pos_encoder = SinuSoidal(vocab_size, emp_dim, max_sent_lenght)\n        self.dec = [DecoderLayer(key_dim, n_heads, emp_dim) for _ in range(n_layers)]\n    def call(self, x, context, training=False, **kwargs):\n        #TODO -> docstring",
+        "peekOfCode": "class Decoder(keras.Model):\n    '''\n    the Decoder Module from the paper. consist of many stacked Decoder Layer\n    '''\n    def __init__(self, vocab_size: int, emp_dim: int, max_sent_lenght: int,\n                 key_dim: int, n_heads: int, n_layers: int=1):\n        '''\n        @params:\n                vocab_size:        int.  Size of the vocabulary, i.e. maximum integer index + 1.\n                emp_dim:         int.  Dimension of the dense embedding.",
         "detail": "transformer.baseT",
         "documentation": {}
     },
@@ -408,7 +408,7 @@
         "kind": 6,
         "importPath": "transformer.baseT",
         "description": "transformer.baseT",
-        "peekOfCode": "class BTransformer(keras.Model):\n    def __init__(self, e_config: tuple, d_config: tuple) -> None:\n        super().__init__()\n        self.max_len = e_config[2]\n        self.enc = Encoder(*e_config)\n        self.dec = Decoder(*d_config)\n        self.final_layer = keras.layers.Dense(d_config[0])\n    def call(self, src, training=False):\n        # To use a Keras model with `.fit` you must pass all your inputs in the\n        # first argument.",
+        "peekOfCode": "class BTransformer(keras.Model):\n    '''\n    the Transformer Module from the paper. consist of Encoder Module & Decoder Module. This class also Implement\n    Greedy and Beam search decoding.\n    '''\n    def __init__(self, e_config: tuple, d_config: tuple):\n        '''\n        @params:\n            e_config:              Tuple\n                - vocab_size:      int.  Size of the soruce lang vocabulary, i.e. maximum integer index + 1.",
         "detail": "transformer.baseT",
         "documentation": {}
     },
@@ -417,7 +417,7 @@
         "kind": 5,
         "importPath": "transformer.baseT",
         "description": "transformer.baseT",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom posEncoders import SinuSoidal\nfrom utils import EncoderLayer, DecoderLayer\nclass Encoder(keras.Model):\n    #TODO -> docstring\n    def __init__(self, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1) -> None:",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom posEncoders import SinuSoidal\nfrom utils import EncoderLayer, DecoderLayer\nclass Encoder(keras.Model):\n    '''\n    the encoder Module from the paper. consist of many stacked Encoder Layer",
         "detail": "transformer.baseT",
         "documentation": {}
     },
