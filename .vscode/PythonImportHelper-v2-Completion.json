@@ -282,22 +282,6 @@
         "documentation": {}
     },
     {
-        "label": "layers",
-        "importPath": "tensorflow.keras",
-        "description": "tensorflow.keras",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras",
-        "documentation": {}
-    },
-    {
-        "label": "Sequential",
-        "importPath": "tensorflow.keras",
-        "description": "tensorflow.keras",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras",
-        "documentation": {}
-    },
-    {
         "label": "Layer",
         "importPath": "tensorflow.keras.layers",
         "description": "tensorflow.keras.layers",
@@ -394,6 +378,14 @@
         "documentation": {}
     },
     {
+        "label": "Sequential",
+        "importPath": "tensorflow.keras",
+        "description": "tensorflow.keras",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras",
+        "documentation": {}
+    },
+    {
         "label": "Encoder",
         "kind": 6,
         "importPath": "transformer.baseT",
@@ -434,7 +426,7 @@
         "kind": 6,
         "importPath": "transformer.posEncoders",
         "description": "transformer.posEncoders",
-        "peekOfCode": "class SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 \n    '''\n    def __init__(self, voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:\n        '''instantiate Empedding layer and static positional encoding matrix\n        @params:\n                voc_size:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.\n                output_dim:      Integer. Dimension of the dense embedding.",
+        "peekOfCode": "class SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 \n    '''\n    def __init__(self, voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs):\n        '''instantiate Empedding layer and static positional encoding matrix\n        @params:\n                voc_size:        int.  Size of the vocabulary, i.e. maximum integer index + 1.\n                output_dim:      int.  Dimension of the dense embedding.",
         "detail": "transformer.posEncoders",
         "documentation": {}
     },
@@ -443,7 +435,7 @@
         "kind": 5,
         "importPath": "transformer.posEncoders",
         "description": "transformer.posEncoders",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import layers\nfrom tensorflow.keras.layers import Layer, Embedding\nfrom tensorflow import cast, float32, newaxis, Tensor, is_tensor, convert_to_tensor\nfrom tensorflow.math import sqrt\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nimport numpy as np\nclass SinuSoidal(Layer):",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\n# Don't worry of warning under Tensorflow it's ok.\nfrom tensorflow.keras.layers import Layer, Embedding\nfrom tensorflow import cast, float32, newaxis, Tensor, is_tensor, convert_to_tensor\nfrom tensorflow.math import sqrt\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nimport numpy as np\nclass SinuSoidal(Layer):",
         "detail": "transformer.posEncoders",
         "documentation": {}
     },
@@ -533,7 +525,7 @@
         "kind": 6,
         "importPath": "transformer.utils",
         "description": "transformer.utils",
-        "peekOfCode": "class BaseAttention(Layer):\n    def __init__(self, num_heads:int, key_dim:int, *args, **kwargs):\n        '''\n        @params:\n                num_heads:                          int.    Number of attention heads. \n                key_dim:                            int.    Size of each attention head for query and key.\n                value_dim=None:                     int.    Size of each attention head for value.\n                dropout=0.0:                        float.  Dropout probability.\n                use_bias=True:                      bool.   whether the dense layers use bias vectors/matrices.\n                output_shape=None:                  int.  The expected shape of an output tensor, besides the ",
+        "peekOfCode": "class BaseAttention(Layer):\n    '''\n    the structure of self attention from the paper.\n    consist of MultiHeadAttention and Add&Normlize block \n    '''\n    def __init__(self, num_heads: int, key_dim: int, **kwargs):\n        '''\n        @params:\n                num_heads:                          int.    Number of attention heads. \n                key_dim:                            int.    Size of each attention head for query and key.",
         "detail": "transformer.utils",
         "documentation": {}
     },
@@ -542,7 +534,7 @@
         "kind": 6,
         "importPath": "transformer.utils",
         "description": "transformer.utils",
-        "peekOfCode": "class SelfAttention(BaseAttention):\n    def call(self, query: Union[Tensor, ndarray, List], key: Union[Tensor, ndarray, List],\n             value: Union[Tensor, ndarray, List], causal_mask: bool=False, \n             return_score=False, training=False, **kwargs)->Tensor: #attention_mask: Union[Tensor, ndarray, List]=None, \n        '''\n        @params\n            query:          3D matrix.  Query Tensor of shape (B, T, dim).\n            value:          3D matrix.  Value Tensor of shape (B, S, dim).\n            key:            3D matrix.  Optional key Tensor of shape (B, S, dim). If not given, \n                                            will use value for both key and value, which is the most ",
+        "peekOfCode": "class SelfAttention(BaseAttention):\n    '''\n    self attention part in the encoder from the paper. consist of MultiHeadAttention and Add&Normlize block \n    '''\n    def call(self, query: Union[Tensor, ndarray, List], key: Union[Tensor, ndarray, List],\n             value: Union[Tensor, ndarray, List], causal_mask: bool=False, \n             return_score=False, training=False, **kwargs): \n        '''\n        @params\n            query:          3D matrix.  Query Tensor of shape (B, T, dim).",
         "detail": "transformer.utils",
         "documentation": {}
     },
@@ -551,7 +543,7 @@
         "kind": 6,
         "importPath": "transformer.utils",
         "description": "transformer.utils",
-        "peekOfCode": "class FeedForward(Layer):\n    def __init__(self, units: list, dropout=0.1):\n        '''\n        @params:\n                units:   list.  Number of units at each dense layer, make sure that the number of\n                                      units at the last layer same as the inputs to the layer.\n                dropout: float. dropout ratio before Add&Normlize layer\n        '''\n        super(FeedForward, self).__init__()\n        self.seq = Sequential([Dense(u) for u in units])",
+        "peekOfCode": "class FeedForward(Layer):\n    '''\n    FeedForward part in the encoder from the paper.\n    '''\n    def __init__(self, units: list, dropout=0.1):\n        '''\n        @params:\n                units:   list.  Number of units at each dense layer, make sure that the number of\n                                      units at the last layer same as the inputs to the layer.\n                dropout: float. dropout ratio before Add&Normlize layer",
         "detail": "transformer.utils",
         "documentation": {}
     },
@@ -560,7 +552,7 @@
         "kind": 6,
         "importPath": "transformer.utils",
         "description": "transformer.utils",
-        "peekOfCode": "class EncoderLayer(Layer):\n    def __init__(self, key_dim, num_heads, output_shape, dropout=0.1):\n        #TODO -> docstring\n        super().__init__()\n        self.self_attention = SelfAttention(num_heads=num_heads,\n                                            key_dim=key_dim,\n                                            dropout=dropout,\n                                            output_shape=output_shape)\n        self.ffn = FeedForward([key_dim, output_shape])\n    def call(self, x, training=False, **kwargs):",
+        "peekOfCode": "class EncoderLayer(Layer):\n    '''\n    the encoder structure from the paper. consist of SelfAttention & FeedForward\n    '''\n    def __init__(self, key_dim: int, num_heads: int, output_shape: int, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
         "detail": "transformer.utils",
         "documentation": {}
     },
@@ -569,7 +561,7 @@
         "kind": 6,
         "importPath": "transformer.utils",
         "description": "transformer.utils",
-        "peekOfCode": "class DecoderLayer(Layer):\n    #TODO -> docstring\n    def __init__(self, key_dim, num_heads, output_shape: int, dropout=0.1):\n        #TODO -> docstring\n        super().__init__()\n        self.self_attention  = SelfAttention(num_heads=num_heads,\n                                             key_dim=key_dim,\n                                             dropout=dropout,\n                                             output_shape=output_shape)\n        self.cross_attention = SelfAttention(num_heads=num_heads,",
+        "peekOfCode": "class DecoderLayer(Layer):\n    '''\n    the decoder structure from the paper. consist of SelfAttention & CrossAttention & FeedForward\n    '''\n    def __init__(self, key_dim:int , num_heads: int, output_shape: int, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
         "detail": "transformer.utils",
         "documentation": {}
     },
@@ -578,7 +570,7 @@
         "kind": 5,
         "importPath": "transformer.utils",
         "description": "transformer.utils",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import Sequential\nfrom tensorflow.keras.layers import (Layer, MultiHeadAttention, LayerNormalization, \n                              Add, serialize, deserialize, Dropout, Dense)\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nclass BaseAttention(Layer):\n    def __init__(self, num_heads:int, key_dim:int, *args, **kwargs):\n        '''",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import Sequential\nfrom tensorflow.keras.layers import (Layer, MultiHeadAttention, LayerNormalization, \n                              Add, serialize, deserialize, Dropout, Dense)\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nclass BaseAttention(Layer):\n    '''\n    the structure of self attention from the paper.",
         "detail": "transformer.utils",
         "documentation": {}
     },
