@@ -1,9 +1,7 @@
-'''
-'''
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-from tensorflow.keras import layers
 
+# Don't worry of warning under Tensorflow it's ok.
 from tensorflow.keras.layers import Layer, Embedding
 from tensorflow import cast, float32, newaxis, Tensor, is_tensor, convert_to_tensor
 
@@ -21,17 +19,16 @@ class SinuSoidal(Layer):
     as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 
     '''
     
-    def __init__(self, voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs) ->None:
+    def __init__(self, voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs):
         '''instantiate Empedding layer and static positional encoding matrix
         @params:
-                voc_size:       Integer. Size of the vocabulary, i.e. maximum integer index + 1.
-                output_dim:      Integer. Dimension of the dense embedding.
-                mask_zero:       Bool.    Get the Mask of inputs or not, 
-                                          more info are here -> https://www.tensorflow.org/guide/keras/masking_and_padding.
-                max_sent_lenght: Integer. Max number of tokens in as sentence that the model will 
+                voc_size:        int.  Size of the vocabulary, i.e. maximum integer index + 1.
+                output_dim:      int.  Dimension of the dense embedding.
+                mask_zero:       bool. Get the Mask of inputs or not, 
+                                            more info are here -> https://www.tensorflow.org/guide/keras/masking_and_padding.
+                max_sent_lenght: int.  Max number of tokens in as sentence that the model will 
                                           deal with it during inference.
         '''
-        
         super(SinuSoidal, self).__init__()
 
         self.depth = output_dim
@@ -51,12 +48,14 @@ class SinuSoidal(Layer):
         '''
         
         assert x.shape[1] <= self.max_len, f'Maximume length of the sentence shoulde not exceed {self.max_len}'
+        
         if not is_tensor(x):
             x = convert_to_tensor(x, dtype=float32)
             
-        length = x.shape[1] #[batch_size, timestep]
-        # print(x.shape)
+        length = x.shape[1]        
+        #[batch_size, timestep]
         x = self.embedding(x, **kwargs) #[batch_size, timestep, depth]
+        
         # This factor sets the relative scale of the embedding and positonal_encoding.
         x = x / sqrt(cast(self.depth, float32))
 
@@ -70,7 +69,6 @@ class SinuSoidal(Layer):
 
     
     def _get_positional_encoding(self, length: int, depth: int, n: int=10000): 
-        
         '''create positionalemppeding matrix
         @params:
                 length:  Max number of tokens in as sentence that the model will deal with it during inference.
@@ -78,12 +76,11 @@ class SinuSoidal(Layer):
                 n:       Hyper-parameter from the paper 
         '''
         
-
         positions = np.arange(length)[:, np.newaxis]     # (seq, 1)  [0, 1, 2, 3 ... length-1]
 
         depths = np.arange(depth)[np.newaxis, :]/depth   # (1, depth) [0 / depth, 1 / depth, 2/depth, 3/depth ... length-1/depth]
         
-        angle_rates = 1 / (n**depths)         # (1, depth)
+        angle_rates = 1 / (n**depths)             # (1, depth)
 
         angle_rads = positions * angle_rates      # (pos, depth)
 
@@ -104,7 +101,3 @@ if __name__ == '__main__':
     print('tf version:', __version__)
     print('Available devices:', end='\n\t\t\t\t')
     print('\n\t\t\t\t'.join(map(str, list_physical_devices())))
-    
-    dummy = np.random.randn(2, 500)
-    s = SinuSoidal(20, 5, 100)
-    print(s(dummy))
