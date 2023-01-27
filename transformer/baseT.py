@@ -2,6 +2,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow import keras
 from tensorflow import float32, Tensor, is_tensor, convert_to_tensor
+import numpy as np
 from numpy import ndarray
 from typing import Union, List
 
@@ -94,7 +95,7 @@ class BTransformer(keras.Model):
                 - n_layers:        int.  Number of stacked decoders.
         '''
         super().__init__()
-        self.max_len = e_config[2]
+        self.max_len = d_config[2]
         self.enc = Encoder(*e_config)
         self.dec = Decoder(*d_config)
         
@@ -119,21 +120,25 @@ class BTransformer(keras.Model):
         
         
     def greedy_decoding(self, context, mask):
-        sent = np.zeros((context.shape[0], 1))
-        mask = np.ones(context.shape[0])*mask
-        
+        start = np.zeros((context.shape[0], 1))
+        next_word = start
+        print('start decoding')
         for _ in range(self.max_len):
-            next_word = self.dec(sent, context)
+            
+            next_word = self.dec(next_word, context)
             next_word = self.final_layer(next_word)
+            print('shape of logits', next_word.shape)
             next_word = np.argmax(next_word, 2)
-            sent = np.concatenate((sent, next_word), axis=1)
-            sent[sent[:, -2] == mask] = mask
+            print('shape of argmax', next_word.shape)
+            next_word = np.concatenate((start, next_word), axis=1)
+            print('merge shape', next_word.shape)
+            next_word[next_word[:, -2] == mask] = mask
             
             
-            if sent[sent[:, -2] == mask].shape[0] == sent.shape[0]:
-                return sent
+            if next_word[next_word[:, -2] == mask].shape[0] == next_word.shape[0]:
+                return next_word
                         
-        return sent
+        return next_word
     
     def beam_search_decoding(self, context):
         pass

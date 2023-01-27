@@ -1,6 +1,7 @@
 from tqdm import tqdm
 from utils import *
 from posEncoders import SinuSoidal
+from baseT import *
 import numpy as np
 
 np.random.seed(1)
@@ -54,10 +55,22 @@ def test_dec():
     pass
 
 def test_model():
-    pass
+    dummy = create_dummy(10000, 128, 10)
+    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1
+    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1
+    # # e_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers
+    # # d_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers
+    config_e = (10000, 512, 50, 8, 256, 3)
+    config_d = (2000, 512, 40, 8, 256, 3)
+    m = BTransformer(config_e, config_d)
+    try:
+        print(m(dummy))
+    except Exception as e:
+        print(e)
 
 
 
 
 if __name__ == '__main__':
-    test_SinuSoidal()
+    # test_SinuSoidal()
+    test_model()

@@ -378,6 +378,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "baseT",
+        "description": "baseT",
+        "isExtraImport": true,
+        "detail": "baseT",
+        "documentation": {}
+    },
+    {
         "label": "Sequential",
         "importPath": "tensorflow.keras",
         "description": "tensorflow.keras",
@@ -417,7 +425,7 @@
         "kind": 5,
         "importPath": "transformer.baseT",
         "description": "transformer.baseT",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom posEncoders import SinuSoidal\nfrom utils import EncoderLayer, DecoderLayer\nclass Encoder(keras.Model):\n    '''\n    the encoder Module from the paper. consist of many stacked Encoder Layer",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom posEncoders import SinuSoidal\nfrom utils import EncoderLayer, DecoderLayer\nclass Encoder(keras.Model):\n    '''",
         "detail": "transformer.baseT",
         "documentation": {}
     },
@@ -480,7 +488,7 @@
         "kind": 2,
         "importPath": "transformer.unit_test",
         "description": "transformer.unit_test",
-        "peekOfCode": "def test_enc_layer():\n    pass\ndef test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    pass",
+        "peekOfCode": "def test_enc_layer():\n    pass\ndef test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    dummy = create_dummy(10000, 128, 10)",
         "detail": "transformer.unit_test",
         "documentation": {}
     },
@@ -489,7 +497,7 @@
         "kind": 2,
         "importPath": "transformer.unit_test",
         "description": "transformer.unit_test",
-        "peekOfCode": "def test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    pass\nif __name__ == '__main__':\n    test_SinuSoidal()",
+        "peekOfCode": "def test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    dummy = create_dummy(10000, 128, 10)\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1",
         "detail": "transformer.unit_test",
         "documentation": {}
     },
@@ -498,7 +506,7 @@
         "kind": 2,
         "importPath": "transformer.unit_test",
         "description": "transformer.unit_test",
-        "peekOfCode": "def test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    pass\nif __name__ == '__main__':\n    test_SinuSoidal()",
+        "peekOfCode": "def test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    dummy = create_dummy(10000, 128, 10)\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # # e_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    # # d_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers",
         "detail": "transformer.unit_test",
         "documentation": {}
     },
@@ -507,7 +515,7 @@
         "kind": 2,
         "importPath": "transformer.unit_test",
         "description": "transformer.unit_test",
-        "peekOfCode": "def test_dec():\n    pass\ndef test_model():\n    pass\nif __name__ == '__main__':\n    test_SinuSoidal()",
+        "peekOfCode": "def test_dec():\n    pass\ndef test_model():\n    dummy = create_dummy(10000, 128, 10)\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # # e_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    # # d_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    config_e = (10000, 512, 50, 8, 256, 3)\n    config_d = (2000, 512, 40, 8, 256, 3)",
         "detail": "transformer.unit_test",
         "documentation": {}
     },
@@ -516,7 +524,7 @@
         "kind": 2,
         "importPath": "transformer.unit_test",
         "description": "transformer.unit_test",
-        "peekOfCode": "def test_model():\n    pass\nif __name__ == '__main__':\n    test_SinuSoidal()",
+        "peekOfCode": "def test_model():\n    dummy = create_dummy(10000, 128, 10)\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # # e_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    # # d_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    config_e = (10000, 512, 50, 8, 256, 3)\n    config_d = (2000, 512, 40, 8, 256, 3)\n    m = BTransformer(config_e, config_d)\n    try:",
         "detail": "transformer.unit_test",
         "documentation": {}
     },
