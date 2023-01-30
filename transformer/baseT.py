@@ -1,7 +1,7 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow import keras
-from tensorflow import float32, Tensor, is_tensor, convert_to_tensor
+from tensorflow import Tensor
 import numpy as np
 from numpy import ndarray
 from typing import Union, List
@@ -123,16 +123,16 @@ class BTransformer(keras.Model):
     def greedy_decoding(self, context, mask):
         start = np.zeros((context.shape[0], 1))
         next_word = start
-        print('start decoding')
+        # print('start decoding')
         for _ in range(self.max_len):
             
             next_word = self.dec(next_word, context)
             next_word = self.final_layer(next_word)
-            print('shape of logits', next_word.shape)
+            # print('shape of logits', next_word.shape)
             next_word = np.argmax(next_word, 2)
-            print('shape of argmax', next_word.shape)
+            # print('shape of argmax', next_word.shape)
             next_word = np.concatenate((start, next_word), axis=1)
-            print('merge shape', next_word.shape)
+            # print('merge shape', next_word.shape)
             next_word[next_word[:, -2] == mask] = mask
             
             
