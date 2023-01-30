@@ -49,6 +49,38 @@
         "documentation": {}
     },
     {
+        "label": "is_tensor",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "convert_to_tensor",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "float32",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "Tensor",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
         "label": "cast",
         "importPath": "tensorflow",
         "description": "tensorflow",
@@ -122,38 +154,6 @@
     },
     {
         "label": "convert_to_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "is_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "convert_to_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "float32",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "Tensor",
         "importPath": "tensorflow",
         "description": "tensorflow",
         "isExtraImport": true,
@@ -282,19 +282,11 @@
         "documentation": {}
     },
     {
-        "label": "Layer",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
+        "label": "Sequential",
+        "importPath": "tensorflow.keras",
+        "description": "tensorflow.keras",
         "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Embedding",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
+        "detail": "tensorflow.keras",
         "documentation": {}
     },
     {
@@ -362,6 +354,22 @@
         "documentation": {}
     },
     {
+        "label": "Layer",
+        "importPath": "tensorflow.keras.layers",
+        "description": "tensorflow.keras.layers",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "Embedding",
+        "importPath": "tensorflow.keras.layers",
+        "description": "tensorflow.keras.layers",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras.layers",
+        "documentation": {}
+    },
+    {
         "label": "sqrt",
         "importPath": "tensorflow.math",
         "description": "tensorflow.math",
@@ -383,14 +391,6 @@
         "description": "baseT",
         "isExtraImport": true,
         "detail": "baseT",
-        "documentation": {}
-    },
-    {
-        "label": "Sequential",
-        "importPath": "tensorflow.keras",
-        "description": "tensorflow.keras",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras",
         "documentation": {}
     },
     {
@@ -427,6 +427,60 @@
         "description": "transformer.baseT",
         "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom posEncoders import SinuSoidal\nfrom utils import EncoderLayer, DecoderLayer\nclass Encoder(keras.Model):\n    '''",
         "detail": "transformer.baseT",
+        "documentation": {}
+    },
+    {
+        "label": "BaseAttention",
+        "kind": 6,
+        "importPath": "transformer.modules",
+        "description": "transformer.modules",
+        "peekOfCode": "class BaseAttention(Layer):\n    '''\n    the structure of self attention from the paper.\n    consist of MultiHeadAttention and Add&Normlize block \n    '''\n    def __init__(self, num_heads: int, key_dim: int, **kwargs):\n        '''\n        @params:\n                num_heads:                          int.    Number of attention heads. \n                key_dim:                            int.    Size of each attention head for query and key.",
+        "detail": "transformer.modules",
+        "documentation": {}
+    },
+    {
+        "label": "SelfAttention",
+        "kind": 6,
+        "importPath": "transformer.modules",
+        "description": "transformer.modules",
+        "peekOfCode": "class SelfAttention(BaseAttention):\n    '''\n    self attention part in the encoder from the paper. consist of MultiHeadAttention and Add&Normlize block \n    '''\n    def call(self, query: Union[Tensor, ndarray, List], key: Union[Tensor, ndarray, List],\n             value: Union[Tensor, ndarray, List], causal_mask: bool=False, \n             return_score=False, training=False, **kwargs): \n        '''\n        @params\n            query:          3D matrix.  Query Tensor of shape (B, T, dim).",
+        "detail": "transformer.modules",
+        "documentation": {}
+    },
+    {
+        "label": "FeedForward",
+        "kind": 6,
+        "importPath": "transformer.modules",
+        "description": "transformer.modules",
+        "peekOfCode": "class FeedForward(Layer):\n    '''\n    FeedForward part in the encoder from the paper.\n    '''\n    def __init__(self, units: list, dropout=0.1):\n        '''\n        @params:\n                units:   list.  Number of units at each dense layer, make sure that the number of\n                                      units at the last layer same as the inputs to the layer.\n                dropout: float. dropout ratio before Add&Normlize layer",
+        "detail": "transformer.modules",
+        "documentation": {}
+    },
+    {
+        "label": "EncoderLayer",
+        "kind": 6,
+        "importPath": "transformer.modules",
+        "description": "transformer.modules",
+        "peekOfCode": "class EncoderLayer(Layer):\n    '''\n    the encoder structure from the paper. consist of SelfAttention & FeedForward\n    '''\n    def __init__(self, key_dim: int, num_heads: int, output_shape: int, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
+        "detail": "transformer.modules",
+        "documentation": {}
+    },
+    {
+        "label": "DecoderLayer",
+        "kind": 6,
+        "importPath": "transformer.modules",
+        "description": "transformer.modules",
+        "peekOfCode": "class DecoderLayer(Layer):\n    '''\n    the decoder structure from the paper. consist of SelfAttention & CrossAttention & FeedForward\n    '''\n    def __init__(self, key_dim:int , num_heads: int, output_shape: int, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
+        "detail": "transformer.modules",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
+        "kind": 5,
+        "importPath": "transformer.modules",
+        "description": "transformer.modules",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import Sequential\nfrom tensorflow.keras.layers import (Layer, MultiHeadAttention, LayerNormalization, \n                              Add, serialize, deserialize, Dropout, Dense)\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nclass BaseAttention(Layer):\n    '''\n    the structure of self attention from the paper.",
+        "detail": "transformer.modules",
         "documentation": {}
     },
     {
@@ -526,60 +580,6 @@
         "description": "transformer.unit_test",
         "peekOfCode": "def test_model():\n    dummy = create_dummy(10000, 128, 10)\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # # e_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    # # d_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    config_e = (10000, 512, 50, 8, 256, 3)\n    config_d = (2000, 512, 40, 8, 256, 3)\n    m = BTransformer(config_e, config_d)\n    try:",
         "detail": "transformer.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "BaseAttention",
-        "kind": 6,
-        "importPath": "transformer.utils",
-        "description": "transformer.utils",
-        "peekOfCode": "class BaseAttention(Layer):\n    '''\n    the structure of self attention from the paper.\n    consist of MultiHeadAttention and Add&Normlize block \n    '''\n    def __init__(self, num_heads: int, key_dim: int, **kwargs):\n        '''\n        @params:\n                num_heads:                          int.    Number of attention heads. \n                key_dim:                            int.    Size of each attention head for query and key.",
-        "detail": "transformer.utils",
-        "documentation": {}
-    },
-    {
-        "label": "SelfAttention",
-        "kind": 6,
-        "importPath": "transformer.utils",
-        "description": "transformer.utils",
-        "peekOfCode": "class SelfAttention(BaseAttention):\n    '''\n    self attention part in the encoder from the paper. consist of MultiHeadAttention and Add&Normlize block \n    '''\n    def call(self, query: Union[Tensor, ndarray, List], key: Union[Tensor, ndarray, List],\n             value: Union[Tensor, ndarray, List], causal_mask: bool=False, \n             return_score=False, training=False, **kwargs): \n        '''\n        @params\n            query:          3D matrix.  Query Tensor of shape (B, T, dim).",
-        "detail": "transformer.utils",
-        "documentation": {}
-    },
-    {
-        "label": "FeedForward",
-        "kind": 6,
-        "importPath": "transformer.utils",
-        "description": "transformer.utils",
-        "peekOfCode": "class FeedForward(Layer):\n    '''\n    FeedForward part in the encoder from the paper.\n    '''\n    def __init__(self, units: list, dropout=0.1):\n        '''\n        @params:\n                units:   list.  Number of units at each dense layer, make sure that the number of\n                                      units at the last layer same as the inputs to the layer.\n                dropout: float. dropout ratio before Add&Normlize layer",
-        "detail": "transformer.utils",
-        "documentation": {}
-    },
-    {
-        "label": "EncoderLayer",
-        "kind": 6,
-        "importPath": "transformer.utils",
-        "description": "transformer.utils",
-        "peekOfCode": "class EncoderLayer(Layer):\n    '''\n    the encoder structure from the paper. consist of SelfAttention & FeedForward\n    '''\n    def __init__(self, key_dim: int, num_heads: int, output_shape: int, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
-        "detail": "transformer.utils",
-        "documentation": {}
-    },
-    {
-        "label": "DecoderLayer",
-        "kind": 6,
-        "importPath": "transformer.utils",
-        "description": "transformer.utils",
-        "peekOfCode": "class DecoderLayer(Layer):\n    '''\n    the decoder structure from the paper. consist of SelfAttention & CrossAttention & FeedForward\n    '''\n    def __init__(self, key_dim:int , num_heads: int, output_shape: int, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
-        "detail": "transformer.utils",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
-        "kind": 5,
-        "importPath": "transformer.utils",
-        "description": "transformer.utils",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import Sequential\nfrom tensorflow.keras.layers import (Layer, MultiHeadAttention, LayerNormalization, \n                              Add, serialize, deserialize, Dropout, Dense)\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nclass BaseAttention(Layer):\n    '''\n    the structure of self attention from the paper.",
-        "detail": "transformer.utils",
         "documentation": {}
     },
     {

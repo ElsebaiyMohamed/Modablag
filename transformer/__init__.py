@@ -1,9 +1,9 @@
 try:
-    import utils
+    import transformer.modules as modules
     import posEncoders
     import baseT
     
 except ImportError:
-    import .utils
+    import transformer.modules as modules
     import .posEncoders
     import .baseT
