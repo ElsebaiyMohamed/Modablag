@@ -116,6 +116,7 @@ class BTransformer(keras.Model):
         
         context = self.enc(src)  
         del src
+        
         return self.greedy_decoding(context, mask=1)
         
         
@@ -145,7 +146,7 @@ class BTransformer(keras.Model):
             
 if __name__ == '__main__':
     from tensorflow import __version__
-    from tensorflow.config import list_physical_devices 
+    from tensorflow.config import list_physical_devices
     print(__version__)
     print(list_physical_devices())
     import numpy as np
