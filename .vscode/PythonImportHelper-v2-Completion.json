@@ -259,26 +259,26 @@
     },
     {
         "label": "EncoderLayer",
-        "importPath": "utils",
-        "description": "utils",
+        "importPath": "modules",
+        "description": "modules",
         "isExtraImport": true,
-        "detail": "utils",
+        "detail": "modules",
         "documentation": {}
     },
     {
         "label": "DecoderLayer",
-        "importPath": "utils",
-        "description": "utils",
+        "importPath": "modules",
+        "description": "modules",
         "isExtraImport": true,
-        "detail": "utils",
+        "detail": "modules",
         "documentation": {}
     },
     {
         "label": "*",
-        "importPath": "utils",
-        "description": "utils",
+        "importPath": "modules",
+        "description": "modules",
         "isExtraImport": true,
-        "detail": "utils",
+        "detail": "modules",
         "documentation": {}
     },
     {
@@ -425,7 +425,7 @@
         "kind": 5,
         "importPath": "transformer.baseT",
         "description": "transformer.baseT",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom posEncoders import SinuSoidal\nfrom utils import EncoderLayer, DecoderLayer\nclass Encoder(keras.Model):\n    '''",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom posEncoders import SinuSoidal\nfrom modules import EncoderLayer, DecoderLayer\nclass Encoder(keras.Model):\n    '''",
         "detail": "transformer.baseT",
         "documentation": {}
     },

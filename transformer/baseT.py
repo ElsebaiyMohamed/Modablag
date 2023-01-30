@@ -8,7 +8,7 @@ from typing import Union, List
 
 from posEncoders import SinuSoidal
 
-from utils import EncoderLayer, DecoderLayer
+from modules import EncoderLayer, DecoderLayer
 
 
 class Encoder(keras.Model):
