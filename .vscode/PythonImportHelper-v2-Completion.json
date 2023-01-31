@@ -25,6 +25,22 @@
         "documentation": {}
     },
     {
+        "label": "keras",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "Tensor",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
         "label": "is_tensor",
         "importPath": "tensorflow",
         "description": "tensorflow",
@@ -170,19 +186,11 @@
         "documentation": {}
     },
     {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
+        "label": "ndarray",
+        "importPath": "numpy",
+        "description": "numpy",
         "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
+        "detail": "numpy",
         "documentation": {}
     },
     {
@@ -215,6 +223,46 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Encoder",
+        "importPath": "transformer.baseT",
+        "description": "transformer.baseT",
+        "isExtraImport": true,
+        "detail": "transformer.baseT",
         "documentation": {}
     },
     {
@@ -367,6 +415,24 @@
         "description": "baseT",
         "isExtraImport": true,
         "detail": "baseT",
+        "documentation": {}
+    },
+    {
+        "label": "Bert",
+        "kind": 6,
+        "importPath": "BERT.bert1.0",
+        "description": "BERT.bert1.0",
+        "peekOfCode": "class Bert(keras.Model):\n    def __init__(self, e_config):\n        '''@params:\n            e_config:              Tuple\n                - vocab_size:      int.  Size of the soruce lang vocabulary, i.e. maximum integer index + 1.\n                - emp_dim:         int.  Dimension of the dense embedding.\n                - max_sent_lenght: int.  Max number of tokens in as sentence that the model will \n                                            deal with it during inference.\n                - num_heads:       int.  Number of attention heads. \n                - key_dim:         int.  Size of each attention head for query and key.",
+        "detail": "BERT.bert1.0",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
+        "kind": 5,
+        "importPath": "BERT.bert1.0",
+        "description": "BERT.bert1.0",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom transformer.baseT import Encoder\nclass Bert(keras.Model):\n    def __init__(self, e_config):\n        '''@params:",
+        "detail": "BERT.bert1.0",
         "documentation": {}
     },
     {
