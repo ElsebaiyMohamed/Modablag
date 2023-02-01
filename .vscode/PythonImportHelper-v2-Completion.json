@@ -578,6 +578,14 @@
         "documentation": {}
     },
     {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
         "label": "SinuSoidal",
         "importPath": "utils.posEncoders",
         "description": "utils.posEncoders",
@@ -816,20 +824,11 @@
         "documentation": {}
     },
     {
-        "label": "Encoder",
+        "label": "BTConfig",
         "kind": 6,
         "importPath": "task3.baseT",
         "description": "task3.baseT",
-        "peekOfCode": "class Encoder(keras.Model):\n    '''\n    the encoder Module from the paper. consist of many stacked Encoder Layer\n    '''\n    def __init__(self, vocab_size: int, emp_dim: int, max_sent_lenght: int,\n                 key_dim: int, n_heads: int, n_layers: int=1):\n        '''\n        @params:\n                vocab_size:        int.  Size of the vocabulary, i.e. maximum integer index + 1.\n                emp_dim:         int.  Dimension of the dense embedding.",
-        "detail": "task3.baseT",
-        "documentation": {}
-    },
-    {
-        "label": "Decoder",
-        "kind": 6,
-        "importPath": "task3.baseT",
-        "description": "task3.baseT",
-        "peekOfCode": "class Decoder(keras.Model):\n    '''\n    the Decoder Module from the paper. consist of many stacked Decoder Layer\n    '''\n    def __init__(self, vocab_size: int, emp_dim: int, max_sent_lenght: int,\n                 key_dim: int, n_heads: int, n_layers: int=1):\n        '''\n        @params:\n                vocab_size:        int.  Size of the vocabulary, i.e. maximum integer index + 1.\n                emp_dim:         int.  Dimension of the dense embedding.",
+        "peekOfCode": "class BTConfig(dataclass):\n    src_vocublary: int\n    src_emp: int\n    src_pos_size: int\n    enc_key: int \n    enc_heads: int\n    enc_size: int = 1\n    trgt_vocublary: int\n    trgt_emp: int\n    trgt_pos_size: int",
         "detail": "task3.baseT",
         "documentation": {}
     },
@@ -838,7 +837,7 @@
         "kind": 6,
         "importPath": "task3.baseT",
         "description": "task3.baseT",
-        "peekOfCode": "class BTransformer(keras.Model):\n    '''\n    the Transformer Module from the paper. consist of Encoder Module & Decoder Module. This class also Implement\n    Greedy and Beam search decoding.\n    '''\n    def __init__(self, e_config: tuple, d_config: tuple):\n        '''\n        @params:\n            e_config:              Tuple\n                - vocab_size:      int.  Size of the soruce lang vocabulary, i.e. maximum integer index + 1.",
+        "peekOfCode": "class BTransformer(keras.Model):\n    '''\n    the Transformer Module from the paper. consist of Encoder Module & Decoder Module. This class also Implement\n    Greedy and Beam search decoding.\n    '''\n    def __init__(self, config, task='multi'):\n        '''\n        @params:\n            e_config:              Tuple\n                - vocab_size:      int.  Size of the soruce lang vocabulary, i.e. maximum integer index + 1.",
         "detail": "task3.baseT",
         "documentation": {}
     },
@@ -847,7 +846,7 @@
         "kind": 5,
         "importPath": "task3.baseT",
         "description": "task3.baseT",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom utils.posEncoders import SinuSoidal\nfrom utils.encoder import EncoderLayer\nfrom utils.decoder import DecoderLayer\nclass Encoder(keras.Model):",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom dataclasses import dataclass\nfrom utils.posEncoders import SinuSoidal\nfrom utils.encoder import EncoderLayer\nfrom utils.decoder import DecoderLayer",
         "detail": "task3.baseT",
         "documentation": {}
     },
