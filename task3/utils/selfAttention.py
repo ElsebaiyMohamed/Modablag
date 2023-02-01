@@ -1,12 +1,13 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-from tensorflow.keras import Sequential
 from tensorflow.keras.layers import (Layer, MultiHeadAttention, LayerNormalization, 
-                              Add, serialize, deserialize, Dropout, Dense)
+                                     Add, serialize, deserialize)
 
 from tensorflow import is_tensor, convert_to_tensor, float32, Tensor
 from numpy import ndarray
 from typing import Union, List
+
+
 
 
 class BaseAttention(Layer):
@@ -28,21 +29,14 @@ class BaseAttention(Layer):
                 attention_axes=None:                int.    axes over which the attention is applied. None means 
                                                                 attention over all axes, but batch, heads, 
                                                                 and features.
-                kernel_initializer='glorot_uniform':str     Initializer for dense layer kernels.
-                bias_initializer='zeros':           str     Initializer for dense layer biases.
-                kernel_regularizer=None:                    Regularizer for dense layer kernels.
-                bias_regularizer=None:                      Regularizer for dense layer biases.
-                activity_regularizer=None:                  Regularizer for dense layer activity.
-                kernel_constraint=None:                     Constraint for dense layer kernels.
-                bias_constraint=None:                       Constraint for dense layer kernels.
                 **kwargs
         '''
-        super(BaseAttention, self).__init__()
+        super().__init__()
         self.mha = MultiHeadAttention(num_heads=num_heads, key_dim=key_dim, **kwargs)
         self.layernorm = LayerNormalization()
         self.add = Add()
         
-class SelfAttention(BaseAttention):
+class Former(BaseAttention):
     '''
     self attention part in the encoder from the paper. consist of MultiHeadAttention and Add&Normlize block 
     '''
@@ -110,125 +104,13 @@ class SelfAttention(BaseAttention):
     def from_config(cls, config):
       config['mha'] = deserialize(config['mha'])
       return super().from_config(config)
-  
-  
-  
-  
-class FeedForward(Layer):
-    '''
-    FeedForward part in the encoder from the paper.
-    '''
-    def __init__(self, units: list, dropout=0.1):
-        '''
-        @params:
-                units:   list.  Number of units at each dense layer, make sure that the number of
-                                      units at the last layer same as the inputs to the layer.
-                dropout: float. dropout ratio before Add&Normlize layer
-        '''
-        super(FeedForward, self).__init__()
-        self.ffn = Sequential([Sequential([Dense(u), Dropout(dropout)]) for u in units])
-        self.add = Add()
-        self.layer_norm = LayerNormalization()
 
-    def call(self, x: Union[Tensor, ndarray], training: bool=False):
-        '''
-        @params:
-                x       : 2D float32 matrix.
-                training: bool.               behave in training or inference mode
-        @return:
-                2D float32 matrix with the same shape as the inputs
-        '''
-        if not is_tensor(x):
-            x = convert_to_tensor(x, dtype=float32)
-        x = self.add([x, self.ffn(x)])
-        x = self.layer_norm(x, training=training) 
-        return x
-    
-    
-class EncoderLayer(Layer):
-    '''
-    the encoder structure from the paper. consist of SelfAttention & FeedForward
-    '''
-    def __init__(self, key_dim: int, num_heads: int, output_shape: int, dropout=0.1):
-        '''
-        num_heads:     int.    Number of attention heads. 
-        key_dim:       int.    Size of each attention head for query and key.
-        dropout=0.1:   float.  Dropout probability.
-        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. 
-                                   If not specified, projects back to the key feature dim.
-        '''        
 
-        super().__init__()
 
-        self.self_attention = SelfAttention(num_heads=num_heads,
-                                            key_dim=key_dim,
-                                            dropout=dropout,
-                                            output_shape=output_shape)
 
-        self.ffn = FeedForward([key_dim, key_dim*2, output_shape])
+class Conformer(BaseAttention):
+    pass
 
-    def call(self, x: Union[Tensor, ndarray, List], training: bool=False, **kwargs):
-        x = self.self_attention(query=x, key=x, value=x, training=training, **kwargs)
-        x = self.ffn(x, training=training)
-        return x
-  
-  
-  
 
-class DecoderLayer(Layer):
-    '''
-    the decoder structure from the paper. consist of SelfAttention & CrossAttention & FeedForward
-    '''
-    def __init__(self, key_dim:int , num_heads: int, output_shape: int, dropout=0.1):
-        '''
-        num_heads:     int.    Number of attention heads. 
-        key_dim:       int.    Size of each attention head for query and key.
-        dropout=0.1:   float.  Dropout probability.
-        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. 
-                                   If not specified, projects back to the key feature dim.
-        ''' 
-        super().__init__()
-
-        self.self_attention  = SelfAttention(num_heads=num_heads,
-                                             key_dim=key_dim,
-                                             dropout=dropout,
-                                             output_shape=output_shape)
-        
-        self.cross_attention = SelfAttention(num_heads=num_heads,
-                                             key_dim=key_dim,
-                                             dropout=dropout,
-                                             output_shape=output_shape)
-
-        self.ffn = FeedForward([key_dim, output_shape])
-        
-
-    def call(self, x: Union[Tensor, ndarray, List], context: Union[Tensor, ndarray, List], 
-             training=False, causal_mask=True, **kwargs):
-
-        x = self.self_attention(query=x, key=x, value=x, training=training, causal_mask=causal_mask, **kwargs)
-        x = self.cross_attention(query=x, key=context, value=context, training=training, 
-                                 causal_mask=causal_mask, **kwargs)
-        return self.ffn(x, training=training)
-
-  
-  
-        
-
-if __name__ == '__main__':
-    from tensorflow import __version__
-    from tensorflow.config import list_physical_devices 
-    print(__version__)
-    print(list_physical_devices())
-    import numpy as np
-    
-    
-    # dummy = np.random.randn(3, 5, 15)
-    # f = FeedForward([10, 20, 30])
-    # print(f(dummy))
-    # sa = DecoderLayer(4, 8, 15)
-    # x = sa(dummy, dummy)
-    # print(x.numpy().shape)
-    
-    # # sa = SelfAttention(8, 10)
-    # # x = sa(dummy, dummy, dummy, causal_mask=True)
-    # # print(x.numpy())
+class Branchformer(BaseAttention):
+    pass

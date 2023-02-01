@@ -6,9 +6,10 @@ import numpy as np
 from numpy import ndarray
 from typing import Union, List
 
-from posEncoders import SinuSoidal
+from utils.posEncoders import SinuSoidal
 
-from modules import EncoderLayer, DecoderLayer
+from utils.encoder import EncoderLayer
+from utils.decoder import DecoderLayer
 
 
 class Encoder(keras.Model):
@@ -27,7 +28,7 @@ class Encoder(keras.Model):
                 key_dim:         int.  Size of each attention head for query and key.
                 n_layers:        int.  Number of stacked encoders.
         '''
-        super(Encoder, self).__init__()
+        super().__init__()
         self.pos_encoder = SinuSoidal(vocab_size, emp_dim, max_sent_lenght)
         self.enc = keras.Sequential([EncoderLayer(key_dim, n_heads, emp_dim) 
                                      for _ in range(n_layers)])
@@ -54,7 +55,7 @@ class Decoder(keras.Model):
                 key_dim:         int.  Size of each attention head for query and key.
                 n_layers:        int.  Number of stacked encoders.
         '''
-        super(Decoder, self).__init__()
+        super().__init__()
         self.n_layers = n_layers
         self.pos_encoder = SinuSoidal(vocab_size, emp_dim, max_sent_lenght)
         self.dec = [DecoderLayer(key_dim, n_heads, emp_dim) for _ in range(n_layers)]
