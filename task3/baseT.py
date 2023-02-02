@@ -80,6 +80,7 @@ class BTransformer(keras.Model):
         # To use a Keras model with `.fit` you must pass all your inputs in the first argument.
         if teacher:
             src, targt = inputs; del inputs
+            
             src_emp = self.src_emp(src); del src
             src_context = self.enc(src_emp)
             
@@ -96,6 +97,19 @@ class BTransformer(keras.Model):
         return self.greedy_decoding(src_context)
 
                 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
         
     def greedy_decoding(self, context, end_token=2):
         start = np.zeros((context.shape[0], 1))
@@ -219,6 +233,7 @@ if __name__ == '__main__':
     print(list_physical_devices())
     import numpy as np
     np.random.seed(1)
+    
     # import tensorflow as tf
     # d = np.random.randint(0, 10, (3, 5, 4))
     # d2 = np.random.randint(0, 10, (3, 2))

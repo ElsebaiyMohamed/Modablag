@@ -105,7 +105,7 @@
         "documentation": {}
     },
     {
-        "label": "Embedding",
+        "label": "LayerNormalization",
         "importPath": "tensorflow.keras.layers",
         "description": "tensorflow.keras.layers",
         "isExtraImport": true,
@@ -233,62 +233,6 @@
         "documentation": {}
     },
     {
-        "label": "Tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "is_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "convert_to_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "float32",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "Tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "is_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "convert_to_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
         "label": "is_tensor",
         "importPath": "tensorflow",
         "description": "tensorflow",
@@ -358,14 +302,6 @@
         "isExtraImport": true,
         "importPath": "numpy",
         "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
         "detail": "numpy",
         "documentation": {}
     },
@@ -514,35 +450,11 @@
         "documentation": {}
     },
     {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "Sequential",
         "importPath": "tensorflow.keras",
         "description": "tensorflow.keras",
         "isExtraImport": true,
         "detail": "tensorflow.keras",
-        "documentation": {}
-    },
-    {
-        "label": "sqrt",
-        "importPath": "tensorflow.math",
-        "description": "tensorflow.math",
-        "isExtraImport": true,
-        "detail": "tensorflow.math",
         "documentation": {}
     },
     {
@@ -684,7 +596,16 @@
         "kind": 6,
         "importPath": "task3.utils.posEncoders",
         "description": "task3.utils.posEncoders",
-        "peekOfCode": "class SinuSoidal(Layer):\n    '''\n    Custom layer that get the emppeding of words with positons info\n    as propoased on Attention is all you need paper -> https://arxiv.org/abs/1706.03762 \n    '''\n    def __init__(self, voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero: bool=False, **kwargs):\n        '''instantiate Empedding layer and static positional encoding matrix\n        @params:\n                voc_size:        int.  Size of the vocabulary, i.e. maximum integer index + 1.\n                output_dim:      int.  Dimension of the dense embedding.",
+        "peekOfCode": "class SinuSoidal(Layer):\n    def __init__(self, n: int=10000):\n        super().__init__()\n        self.n = n\n        self.normalizer = LayerNormalization()\n    def __call__(self, x_emp):\n        B, T, E = x_emp.shape\n        pos = sin_soidal(T, E, self.n)\n        x_emp = x_emp + pos[newaxis, :, :]\n        del pos",
+        "detail": "task3.utils.posEncoders",
+        "documentation": {}
+    },
+    {
+        "label": "sin_soidal",
+        "kind": 2,
+        "importPath": "task3.utils.posEncoders",
+        "description": "task3.utils.posEncoders",
+        "peekOfCode": "def sin_soidal(length: int, depth: int, n: int=10000):\n    '''create positionalemppeding matrix\n    @params:\n            length:  Max number of tokens in as sentence that the model will deal with it during inference.\n            depth:   Empeddingdim\n            n:       Hyper-parameter from the paper \n    '''\n    positions = np.arange(length)[:, np.newaxis]     # (seq, 1)  [0, 1, 2, 3 ... length-1]\n    depths = np.arange(depth)[np.newaxis, :]/depth   # (1, depth) [0 / depth, 1 / depth, 2/depth, 3/depth ... length-1/depth]\n    angle_rates = 1 / (n**depths)             # (1, depth)",
         "detail": "task3.utils.posEncoders",
         "documentation": {}
     },
@@ -693,7 +614,7 @@
         "kind": 5,
         "importPath": "task3.utils.posEncoders",
         "description": "task3.utils.posEncoders",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\n# Don't worry of warning under Tensorflow it's ok.\nfrom tensorflow.keras.layers import Layer, Embedding\nfrom tensorflow import cast, float32, newaxis, Tensor, is_tensor, convert_to_tensor\nfrom tensorflow.math import sqrt\nfrom tensorflow import float32, Tensor, is_tensor, convert_to_tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nimport numpy as np\nclass SinuSoidal(Layer):",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\n# Don't worry of warning under Tensorflow it's ok.\nfrom tensorflow.keras.layers import Layer, LayerNormalization\nfrom tensorflow import cast, float32, newaxis\nimport numpy as np\nclass SinuSoidal(Layer):\n    def __init__(self, n: int=10000):\n        super().__init__()\n        self.n = n\n        self.normalizer = LayerNormalization()",
         "detail": "task3.utils.posEncoders",
         "documentation": {}
     },
