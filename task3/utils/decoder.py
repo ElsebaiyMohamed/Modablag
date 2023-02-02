@@ -1,7 +1,12 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-from selfAttention import Former
-from feedForward import FForward
+try:
+    from selfAttention import Former
+    from feedForward import FForward
+except ImportError:
+    from .selfAttention import Former
+    from .feedForward import FForward
+
 from tensorflow.keras.layers import Layer
 
 from tensorflow import Tensor

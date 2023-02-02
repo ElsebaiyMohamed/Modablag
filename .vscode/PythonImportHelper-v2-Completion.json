@@ -9,38 +9,6 @@
         "documentation": {}
     },
     {
-        "label": "Former",
-        "importPath": "selfAttention",
-        "description": "selfAttention",
-        "isExtraImport": true,
-        "detail": "selfAttention",
-        "documentation": {}
-    },
-    {
-        "label": "Former",
-        "importPath": "selfAttention",
-        "description": "selfAttention",
-        "isExtraImport": true,
-        "detail": "selfAttention",
-        "documentation": {}
-    },
-    {
-        "label": "FForward",
-        "importPath": "feedForward",
-        "description": "feedForward",
-        "isExtraImport": true,
-        "detail": "feedForward",
-        "documentation": {}
-    },
-    {
-        "label": "FForward",
-        "importPath": "feedForward",
-        "description": "feedForward",
-        "isExtraImport": true,
-        "detail": "feedForward",
-        "documentation": {}
-    },
-    {
         "label": "Layer",
         "importPath": "tensorflow.keras.layers",
         "description": "tensorflow.keras.layers",
@@ -506,35 +474,11 @@
         "documentation": {}
     },
     {
-        "label": "SinuSoidal",
-        "importPath": "utils.posEncoders",
-        "description": "utils.posEncoders",
-        "isExtraImport": true,
-        "detail": "utils.posEncoders",
-        "documentation": {}
-    },
-    {
         "label": "EncoderLayer",
         "importPath": "utils.encoder",
         "description": "utils.encoder",
         "isExtraImport": true,
         "detail": "utils.encoder",
-        "documentation": {}
-    },
-    {
-        "label": "EncoderLayer",
-        "importPath": "utils.encoder",
-        "description": "utils.encoder",
-        "isExtraImport": true,
-        "detail": "utils.encoder",
-        "documentation": {}
-    },
-    {
-        "label": "DecoderLayer",
-        "importPath": "utils.decoder",
-        "description": "utils.decoder",
-        "isExtraImport": true,
-        "detail": "utils.decoder",
         "documentation": {}
     },
     {
@@ -551,7 +495,7 @@
         "kind": 5,
         "importPath": "task3.utils.decoder",
         "description": "task3.utils.decoder",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom selfAttention import Former\nfrom feedForward import FForward\nfrom tensorflow.keras.layers import Layer\nfrom tensorflow import Tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nclass DecoderLayer(Layer):\n    '''\n    the decoder structure from the paper. consist of SelfAttention & CrossAttention & FeedForward",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\ntry:\n    from selfAttention import Former\n    from feedForward import FForward\nexcept ImportError:\n    from .selfAttention import Former\n    from .feedForward import FForward\nfrom tensorflow.keras.layers import Layer\nfrom tensorflow import Tensor\nfrom numpy import ndarray",
         "detail": "task3.utils.decoder",
         "documentation": {}
     },
@@ -569,7 +513,7 @@
         "kind": 5,
         "importPath": "task3.utils.encoder",
         "description": "task3.utils.encoder",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom selfAttention import Former\nfrom feedForward import FForward\nfrom tensorflow.keras.layers import Layer\nfrom tensorflow import Tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nclass FEncoderLayer(Layer):\n    '''\n    the encoder structure from the paper. consist of SelfAttention & FeedForward",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\ntry:\n    from selfAttention import Former\n    from feedForward import FForward\nexcept ImportError:\n    from .selfAttention import Former\n    from .feedForward import FForward\nfrom tensorflow.keras.layers import Layer\nfrom tensorflow import Tensor\nfrom numpy import ndarray",
         "detail": "task3.utils.encoder",
         "documentation": {}
     },
@@ -596,7 +540,7 @@
         "kind": 6,
         "importPath": "task3.utils.posEncoders",
         "description": "task3.utils.posEncoders",
-        "peekOfCode": "class SinuSoidal(Layer):\n    def __init__(self, n: int=10000):\n        super().__init__()\n        self.n = n\n        self.normalizer = LayerNormalization()\n    def __call__(self, x_emp):\n        B, T, E = x_emp.shape\n        pos = sin_soidal(T, E, self.n)\n        x_emp = x_emp + pos[newaxis, :, :]\n        del pos",
+        "peekOfCode": "class SinuSoidal(Layer):\n    '''add position empedding vector to empeding vector and normlize'''\n    def __init__(self, n: int=10000):\n        super().__init__()\n        self.n = n\n        self.normalizer = LayerNormalization()\n    def __call__(self, x_emp):\n        assert len(x_emp.shape) > 1 and len(x_emp.shape) < 4, f\"expected 2D tensor for unbatched tensor or 3d for batched but get {len(x_emp.shape)}D tensor\"\n        if len(x_emp.shape) == 2:\n            T, E = x_emp.shape",
         "detail": "task3.utils.posEncoders",
         "documentation": {}
     },
@@ -614,7 +558,7 @@
         "kind": 5,
         "importPath": "task3.utils.posEncoders",
         "description": "task3.utils.posEncoders",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\n# Don't worry of warning under Tensorflow it's ok.\nfrom tensorflow.keras.layers import Layer, LayerNormalization\nfrom tensorflow import cast, float32, newaxis\nimport numpy as np\nclass SinuSoidal(Layer):\n    def __init__(self, n: int=10000):\n        super().__init__()\n        self.n = n\n        self.normalizer = LayerNormalization()",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\n# Don't worry of warning under Tensorflow it's ok.\nfrom tensorflow.keras.layers import Layer, LayerNormalization\nfrom tensorflow import cast, float32, newaxis\nimport numpy as np\nclass SinuSoidal(Layer):\n    '''add position empedding vector to empeding vector and normlize'''\n    def __init__(self, n: int=10000):\n        super().__init__()\n        self.n = n",
         "detail": "task3.utils.posEncoders",
         "documentation": {}
     },
@@ -749,7 +693,7 @@
         "kind": 6,
         "importPath": "task3.baseT",
         "description": "task3.baseT",
-        "peekOfCode": "class BTConfig(dataclass):\n    src_vocublary: int\n    src_emp: int\n    src_pos_size: int\n    enc_key: int \n    enc_heads: int\n    enc_size: int = 1\n    trgt_vocublary: int\n    trgt_emp: int\n    trgt_pos_size: int",
+        "peekOfCode": "class BTConfig:\n    max_seq_size: int\n    src_vocublary: int\n    src_emp: int\n    enc_key: int \n    enc_heads: int\n    trgt_vocublary: int\n    trgt_emp: int\n    dec_key: int \n    dec_heads: int",
         "detail": "task3.baseT",
         "documentation": {}
     },
@@ -767,7 +711,7 @@
         "kind": 5,
         "importPath": "task3.baseT",
         "description": "task3.baseT",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom dataclasses import dataclass\nfrom utils.posEncoders import SinuSoidal\nfrom utils.encoder import EncoderLayer\nfrom utils.decoder import DecoderLayer",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom dataclasses import dataclass\ntry:\n    from utils.posEncoders import SinuSoidal\n    from utils.encoder import FEncoderLayer",
         "detail": "task3.baseT",
         "documentation": {}
     },

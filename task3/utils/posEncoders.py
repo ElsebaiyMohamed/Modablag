@@ -9,13 +9,22 @@ import numpy as np
 
     
 class SinuSoidal(Layer):
+    '''add position empedding vector to empeding vector and normlize'''
     def __init__(self, n: int=10000):
         super().__init__()
         self.n = n
         self.normalizer = LayerNormalization()
     
     def __call__(self, x_emp):
-        B, T, E = x_emp.shape
+        assert len(x_emp.shape) > 1 and len(x_emp.shape) < 4, f"expected 2D tensor for unbatched tensor or 3d for batched but get {len(x_emp.shape)}D tensor"
+        if len(x_emp.shape) == 2:
+            T, E = x_emp.shape
+            pos = sin_soidal(T, E, self.n)
+            x_emp = x_emp + pos
+            del pos
+            return self.normalizer(x_emp)
+        
+        _, T, E = x_emp.shape
         pos = sin_soidal(T, E, self.n)
         x_emp = x_emp + pos[newaxis, :, :]
         del pos

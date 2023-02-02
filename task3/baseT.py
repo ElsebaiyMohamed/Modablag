@@ -6,25 +6,30 @@ import numpy as np
 from numpy import ndarray
 from typing import Union, List
 from dataclasses import dataclass
-from utils.posEncoders import SinuSoidal
 
-from utils.encoder import EncoderLayer
-from utils.decoder import DecoderLayer
-
-class BTConfig(dataclass):
-        
+try:
+    from utils.posEncoders import SinuSoidal
+    from utils.encoder import FEncoderLayer
+    from utils.decoder import DecoderLayer
+except ImportError:
+    from .utils.posEncoders import SinuSoidal
+    from .utils.encoder import FEncoderLayer
+    from .utils.decoder import DecoderLayer
+    
+@dataclass
+class BTConfig:
+    max_seq_size: int
     src_vocublary: int
     src_emp: int
-    src_pos_size: int
     enc_key: int 
     enc_heads: int
-    enc_size: int = 1
     
     trgt_vocublary: int
     trgt_emp: int
-    trgt_pos_size: int
     dec_key: int 
     dec_heads: int
+    
+    enc_size: int = 1
     dec_size: int = 1
     
 
@@ -59,134 +64,99 @@ class BTransformer(keras.Model):
         super().__init__()
         self.config: BTConfig = config
         self.task: str = task
-        
-        self.src_emp = SinuSoidal(self.config.src_vocublary, self.config.src_emp, self.config.src_pos_size)
-        self.enc = keras.Sequential([EncoderLayer(self.config.enc_key, self.config.enc_heads, self.config.src_emp) 
+        self.src_emp = keras.layers.Embedding(self.config.src_vocublary, self.config.src_emp)
+        self.pos = SinuSoidal()
+        self.enc = keras.Sequential([FEncoderLayer(self.config.enc_key, self.config.enc_heads, self.config.src_emp) 
                                      for _ in range(self.config.enc_size)])
         
-        self.trgt_emp = SinuSoidal(self.config.trgt_vocublary, self.config.trgt_emp, self.config.trgt_pos_size)
-        self.dec = [DecoderLayer(self.config.dec_key, self.config.dec_heads, self.config.trgt_emp) for _ in range(self.config.dec_size)]
+        self.trgt_emp = keras.layers.Embedding(self.config.trgt_vocublary, self.config.trgt_emp)
+        self.dec = [DecoderLayer(self.config.dec_key, self.config.dec_heads, self.config.trgt_emp) 
+                    for _ in range(self.config.dec_size)]
         
         if self.task == 'multi':
             self.script_layer = keras.layers.Dense(self.config.src_vocublary)
             self.translate_layer = keras.layers.Dense(self.config.trgt_vocublary)
-        elif self.task == 'en':      
+        elif self.task == 'script':      
             self.script_layer = keras.layers.Dense(self.config.src_vocublary)
         else:
             self.translate_layer = keras.layers.Dense(self.config.trgt_vocublary)
         
         
-    def call(self, inputs, training=False, teacher=False):
+    def call(self, inputs, training=False):
         # To use a Keras model with `.fit` you must pass all your inputs in the first argument.
-        if teacher:
-            src, targt = inputs; del inputs
+        if training:
+            src, target = inputs; del inputs
             
-            src_emp = self.src_emp(src); del src
-            src_context = self.enc(src_emp)
+            src = self.src_emp(src, training=training)
+            src = self.pos(src)
+            
+            src_context = self.enc(src, training=training)
             
             if self.task == 'multi':
-                return self.teacher_force((src_emp, targt), src_context)
-                
+                target = self.trgt_emp(target, training=training)
+                target = self.pos(target)
+                for dlayer in self.dec:
+                    src = dlayer(src, src_context, training=training)
+                    target = dlayer(src, target, training=training)
+                src = self.script_layer(src, training=training)
+                target = self.translate_layer(target, training=training)
+                return src, target
+        
             elif self.task == 'script':
-                return self.teacher_force(src_emp, src_context)
+                for dlayer in self.dec:
+                    src = dlayer(src, src_context, training=training)
+                src = self.script_layer(src, training=training)
+                return src
             else:
-                return self.teacher_force(targt, src_context)
+                target = self.trgt_emp(target, training=training)
+                target = self.pos(target)
+                for dlayer in self.dec:
+                    src = dlayer(target, src_context, training=training)
+                target = self.translate_layer(target, training=training)
+                return target
         
-        src_emp = self.src_emp(src); del src
-        src_context = self.enc(src_emp); del src_emp
-        return self.greedy_decoding(src_context)
-
-                
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-        
-    def greedy_decoding(self, context, end_token=2):
-        start = np.zeros((context.shape[0], 1))
-        
-        # print('start decoding')
+        inputs = self.src_emp(inputs, training=training)
+        inputs = self.pos(inputs)
+            
+        src_context = self.enc(inputs, training=training); del inputs
         if self.task == 'multi':
-            script_word = start
-            translate_word = start
-            for _ in range(self.config.src_pos_size):
-                script_word = self.src_emp(script_word)
-                translate_word = self.trgt_emp(translate_word)
-                mixed = self.fussion(script_word, translate_word)
-                mixed = self.dec(mixed, context)
-                script_word = self.script_layer(mixed)
-                translate_word = self.translate_layer(mixed)
-                # print('shape of logits', next_word.shape)
-                script_word = np.argmax(script_word, 2)
-                # print('shape of argmax', next_word.shape)
-                script_word = np.concatenate((start, script_word), axis=1)
-                # print('merge shape', next_word.shape)
-                script_word[script_word[:, -2] == end_token] = end_token
-                translate_word = np.argmax(translate_word, 2)
-                # print('shape of argmax', next_word.shape)
-                translate_word = np.concatenate((start, translate_word), axis=1)
-                # print('merge shape', next_word.shape)
-                translate_word[translate_word[:, -2] == end_token] = end_token
-
-                
-                
-                if (script_word[script_word[:, -2] == end_token].shape[0] == script_word.shape[0] and 
-                   translate_word[translate_word[:, -2] == end_token].shape[0] == translate_word.shape[0]):
-                    return script_word, translate_word
-                            
-            return script_word, translate_word
-            
+            return self.greedy_script(src_context), self.greedy_translation(src_context)
         elif self.task == 'script':
-            script_word = start
-            
-            for _ in range(self.config.src_pos_size):
-                script_word = self.src_emp(script_word)
-                script_word = self.dec(script_word, context)
-                script_word = self.script_layer(script_word)
-                # print('shape of logits', next_word.shape)
-                script_word = np.argmax(script_word, 2)
-                # print('shape of argmax', next_word.shape)
-                script_word = np.concatenate((start, script_word), axis=1)
-                # print('merge shape', next_word.shape)
-                script_word[script_word[:, -2] == end_token] = end_token
-                
-                
-                if script_word[script_word[:, -2] == end_token].shape[0] == script_word.shape[0]:
-                    return script_word
-                            
-            return script_word
+            return self.greedy_script(src_context)
         else:
-            translate_word = start
-            for _ in range(self.config.trgt_pos_size):
-                translate_word = self.trgt_emp(translate_word)
-                translate_word = self.dec(translate_word, context)
-                translate_word = self.translate_layer(translate_word)
-                # print('shape of logits', next_word.shape)
-                translate_word = np.argmax(translate_word, 2)
-                # print('shape of argmax', next_word.shape)
-                translate_word = np.concatenate((start, translate_word), axis=1)
-                # print('merge shape', next_word.shape)
-                translate_word[translate_word[:, -2] == end_token] = end_token
-                
-                
-                if translate_word[translate_word[:, -2] == end_token].shape[0] == translate_word.shape[0]:
-                    return translate_word
-                            
-            return translate_word
+            return self.greedy_translation(src_context)
             
-        for _ in range(self.max_len):
+    
+    def greedy_script(self, context, end_token=2, training=False):
+        start = np.zeros((context.shape[0], 1))
+        next_word = start
+        for _ in range(self.config.max_seq_size):
+            next_word = self.src_emp(next_word, training=training)
+            next_word = self.pos(next_word)
+            for dlayer in self.dec:
+                next_word = dlayer(next_word, context, training=training)
+            next_word = self.script_layer(next_word)
+            # print('shape of logits', next_word.shape)
+            next_word = np.argmax(next_word, 2)
+            # print('shape of argmax', next_word.shape)
+            next_word = np.concatenate((start, next_word), axis=1)
+            # print('merge shape', next_word.shape)
+            next_word[next_word[:, -2] == end_token] = end_token
             
-            next_word = self.dec(next_word, context)
-            next_word = self.final_layer(next_word)
+            
+            if next_word[next_word[:, -2] == end_token].shape[0] == next_word.shape[0]:
+                return next_word
+        return next_word
+        
+    def greedy_translation(self, context, end_token=2, training=False):
+        start = np.zeros((context.shape[0], 1))
+        next_word = start
+        for _ in range(self.config.max_seq_size):
+            next_word = self.trgt_emp(next_word, training=training)
+            next_word = self.pos(next_word)
+            for dlayer in self.dec:
+                next_word = dlayer(next_word, context, training=training)
+            next_word = self.translate_layer(next_word)
             # print('shape of logits', next_word.shape)
             next_word = np.argmax(next_word, 2)
             # print('shape of argmax', next_word.shape)
@@ -200,25 +170,14 @@ class BTransformer(keras.Model):
                         
         return next_word
     
-    def beam_search_decoding(self, context):
+    
+    
+    def beam_search_script(self, context):
         pass
     
-    def teacher_force(self, inputs, context):
-        if self.task == 'multi':
-            src, trgt = inputs; del inputs
-            trgt = self.trgt_emp(trgt)
-            trgt = self.fussion(src, trgt); del src
-            trgt = self.dec(trgt)
-            return self.script_layer(trgt), self.translate_layer(trgt)
-            
-        elif self.task == 'script':
-            inputs = self.dec(inputs, context)
-            return self.script_layer(inputs)
-        
-        else:
-            inputs = self.trgt_emp(inputs)
-            inputs = self.dec(inputs, context)
-            return self.translate_layer(inputs)
+    def beam_search_translation(self, context):
+        pass
+    
             
             
             
@@ -234,34 +193,11 @@ if __name__ == '__main__':
     import numpy as np
     np.random.seed(1)
     
-    # import tensorflow as tf
-    # d = np.random.randint(0, 10, (3, 5, 4))
-    # d2 = np.random.randint(0, 10, (3, 2))
-    # d = tf.convert_to_tensor(d)
-    # print(d2)
-    # print()
-    # print(np.argmax(d, 2))
-    # print()
-    # print(np.concatenate((d2, np.argmax(d, 2)), 1))
+    import tensorflow as tf
+    d = np.random.randint(-10, 10, (3, 5))
+    d2 = np.random.randint(-10, 10, (3, 2))
+    config = BTConfig(max_seq_size=50, src_vocublary=1000, src_emp=512, enc_key=256, enc_heads=8, enc_size=10,
+                      trgt_vocublary=2000, trgt_emp=512, dec_key=256, dec_heads=3, dec_size=5)
     
-    
-    # # dummy = np.random.randn(2, 3)
-    # # f = Encoder(10000, 5, 2400, 50, 8, 2)
-    # # print(f(dummy)) #, causal_mask=True
-    
-    # dummy = np.random.randn(1, 12)
-    # dummy2 = np.random.randn(2, 5)
-    # context = np.random.randn(2, 12, 50)
-    
-    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1
-    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1
-    # config_e = (100, 50, 200, 25, 8, 3)
-    # config_d = (200, 50, 200, 25, 8, 3)
-    # f = Decoder(*config_d)
-    
-    
-    # ff = Encoder(*config_e)
-    # # print(ff(dummy))
-    # # print(f(dummy2, ff(dummy)))
-    # x = BTransformer(config_e, config_d)
-    # print(x(dummy)) 
+    x = BTransformer(config, task='script')
+    print(x((d, d2), training=True)) 

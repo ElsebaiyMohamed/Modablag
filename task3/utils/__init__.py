@@ -1,9 +1,4 @@
 try:
-    import transformer.modules as modules
-    import posEncoders
-    import task3.baseT as baseT
-    
+    import decoder, encoder, feedForward, selfAttention, posEncoders 
 except ImportError:
-    import transformer.modules as modules
-    import .posEncoders
-    import task3.baseT as baseT
+    import utils.decoder, utils.encoder, utils.feedForward, utils.selfAttention, utils.posEncoders
