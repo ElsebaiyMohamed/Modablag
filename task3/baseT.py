@@ -1,3 +1,8 @@
+'''
+multi task vanila transformer.
+can work on multi task or single task specified on creation of object: task = "multi", "script", "translate" 
+'''
+
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow import keras
