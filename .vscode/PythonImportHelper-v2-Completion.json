@@ -129,6 +129,15 @@
         "documentation": {}
     },
     {
+        "label": "tensorflow",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
         "label": "Tensor",
         "importPath": "tensorflow",
         "description": "tensorflow",
@@ -434,11 +443,11 @@
         "documentation": {}
     },
     {
-        "label": "*",
-        "importPath": "modules",
-        "description": "modules",
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
         "isExtraImport": true,
-        "detail": "modules",
+        "detail": "tqdm",
         "documentation": {}
     },
     {
@@ -451,6 +460,22 @@
     },
     {
         "label": "*",
+        "importPath": "baseT",
+        "description": "baseT",
+        "isExtraImport": true,
+        "detail": "baseT",
+        "documentation": {}
+    },
+    {
+        "label": "BTConfig",
+        "importPath": "baseT",
+        "description": "baseT",
+        "isExtraImport": true,
+        "detail": "baseT",
+        "documentation": {}
+    },
+    {
+        "label": "BTransformer",
         "importPath": "baseT",
         "description": "baseT",
         "isExtraImport": true,
@@ -504,7 +529,7 @@
         "kind": 6,
         "importPath": "task3.utils.encoder",
         "description": "task3.utils.encoder",
-        "peekOfCode": "class FEncoderLayer(Layer):\n    '''\n    the encoder structure from the paper. consist of SelfAttention & FeedForward\n    '''\n    def __init__(self, key_dim: int, num_heads: int, output_shape: int, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
+        "peekOfCode": "class FEncoderLayer(Layer):\n    '''\n    the encoder structure from the paper. consist of SelfAttention & FeedForward\n    '''\n    def __init__(self, key_dim: int, num_heads: int, output_shape: int=None, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
         "detail": "task3.utils.encoder",
         "documentation": {}
     },
@@ -693,7 +718,16 @@
         "kind": 6,
         "importPath": "task3.baseT",
         "description": "task3.baseT",
-        "peekOfCode": "class BTConfig:\n    max_seq_size: int\n    src_vocublary: int\n    src_emp: int\n    enc_key: int \n    enc_heads: int\n    trgt_vocublary: int\n    trgt_emp: int\n    dec_key: int \n    dec_heads: int",
+        "peekOfCode": "class BTConfig:\n    max_seq_size: int\n    heads_vocublary: List\n    heads_emp: int\n    enc_key: int \n    enc_heads: int\n    dec_key: int \n    dec_heads: int\n    enc_size: int = 1\n    dec_size: int = 1",
+        "detail": "task3.baseT",
+        "documentation": {}
+    },
+    {
+        "label": "OutputHead",
+        "kind": 6,
+        "importPath": "task3.baseT",
+        "description": "task3.baseT",
+        "peekOfCode": "class OutputHead(keras.layers.Layer):\n    def __init__(self, projection,  units=[], name=None):\n        super().__init__()\n        if name is None:\n            self.name = 'untitled_Head'\n        else:\n            self.name = name\n        layers = [keras.layers.Dense(u) for u in units]\n        layers.append(keras.layers.Dense(projection))\n        self.head = keras.Sequential(layers)",
         "detail": "task3.baseT",
         "documentation": {}
     },
@@ -731,6 +765,24 @@
         "description": "task3.bert1.0",
         "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom utils.posEncoders import SinuSoidal\nfrom utils.encoder import EncoderLayer\nclass Bert(keras.Model):\n    def __init__(self, vocab_size: int, emp_dim: int, max_sent_lenght: int,",
         "detail": "task3.bert1.0",
+        "documentation": {}
+    },
+    {
+        "label": "Custom_loss",
+        "kind": 6,
+        "importPath": "task3.train_base",
+        "description": "task3.train_base",
+        "peekOfCode": "class Custom_loss(tf.losses.Loss):\n    def __init__(self, reduction=tf.losses_utils.ReductionV2.AUTO, name=None):\n        super().__init__(reduction, name)\n        self.reduction = reduction\n    def call(self, y_true, y_predict):\n        outputs = tf.losses.sparse_categorical_crossentropy(y_true, y_predict)\n        return outputs * self.reduction\nclass Train:\n    def __init__(self, model, loss, optimizer, metric=[]):\n        self.model  = model",
+        "detail": "task3.train_base",
+        "documentation": {}
+    },
+    {
+        "label": "Train",
+        "kind": 6,
+        "importPath": "task3.train_base",
+        "description": "task3.train_base",
+        "peekOfCode": "class Train:\n    def __init__(self, model, loss, optimizer, metric=[]):\n        self.model  = model\n        self._loss_fun   = loss\n        self._opt    = optimizer\n        self._metric = metric\n        self.train_loss = 0\n        self.val_loss   = 0\n    def __call__(self, train_set, val_set, epochs):\n        for i in tqdm(range(epochs)):",
+        "detail": "task3.train_base",
         "documentation": {}
     },
     {

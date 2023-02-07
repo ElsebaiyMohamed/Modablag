@@ -18,7 +18,7 @@ class FEncoderLayer(Layer):
     '''
     the encoder structure from the paper. consist of SelfAttention & FeedForward
     '''
-    def __init__(self, key_dim: int, num_heads: int, output_shape: int, dropout=0.1):
+    def __init__(self, key_dim: int, num_heads: int, output_shape: int=None, dropout=0.1):
         '''
         num_heads:     int.    Number of attention heads. 
         key_dim:       int.    Size of each attention head for query and key.
@@ -28,13 +28,14 @@ class FEncoderLayer(Layer):
         '''        
 
         super().__init__()
-
+        if output_shape is None:
+            output_shape = key_dim
         self.self_attention = Former(num_heads=num_heads,
-                                            key_dim=key_dim,
-                                            dropout=dropout,
-                                            output_shape=output_shape)
+                                    key_dim=key_dim,
+                                    dropout=dropout,
+                                    output_shape=output_shape)
 
-        self.ffn = FForward([key_dim, output_shape])
+        self.ffn = FForward([key_dim+50, output_shape])
 
     def call(self, x: Union[Tensor, ndarray, List], training: bool=False, **kwargs):
         x = self.self_attention(query=x, key=x, value=x, training=training, **kwargs)

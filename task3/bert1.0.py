@@ -29,7 +29,7 @@ class Bert(keras.Model):
                                      for _ in range(n_layers)])
         
         
-    def forward(self, x, masking, training=False):
+    def call(self, x, masking, training=False):
         if training:00
         
 

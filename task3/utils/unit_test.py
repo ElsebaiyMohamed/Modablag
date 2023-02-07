@@ -1,5 +1,4 @@
 from tqdm import tqdm
-from modules import *
 from posEncoders import SinuSoidal
 from baseT import *
 import numpy as np

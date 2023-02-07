@@ -24,13 +24,11 @@ except ImportError:
 @dataclass
 class BTConfig:
     max_seq_size: int
-    src_vocublary: int
-    src_emp: int
+    heads_vocublary: List
+    heads_emp: int
     enc_key: int 
     enc_heads: int
     
-    trgt_vocublary: int
-    trgt_emp: int
     dec_key: int 
     dec_heads: int
     
@@ -39,7 +37,20 @@ class BTConfig:
     
 
 
-
+class OutputHead(keras.layers.Layer):
+    def __init__(self, projection,  units=[], name=None):
+        super().__init__()
+        if name is None:
+            self.name = 'untitled_Head'
+        else:
+            self.name = name
+            
+        layers = [keras.layers.Dense(u) for u in units]
+        layers.append(keras.layers.Dense(projection))
+        self.head = keras.Sequential(layers)
+        
+    def call(self, x, training=False):
+        return self.head(x)
 class BTransformer(keras.Model):
     '''
     the Transformer Module from the paper. consist of Encoder Module & Decoder Module. This class also Implement
@@ -68,31 +79,27 @@ class BTransformer(keras.Model):
         '''
         super().__init__()
         self.config: BTConfig = config
-        self.task: str = task
-        self.src_emp = keras.layers.Embedding(self.config.src_vocublary, self.config.src_emp)
+
+        self.heads_emp:dict = dict()
+        for i, emp in enumerate(self.config.heads_emp):
+            self.heads_emp[f'emp_{i}'] = keras.layers.Embedding(self.config.heads_vocublary[i][1], emp)
+
         self.pos = SinuSoidal()
-        self.enc = keras.Sequential([FEncoderLayer(self.config.enc_key, self.config.enc_heads, self.config.src_emp) 
+        self.enc = keras.Sequential([FEncoderLayer(self.config.enc_key, self.config.enc_heads) 
                                      for _ in range(self.config.enc_size)])
         
-        self.trgt_emp = keras.layers.Embedding(self.config.trgt_vocublary, self.config.trgt_emp)
-        self.dec = [DecoderLayer(self.config.dec_key, self.config.dec_heads, self.config.trgt_emp) 
+        self.dec = [DecoderLayer(self.config.dec_key, self.config.dec_heads) 
                     for _ in range(self.config.dec_size)]
-        
-        if self.task == 'multi':
-            self.script_layer = keras.layers.Dense(self.config.src_vocublary)
-            self.translate_layer = keras.layers.Dense(self.config.trgt_vocublary)
-        elif self.task == 'script':      
-            self.script_layer = keras.layers.Dense(self.config.src_vocublary)
-        else:
-            self.translate_layer = keras.layers.Dense(self.config.trgt_vocublary)
+        self.heads:dict = dict()
+        for i, name, vouc in enumerate(self.config.heads_vocublary):
+            self.heads[name] = OutputHead(projection=vouc, name=name)
         
         
     def call(self, inputs, training=False):
         # To use a Keras model with `.fit` you must pass all your inputs in the first argument.
         if training:
-            src, target = inputs; del inputs
+            src, targets = inputs; del inputs
             
-            src = self.src_emp(src, training=training)
             src = self.pos(src)
             
             src_context = self.enc(src, training=training)
@@ -100,9 +107,12 @@ class BTransformer(keras.Model):
             if self.task == 'multi':
                 target = self.trgt_emp(target, training=training)
                 target = self.pos(target)
+                
                 for dlayer in self.dec:
                     src = dlayer(src, src_context, training=training)
-                    target = dlayer(src, target, training=training)
+                    
+                    target = dlayer(target, src_context, training=training)
+                    
                 src = self.script_layer(src, training=training)
                 target = self.translate_layer(target, training=training)
                 return src, target
@@ -116,7 +126,7 @@ class BTransformer(keras.Model):
                 target = self.trgt_emp(target, training=training)
                 target = self.pos(target)
                 for dlayer in self.dec:
-                    src = dlayer(target, src_context, training=training)
+                    target = dlayer(target, src_context, training=training)
                 target = self.translate_layer(target, training=training)
                 return target
         
@@ -206,3 +216,4 @@ if __name__ == '__main__':
     
     x = BTransformer(config, task='script')
     print(x((d, d2), training=True)) 
+    
