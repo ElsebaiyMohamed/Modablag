@@ -718,7 +718,7 @@
         "kind": 6,
         "importPath": "task3.baseT",
         "description": "task3.baseT",
-        "peekOfCode": "class BTConfig:\n    max_seq_size: int\n    heads_vocublary: List\n    heads_emp: int\n    enc_key: int \n    enc_heads: int\n    dec_key: int \n    dec_heads: int\n    enc_size: int = 1\n    dec_size: int = 1",
+        "peekOfCode": "class BTConfig:\n    '''\n        @params:\n                - out_heads: Dict.  Size of the soruce lang vocabulary, i.e. maximum integer index + 1.\n                - max_seq_size:    int.                Max number of tokens in as sentence that the model will \n                                                        deal with it during inference.\n                - enc_heads:    int.                Number of attention heads at each encoder. \n                - enc_key:      int.                Size of each attention head for query and key for each encoder.\n                - dec_heads:    int.                Number of attention heads at each decoder. \n                - dec_key:      int.                Size of each attention head for query and key for each decoder.",
         "detail": "task3.baseT",
         "documentation": {}
     },
@@ -736,7 +736,7 @@
         "kind": 6,
         "importPath": "task3.baseT",
         "description": "task3.baseT",
-        "peekOfCode": "class BTransformer(keras.Model):\n    '''\n    the Transformer Module from the paper. consist of Encoder Module & Decoder Module. This class also Implement\n    Greedy and Beam search decoding.\n    '''\n    def __init__(self, config, task='multi'):\n        '''\n        @params:\n            e_config:              Tuple\n                - vocab_size:      int.  Size of the soruce lang vocabulary, i.e. maximum integer index + 1.",
+        "peekOfCode": "class BTransformer(keras.Model):\n    '''\n    the Transformer Module from the paper. consist of Encoder Module & Decoder Module. This class also Implement\n    Greedy and Beam search decoding.\n    '''\n    def __init__(self, config: BTConfig, task='multi'):\n        super().__init__()\n        self.config: BTConfig = config\n        self.pos = SinuSoidal()\n        self.enc = keras.Sequential([FEncoderLayer(self.config.enc_key, self.config.enc_heads) ",
         "detail": "task3.baseT",
         "documentation": {}
     },

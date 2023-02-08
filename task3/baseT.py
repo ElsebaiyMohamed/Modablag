@@ -23,12 +23,22 @@ except ImportError:
     
 @dataclass
 class BTConfig:
+    '''
+        @params:
+                - out_heads: Dict.  Size of the soruce lang vocabulary, i.e. maximum integer index + 1.
+                - max_seq_size:    int.                Max number of tokens in as sentence that the model will 
+                                                        deal with it during inference.
+                - enc_heads:    int.                Number of attention heads at each encoder. 
+                - enc_key:      int.                Size of each attention head for query and key for each encoder.
+                - dec_heads:    int.                Number of attention heads at each decoder. 
+                - dec_key:      int.                Size of each attention head for query and key for each decoder.
+                - enc_size:     int.                Number of stacked encoders.
+                - dec_size:     int.                Number of stacked encoders.   
+            '''
     max_seq_size: int
-    heads_vocublary: List
-    heads_emp: int
+    out_heads: dict
     enc_key: int 
     enc_heads: int
-    
     dec_key: int 
     dec_heads: int
     
@@ -51,38 +61,16 @@ class OutputHead(keras.layers.Layer):
         
     def call(self, x, training=False):
         return self.head(x)
+    
 class BTransformer(keras.Model):
     '''
     the Transformer Module from the paper. consist of Encoder Module & Decoder Module. This class also Implement
     Greedy and Beam search decoding.
     '''
-    def __init__(self, config, task='multi'):
-        '''
-        @params:
-            e_config:              Tuple
-                - vocab_size:      int.  Size of the soruce lang vocabulary, i.e. maximum integer index + 1.
-                - emp_dim:         int.  Dimension of the dense embedding.
-                - max_sent_lenght: int.  Max number of tokens in as sentence that the model will 
-                                            deal with it during inference.
-                - num_heads:       int.  Number of attention heads. 
-                - key_dim:         int.  Size of each attention head for query and key.
-                - n_layers:        int.  Number of stacked encoders.
-                
-            d_config:              Tuple
-                - vocab_size:        int.  Size of the target lang vocabulary, i.e. maximum integer index + 1.
-                - emp_dim:         int.  Dimension of the dense embedding.
-                - max_sent_lenght: int.  Max number of tokens in as sentence that the model will 
-                                          deal with it during inference.
-                - num_heads:       int.  Number of attention heads. 
-                - key_dim:         int.  Size of each attention head for query and key.
-                - n_layers:        int.  Number of stacked decoders.
-        '''
+    def __init__(self, config: BTConfig, task='multi'):
+        
         super().__init__()
         self.config: BTConfig = config
-
-        self.heads_emp:dict = dict()
-        for i, emp in enumerate(self.config.heads_emp):
-            self.heads_emp[f'emp_{i}'] = keras.layers.Embedding(self.config.heads_vocublary[i][1], emp)
 
         self.pos = SinuSoidal()
         self.enc = keras.Sequential([FEncoderLayer(self.config.enc_key, self.config.enc_heads) 
@@ -90,10 +78,13 @@ class BTransformer(keras.Model):
         
         self.dec = [DecoderLayer(self.config.dec_key, self.config.dec_heads) 
                     for _ in range(self.config.dec_size)]
-        self.heads:dict = dict()
-        for i, name, vouc in enumerate(self.config.heads_vocublary):
-            self.heads[name] = OutputHead(projection=vouc, name=name)
         
+        self.heads_emp:dict = dict()
+        self.heads:dict = dict()
+        for head in self.config.out_heads.keys():
+            self.heads_emp[head] = keras.layers.Embedding(self.config[head]['vocabulary'], 
+                                                          self.config[head]['empedding'])
+            self.heads[head] = OutputHead(projection=self.config[head]['vocabulary'], name=head)
         
     def call(self, inputs, training=False):
         # To use a Keras model with `.fit` you must pass all your inputs in the first argument.
