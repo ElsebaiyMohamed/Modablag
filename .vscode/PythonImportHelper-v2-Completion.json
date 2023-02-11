@@ -1,41 +1,5 @@
 [
     {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "unicodedata",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "unicodedata",
-        "description": "unicodedata",
-        "detail": "unicodedata",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
-        "label": "librosa",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "librosa",
-        "description": "librosa",
-        "detail": "librosa",
-        "documentation": {}
-    },
-    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -90,6 +54,75 @@
         "description": "numpy",
         "isExtraImport": true,
         "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "hepler",
+        "description": "hepler",
+        "isExtraImport": true,
+        "detail": "hepler",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "gc",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gc",
+        "description": "gc",
+        "detail": "gc",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "unicodedata",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unicodedata",
+        "description": "unicodedata",
+        "detail": "unicodedata",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "librosa",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "librosa",
+        "description": "librosa",
+        "detail": "librosa",
         "documentation": {}
     },
     {
@@ -584,14 +617,6 @@
         "documentation": {}
     },
     {
-        "label": "dataclass",
-        "importPath": "dataclasses",
-        "description": "dataclasses",
-        "isExtraImport": true,
-        "detail": "dataclasses",
-        "documentation": {}
-    },
-    {
         "label": "SinuSoidal",
         "importPath": "utils.posEncoders",
         "description": "utils.posEncoders",
@@ -608,11 +633,20 @@
         "documentation": {}
     },
     {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "class Config:\n    en_file: str\n    ar_file: str\n    yaml_path: str\n    en_dict: str\n    ar_dict: str \n    wave_folder: str\n    save_folder: str\n    sr: int\n    n_batch: int",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
         "label": "create_batch",
         "kind": 2,
         "importPath": "task1.batch",
         "description": "task1.batch",
-        "peekOfCode": "def create_batch(data_dec, en_file, en_dict, ar_file, ar_dict, wave_folder, save_folder, sr=16000, n_batch=20, \n                 batch_size=200, min_ar=1, min_en=1, min_wave=1, max_ar=50, max_en=50, max_wave=16000*120):\n    en_dict = load_dict(en_dict)\n    ar_dict = load_dict(ar_dict)\n    os.makedirs(save_folder, exist_ok=True)\n    en_data   = get_en(en_file)\n    ar_data   = get_ar(ar_file)\n    yaml_data = get_ymal(data_dec)\n    f = False\n    gc.enable()",
+        "peekOfCode": "def create_batch(c: Config):\n    en_dict = load_dict(c.en_dict)\n    ar_dict = load_dict(c.ar_dict)\n    os.makedirs(c.save_folder, exist_ok=True)\n    en_data   = get_en(c.en_file)\n    ar_data   = get_ar(c.ar_file)\n    yaml_data = get_ymal(c.yaml_path)\n    f = False\n    gc.enable()\n    gc.set_threshold(3, 2, 1)",
         "detail": "task1.batch",
         "documentation": {}
     },
@@ -630,7 +664,7 @@
         "kind": 6,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "class GetVoc:\n    def __init__(self):\n        self.voc = dict()\n        self.last_id = 0\n        self.freq = dict()\n    def extend_from_text(self, text, frq_threshold=10):\n        text = text.split()\n        self._extend_freq(text)\n        if frq_threshold is None:\n            text = set(text)",
+        "peekOfCode": "class GetVoc:\n    def __init__(self, unk=1, start=2, end=3, pad=4):\n        self.voc = dict()\n        self.voc['<unk>'] = unk\n        self.voc['<s>'] = start\n        self.voc['<\\s>'] = end\n        self.voc['<pad>'] = pad\n        self.freq = dict()\n        self.freq['<unk>'] = 1\n        self.freq['<s>'] = 1",
         "detail": "task1.hepler",
         "documentation": {}
     },
@@ -684,7 +718,7 @@
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def sort_freq(pair):\n            return pair[1]\nclass GetVoc:\n    def __init__(self):\n        self.voc = dict()\n        self.last_id = 0\n        self.freq = dict()\n    def extend_from_text(self, text, frq_threshold=10):\n        text = text.split()\n        self._extend_freq(text)",
+        "peekOfCode": "def sort_freq(pair):\n            return pair[1]\nclass GetVoc:\n    def __init__(self, unk=1, start=2, end=3, pad=4):\n        self.voc = dict()\n        self.voc['<unk>'] = unk\n        self.voc['<s>'] = start\n        self.voc['<\\s>'] = end\n        self.voc['<pad>'] = pad\n        self.freq = dict()",
         "detail": "task1.hepler",
         "documentation": {}
     },
@@ -693,7 +727,7 @@
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def get_en(file_path):\n    with open(file_path) as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ar(file_path):\n    with open(file_path) as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):",
+        "peekOfCode": "def get_en(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):",
         "detail": "task1.hepler",
         "documentation": {}
     },
@@ -702,7 +736,7 @@
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def get_ar(file_path):\n    with open(file_path) as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path) as f:",
+        "peekOfCode": "def get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:",
         "detail": "task1.hepler",
         "documentation": {}
     },
@@ -711,7 +745,7 @@
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path) as f:\n        for line in f:\n            line = line.strip('- {').strip('}\\n')\n            line = line.split(',')\n            times = tuple(map(fun, line[:2]))  ()",
+        "peekOfCode": "def get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            line = line.strip('- {').strip('}\\n')\n            line = line.split(',')\n            times = tuple(map(fun, line[:2]))",
         "detail": "task1.hepler",
         "documentation": {}
     },
@@ -720,7 +754,16 @@
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def get_form_wave(offset, duration, wave_path, sr):\n    audio, sr = librosa.load(wave_path, sr=sr, offset=offset, duration=duration)\n    return audio\n# --------------------------------------------\n# def numprize_text(text, _dict, unk=0): # TODO\n#     text = text.split()\n#     items = np.zeros(len(text))\n#     for i, word in enumerate(text):\n#         items[i] = _dict.get(word, unk)\n#     return items",
+        "peekOfCode": "def get_form_wave(offset, duration, wave_path, sr):\n    audio, sr = librosa.load(wave_path, sr=sr, offset=offset, duration=duration)\n    return audio\n# --------------------------------------------\ndef numprize_text(text, _dict, unk=1): # TODO\n    text = text.split()\n    items = np.zeros(len(text))\n    for i, word in enumerate(text):\n        items[i] = _dict.get(word, unk)\n    return items",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "numprize_text",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def numprize_text(text, _dict, unk=1): # TODO\n    text = text.split()\n    items = np.zeros(len(text))\n    for i, word in enumerate(text):\n        items[i] = _dict.get(word, unk)\n    return items\ndef repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:",
         "detail": "task1.hepler",
         "documentation": {}
     },
@@ -738,7 +781,7 @@
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def repeat_wave(wave, min_len, max_len):\n    return wave\ndef padd(items, max_len):\n    remaine1= (max_len - len(items)) // 2\n    remaine = max_len - remaine1 - len(items)\n    return np.pad(items, (remaine1, remaine))\ndef load_dict(path):\n    data = dict()\n    with open(path) as f:\n        for line in f:",
+        "peekOfCode": "def repeat_wave(wave, min_len, max_len):\n    return wave\ndef padd(items, max_len, pad=4):\n    return np.pad(items, (0, np.max(0, max_len-len(items))), 'constant', constant_values=(0, pad))\ndef load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')",
         "detail": "task1.hepler",
         "documentation": {}
     },
@@ -747,7 +790,7 @@
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def padd(items, max_len):\n    remaine1= (max_len - len(items)) // 2\n    remaine = max_len - remaine1 - len(items)\n    return np.pad(items, (remaine1, remaine))\ndef load_dict(path):\n    data = dict()\n    with open(path) as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')",
+        "peekOfCode": "def padd(items, max_len, pad=4):\n    return np.pad(items, (0, np.max(0, max_len-len(items))), 'constant', constant_values=(0, pad))\ndef load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')",
         "detail": "task1.hepler",
         "documentation": {}
     },
@@ -756,7 +799,7 @@
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def load_dict(path):\n    data = dict()\n    with open(path) as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')\n            key, value = line.split('==')\n            data[key.strip()] = int(value.strip())",
+        "peekOfCode": "def load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')\n            key, value = line.split('==')\n            data[key.strip()] = int(value.strip())",
         "detail": "task1.hepler",
         "documentation": {}
     },

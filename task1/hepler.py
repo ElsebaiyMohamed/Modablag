@@ -86,11 +86,21 @@ def sort_freq(pair):
             return pair[1]
     
 class GetVoc:
-    def __init__(self):
+    def __init__(self, unk=1, start=2, end=3, pad=4):
         self.voc = dict()
-        self.last_id = 0
+        self.voc['<unk>'] = unk
+        self.voc['<s>'] = start
+        self.voc['<\s>'] = end
+        self.voc['<pad>'] = pad
+    
         self.freq = dict()
-            
+        self.freq['<unk>'] = 1
+        self.freq['<s>'] = 1
+        self.freq['<\s>'] = 1
+        self.freq['<pad>'] = 1
+        
+        self.last_id = 4   
+         
     def extend_from_text(self, text, frq_threshold=10):
         text = text.split()
         self._extend_freq(text)
@@ -133,12 +143,12 @@ class GetVoc:
                 
                 
 def get_en(file_path):
-    with open(file_path) as f:
+    with open(file_path, encoding='utf-8-sig') as f:
         for line in f:
             yield line.strip().strip('\n').strip()
 
 def get_ar(file_path):
-    with open(file_path) as f:
+    with open(file_path, encoding='utf-8-sig') as f:
         for line in f:
             yield line.strip().strip('\n').strip()
 
@@ -151,13 +161,13 @@ def get_ymal(file_path):
         return float(value)
     
     
-    with open(file_path) as f:
+    with open(file_path, encoding='utf-8-sig') as f:
         for line in f:
             line = line.strip('- {').strip('}\n')
             line = line.split(',')
-            times = tuple(map(fun, line[:2]))  ()
+            times = tuple(map(fun, line[:2]))
             line = line[-1].split(':')[-1].strip()
-            yield times, line ((), '')
+            yield times, line
 
 
 def get_form_wave(offset, duration, wave_path, sr):
@@ -166,12 +176,12 @@ def get_form_wave(offset, duration, wave_path, sr):
 
 
 # --------------------------------------------
-# def numprize_text(text, _dict, unk=0): # TODO
-#     text = text.split()
-#     items = np.zeros(len(text))
-#     for i, word in enumerate(text):
-#         items[i] = _dict.get(word, unk)
-#     return items
+def numprize_text(text, _dict, unk=1): # TODO
+    text = text.split()
+    items = np.zeros(len(text))
+    for i, word in enumerate(text):
+        items[i] = _dict.get(word, unk)
+    return items
 
 def repeat(items, min_len, max_len, p=0.2):
     new_items = []
@@ -194,14 +204,13 @@ def repeat_wave(wave, min_len, max_len):
     return wave
 
 
-def padd(items, max_len):
-    remaine1= (max_len - len(items)) // 2
-    remaine = max_len - remaine1 - len(items)
-    return np.pad(items, (remaine1, remaine))
+def padd(items, max_len, pad=4):
+    
+    return np.pad(items, (0, np.max(0, max_len-len(items))), 'constant', constant_values=(0, pad))
            
 def load_dict(path):
     data = dict()
-    with open(path) as f:
+    with open(path, 'r', encoding='utf-8-sig') as f:
         for line in f:
             try:
                 line = line.decode().strip('\n')
@@ -215,4 +224,4 @@ def load_dict(path):
 
                 
 if __name__ == "__main__":
-    print('tezak 7amra')
+    print(padd([1, 2, 3], 2))

@@ -23,10 +23,12 @@ def save_data(file, save_dir, lang='en'):
             voc.extend_from_text(text)
             i += 1
 
-        voc.save_voc(f'{save_dir}/vocublary', 'ar')
-        print(len(voc.voc))
+        voc.save_voc(f'{save_dir}/vocublary', lang)
+        print()
+        print(f'{lang} Dict size:', len(voc.voc))
 
     
 
 if __name__ == '__main__':
-    print('a7a')
+    save_data(r"D:\Study\GitHub\dev\text\dev.en", r'D:\Study\GitHub\dev', 'en')
+    save_data(r"D:\Study\GitHub\dev\text\dev.ar", r'D:\Study\GitHub\dev', 'ar')
