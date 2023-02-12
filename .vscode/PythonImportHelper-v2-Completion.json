@@ -65,6 +65,14 @@
         "documentation": {}
     },
     {
+        "label": "arabic_preprocess",
+        "importPath": "hepler",
+        "description": "hepler",
+        "isExtraImport": true,
+        "detail": "hepler",
+        "documentation": {}
+    },
+    {
         "label": "dataclass",
         "importPath": "dataclasses",
         "description": "dataclasses",
@@ -197,6 +205,103 @@
         "description": "pyarabic.trans",
         "isExtraImport": true,
         "detail": "pyarabic.trans",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Tokenizer",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "normalizers",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "pre_tokenizers",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "decoders",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "trainers",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "WordPiece",
+        "importPath": "tokenizers.models",
+        "description": "tokenizers.models",
+        "isExtraImport": true,
+        "detail": "tokenizers.models",
+        "documentation": {}
+    },
+    {
+        "label": "Whitespace",
+        "importPath": "tokenizers.pre_tokenizers",
+        "description": "tokenizers.pre_tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers.pre_tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "Digits",
+        "importPath": "tokenizers.pre_tokenizers",
+        "description": "tokenizers.pre_tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers.pre_tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "NFD",
+        "importPath": "tokenizers.normalizers",
+        "description": "tokenizers.normalizers",
+        "isExtraImport": true,
+        "detail": "tokenizers.normalizers",
+        "documentation": {}
+    },
+    {
+        "label": "StripAccents",
+        "importPath": "tokenizers.normalizers",
+        "description": "tokenizers.normalizers",
+        "isExtraImport": true,
+        "detail": "tokenizers.normalizers",
+        "documentation": {}
+    },
+    {
+        "label": "TemplateProcessing",
+        "importPath": "tokenizers.processors",
+        "description": "tokenizers.processors",
+        "isExtraImport": true,
+        "detail": "tokenizers.processors",
         "documentation": {}
     },
     {
@@ -801,6 +906,33 @@
         "description": "task1.hepler",
         "peekOfCode": "def load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')\n            key, value = line.split('==')\n            data[key.strip()] = int(value.strip())",
         "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "english_preprocess",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def english_preprocess(s):\n#    s = re.sub(r\"([?.!,¿])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^a-zA-Z0-9?.'!:_,¿]+\", \" \", s)\n    s = s.rstrip().strip()\n#     s = f'<start> {s} <end>'\n    return s\ndef gen(file, preprocess):\n    for ff in file:\n        with open(ff, encoding='utf-8-sig') as f:",
+        "detail": "task1.tokenizer",
+        "documentation": {}
+    },
+    {
+        "label": "gen",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def gen(file, preprocess):\n    for ff in file:\n        with open(ff, encoding='utf-8-sig') as f:\n            for line in f:\n                try: \n                    line = line.decode()\n                except:\n                    line = line\n                # sys.stdout.buffer.write(line.encode())\n                yield preprocess(line)",
+        "detail": "task1.tokenizer",
+        "documentation": {}
+    },
+    {
+        "label": "get_tokenizer",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def get_tokenizer(files, save_dir, file_name, preprocess):\n    unk_token = \"<UNK>\"  # token for unknown words\n    spl_tokens = [\"<UNK>\", \"<SEP>\", \"<MASK>\", \"<CLS>\", \"<PAD>\"]  # special tokens\n    tokenizer = Tokenizer(WordPiece(unk_token = unk_token))\n    normalizer = normalizers.Sequence([NFD(), StripAccents()])\n    pre_tokenizer = Whitespace()\n    pre_tokenizer = pre_tokenizers.Sequence([Whitespace(), Digits(individual_digits=True)])\n    tokenizer.normalizer = normalizer\n    tokenizer.pre_tokenizer = pre_tokenizer\n    tokenizer.post_processor = TemplateProcessing(single=\"[CLS] $A [SEP]\",",
+        "detail": "task1.tokenizer",
         "documentation": {}
     },
     {
