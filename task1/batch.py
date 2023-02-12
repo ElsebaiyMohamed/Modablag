@@ -195,10 +195,10 @@ def create_batch(c: Config):
                 
                 
 
-                if len(en_text) < c.min_en:
+                if len(en_text.split()) < c.min_en:
                     en_text = ' '.join(repeat(en_text.split(), c.min_en, c.max_en))
 
-                if len(ar_text) < c.min_ar:
+                if len(ar_text.split()) < c.min_ar:
                     ar_text = ' '.join(repeat(ar_text.split(), c.min_ar, c.max_ar))                
                 
                 wave = padd(wave, c.max_wave) 
@@ -239,7 +239,7 @@ def create_batch(c: Config):
 if __name__ == '__main__':
     config = Config(r"D:\Study\GitHub\dev\text\dev.en", 
                     r"D:\Study\GitHub\dev\text\dev.ar",
-                    r"D:\Study\GitHub\dev\text\dev.yaml.yaml", 
+                    r"D:\Study\GitHub\dev\text\dev.yaml", 
                     r"D:\Study\GitHub\dev\en_tokenizer.json", 
                     r"D:\Study\GitHub\dev\tokens\ar_tokenizer.json",
                     r"D:\Study\GitHub\dev\wav", 

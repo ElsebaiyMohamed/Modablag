@@ -304,6 +304,22 @@
         "documentation": {}
     },
     {
+        "label": "Tokenizer",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "decoders",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
         "label": "WordPiece",
         "importPath": "tokenizers.models",
         "description": "tokenizers.models",
@@ -1351,6 +1367,42 @@
         "description": "task3.bert1.0",
         "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom utils.posEncoders import SinuSoidal\nfrom utils.encoder import EncoderLayer\nclass Bert(keras.Model):\n    def __init__(self, vocab_size: int, emp_dim: int, max_sent_lenght: int,",
         "detail": "task3.bert1.0",
+        "documentation": {}
+    },
+    {
+        "label": "TokenHandler",
+        "kind": 6,
+        "importPath": "task3.pre_data",
+        "description": "task3.pre_data",
+        "peekOfCode": "class TokenHandler:\n    def __init__(self, json_path):\n        self.tok = Tokenizer.from_file(json_path)\n        self.tok.decoder = decoders.WordPiece()\n        self.tok.enable_padding(pad_id=self.get_id(\"<PAD>\"), pad_token=\"<PAD>\")\n    def enocde_line(self, text):\n        out = self.tok.encode(text)\n        return out.ids, out.tokens\n    def get_id(self, token):\n        return self.tok.token_to_id(token)",
+        "detail": "task3.pre_data",
+        "documentation": {}
+    },
+    {
+        "label": "ar_json",
+        "kind": 5,
+        "importPath": "task3.pre_data",
+        "description": "task3.pre_data",
+        "peekOfCode": "ar_json = r\"D:\\Study\\GitHub\\data\\dict\\ar_tokenizer.json\"\nen_json = r\"D:\\Study\\GitHub\\data\\dict\\en_tokenizer.json\"\nh5_path = [r\"D:\\Study\\GitHub\\data\\h5_data\\batch_0.h5\"]",
+        "detail": "task3.pre_data",
+        "documentation": {}
+    },
+    {
+        "label": "en_json",
+        "kind": 5,
+        "importPath": "task3.pre_data",
+        "description": "task3.pre_data",
+        "peekOfCode": "en_json = r\"D:\\Study\\GitHub\\data\\dict\\en_tokenizer.json\"\nh5_path = [r\"D:\\Study\\GitHub\\data\\h5_data\\batch_0.h5\"]",
+        "detail": "task3.pre_data",
+        "documentation": {}
+    },
+    {
+        "label": "h5_path",
+        "kind": 5,
+        "importPath": "task3.pre_data",
+        "description": "task3.pre_data",
+        "peekOfCode": "h5_path = [r\"D:\\Study\\GitHub\\data\\h5_data\\batch_0.h5\"]",
+        "detail": "task3.pre_data",
         "documentation": {}
     },
     {
