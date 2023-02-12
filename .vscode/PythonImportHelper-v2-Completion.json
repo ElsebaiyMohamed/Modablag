@@ -208,12 +208,19 @@
         "documentation": {}
     },
     {
-        "label": "sys",
-        "kind": 6,
+        "label": "Tokenizer",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
         "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "decoders",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
         "documentation": {}
     },
     {
@@ -254,6 +261,15 @@
         "description": "tokenizers",
         "isExtraImport": true,
         "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
         "documentation": {}
     },
     {
@@ -906,6 +922,15 @@
         "description": "task1.hepler",
         "peekOfCode": "def load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')\n            key, value = line.split('==')\n            data[key.strip()] = int(value.strip())",
         "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "TokenHandler",
+        "kind": 6,
+        "importPath": "task1.manager",
+        "description": "task1.manager",
+        "peekOfCode": "class TokenHandler:\n    def __init__(self, json_path):\n        self.tok = Tokenizer.from_file(json_path)\n        self.tok.decoder = decoders.WordPiece()\n        self.tok.enable_padding(pad_id=self.get_id(\"<PAD>\"), pad_token=\"<PAD>\")\n    def enocde_line(self, text):\n        out = self.tok.encode(text)\n        return out.ids, out.tokens\n    def get_id(self, token):\n        return self.tok.token_to_id(token)",
+        "detail": "task1.manager",
         "documentation": {}
     },
     {
