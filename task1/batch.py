@@ -185,7 +185,7 @@ def create_batch(c: Config):
                 wave = get_form_wave(offset, duration, join(c.wave_folder, wave_path), c.sr)
                 
                 if len(en_text.split()) > c.max_en or len(ar_text.split()) > c.max_ar or \
-                        wave.shape[0] > c.max_wave or  wave.shape[0] < c.min_wave:
+                        wave.shape[0] > c.max_wave :
                     continue
                 
                 en_text = english_preprocess(en_text)
@@ -196,10 +196,10 @@ def create_batch(c: Config):
                 
 
                 if len(en_text) < c.min_en:
-                    en_text = ' '.join(repeat(en_text.split(), c.min_en))
+                    en_text = ' '.join(repeat(en_text.split(), c.min_en, c.max_en))
 
                 if len(ar_text) < c.min_ar:
-                    ar_text = ' '.join(repeat(ar_text.split(), c.min_ar))                
+                    ar_text = ' '.join(repeat(ar_text.split(), c.min_ar, c.max_ar))                
                 
                 wave = padd(wave, c.max_wave) 
                 en.append(en_text)
@@ -244,6 +244,7 @@ if __name__ == '__main__':
                     r"D:\Study\GitHub\dev\tokens\ar_tokenizer.json",
                     r"D:\Study\GitHub\dev\wav", 
                     r'D:\Study\GitHub\dev\btached',
+                    
                     16000, 5, 500, 5, 7, 16000, 25, 25, 16000*20)
     
     create_batch(config)
