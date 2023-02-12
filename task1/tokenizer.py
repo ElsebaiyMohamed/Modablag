@@ -86,6 +86,7 @@ if __name__ == '__main__':
     # files = os.listdir(data_path)       # put the pathes of the files that you will train on
     # for i, f in enumerate(files):
     #     files[i] = os.path.join(data_path, f)
-    files = [r"D:\Study\GitHub\dev\text\dev.ar"]
+    files = [r"E:\Programs_implementation\Anaconda\dataaaaaaaaaaaaaaaa\data\dev\txt\dev.ar",
+             r"E:\Programs_implementation\Anaconda\dataaaaaaaaaaaaaaaa\data\train\txt\train.ar"]
     
     tokenizer = get_tokenizer(files, save_dir, tokenizer_name, arabic_preprocess)
