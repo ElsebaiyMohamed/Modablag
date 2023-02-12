@@ -245,7 +245,7 @@ if __name__ == '__main__':
                     r"D:\Study\GitHub\dev\wav", 
                     r'D:\Study\GitHub\dev\btached',
                     
-                    16000, 5, 500, 5, 7, 16000, 25, 25, 16000*20)
+                    16000, 100, 5000, 10, 10, 16000*3, 50, 45, 16000*15)
     
     create_batch(config)
     
