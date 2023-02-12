@@ -3,11 +3,8 @@ import re
 import librosa
 import numpy as np
 import random
-import os
-import h5py
-from os.path import join
-from pyarabic.araby import tokenize, is_arabicrange, strip_tashkeel, normalize_hamza,\
-                           strip_tatweel, strip_lastharaka
+
+from pyarabic.araby import strip_tatweel, strip_lastharaka
 from pyarabic.trans import normalize_digits
 
 
