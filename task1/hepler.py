@@ -176,12 +176,7 @@ def get_form_wave(offset, duration, wave_path, sr):
 
 
 # --------------------------------------------
-def numprize_text(text, _dict, unk=1): # TODO
-    text = text.split()
-    items = np.zeros(len(text))
-    for i, word in enumerate(text):
-        items[i] = _dict.get(word, unk)
-    return items
+
 
 def repeat(items, min_len, max_len, p=0.2):
     new_items = []
@@ -200,13 +195,11 @@ def repeat(items, min_len, max_len, p=0.2):
     return items[:max_len]
             
 
-def repeat_wave(wave, min_len, max_len):
-    return wave
 
 
-def padd(items, max_len, pad=4):
+def padd(items, max_len, pad=0):
     
-    return np.pad(items, (0, np.max(0, max_len-len(items))), 'constant', constant_values=(0, pad))
+    return np.pad(items, (0, np.max([0, max_len-len(items)])), 'constant', constant_values=(0, pad))
            
 def load_dict(path):
     data = dict()
@@ -224,4 +217,5 @@ def load_dict(path):
 
                 
 if __name__ == "__main__":
-    print(padd([1, 2, 3], 2))
+    print(type(padd(librosa.load(r"D:\Study\GitHub\dev\wav\ted_767.wav", duration=3.509999, offset=12.750000)[0], 100)))
+    # print(np.max([0, 10000000 - 1000000000000]))

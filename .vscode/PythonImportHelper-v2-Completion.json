@@ -758,7 +758,7 @@
         "kind": 6,
         "importPath": "task1.batch",
         "description": "task1.batch",
-        "peekOfCode": "class Config:\n    en_file: str\n    ar_file: str\n    yaml_path: str\n    en_dict: str\n    ar_dict: str \n    wave_folder: str\n    save_folder: str\n    sr: int\n    n_batch: int",
+        "peekOfCode": "class Config:\n    en_file: str\n    ar_file: str\n    yaml_path: str\n    # en_token: str\n    # ar_token: str \n    wave_folder: str\n    save_folder: str\n    sr: int\n    n_batch: int",
         "detail": "task1.batch",
         "documentation": {}
     },
@@ -767,7 +767,7 @@
         "kind": 2,
         "importPath": "task1.batch",
         "description": "task1.batch",
-        "peekOfCode": "def create_batch(c: Config):\n    en_dict = load_dict(c.en_dict)\n    ar_dict = load_dict(c.ar_dict)\n    os.makedirs(c.save_folder, exist_ok=True)\n    en_data   = get_en(c.en_file)\n    ar_data   = get_ar(c.ar_file)\n    yaml_data = get_ymal(c.yaml_path)\n    f = False\n    gc.enable()\n    gc.set_threshold(3, 2, 1)",
+        "peekOfCode": "def create_batch(c: Config):\n    # en_token = TokenHandler(c.en_token)\n    # ar_token = TokenHandler(c.ar_token)\n    os.makedirs(c.save_folder, exist_ok=True)\n    en_data   = get_en(c.en_file)\n    ar_data   = get_ar(c.ar_file)\n    yaml_data = get_ymal(c.yaml_path)\n    f = False\n    gc.enable()\n    gc.set_threshold(3, 2, 1)",
         "detail": "task1.batch",
         "documentation": {}
     },
@@ -875,16 +875,7 @@
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def get_form_wave(offset, duration, wave_path, sr):\n    audio, sr = librosa.load(wave_path, sr=sr, offset=offset, duration=duration)\n    return audio\n# --------------------------------------------\ndef numprize_text(text, _dict, unk=1): # TODO\n    text = text.split()\n    items = np.zeros(len(text))\n    for i, word in enumerate(text):\n        items[i] = _dict.get(word, unk)\n    return items",
-        "detail": "task1.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "numprize_text",
-        "kind": 2,
-        "importPath": "task1.hepler",
-        "description": "task1.hepler",
-        "peekOfCode": "def numprize_text(text, _dict, unk=1): # TODO\n    text = text.split()\n    items = np.zeros(len(text))\n    for i, word in enumerate(text):\n        items[i] = _dict.get(word, unk)\n    return items\ndef repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:",
+        "peekOfCode": "def get_form_wave(offset, duration, wave_path, sr):\n    audio, sr = librosa.load(wave_path, sr=sr, offset=offset, duration=duration)\n    return audio\n# --------------------------------------------\ndef repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:\n            r = random.random()\n            if r < p:",
         "detail": "task1.hepler",
         "documentation": {}
     },
@@ -898,20 +889,11 @@
         "documentation": {}
     },
     {
-        "label": "repeat_wave",
-        "kind": 2,
-        "importPath": "task1.hepler",
-        "description": "task1.hepler",
-        "peekOfCode": "def repeat_wave(wave, min_len, max_len):\n    return wave\ndef padd(items, max_len, pad=4):\n    return np.pad(items, (0, np.max(0, max_len-len(items))), 'constant', constant_values=(0, pad))\ndef load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')",
-        "detail": "task1.hepler",
-        "documentation": {}
-    },
-    {
         "label": "padd",
         "kind": 2,
         "importPath": "task1.hepler",
         "description": "task1.hepler",
-        "peekOfCode": "def padd(items, max_len, pad=4):\n    return np.pad(items, (0, np.max(0, max_len-len(items))), 'constant', constant_values=(0, pad))\ndef load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')",
+        "peekOfCode": "def padd(items, max_len, pad=0):\n    return np.pad(items, (0, np.max([0, max_len-len(items)])), 'constant', constant_values=(0, pad))\ndef load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')",
         "detail": "task1.hepler",
         "documentation": {}
     },

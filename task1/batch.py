@@ -8,8 +8,8 @@ class Config:
     en_file: str
     ar_file: str
     yaml_path: str
-    en_dict: str
-    ar_dict: str 
+    # en_token: str
+    # ar_token: str 
     wave_folder: str
     save_folder: str
     sr: int
@@ -24,8 +24,8 @@ class Config:
 
 def create_batch(c: Config):
     
-    en_dict = load_dict(c.en_dict)
-    ar_dict = load_dict(c.ar_dict)
+    # en_token = TokenHandler(c.en_token)
+    # ar_token = TokenHandler(c.ar_token)
     os.makedirs(c.save_folder, exist_ok=True)
     
     en_data   = get_en(c.en_file)
@@ -39,8 +39,9 @@ def create_batch(c: Config):
     for j in range(c.n_batch):
 
         i = 0
-        en    = np.zeros((c.batch_size, c.max_en), np.int32) 
-        ar    = np.zeros((c.batch_size, c.max_ar), np.int32) 
+        en    = np.zeros((c.batch_size), np.string_) 
+        ar    = np.zeros((c.batch_size),  np.string_)
+         
         waves = np.zeros((c.batch_size, c.max_wave), np.float32) 
         
         
@@ -56,28 +57,26 @@ def create_batch(c: Config):
                 (duration, offset), wave_path = next(yaml_data)
                 wave = get_form_wave(offset, duration, join(c.wave_folder, wave_path), c.sr)
                 
-                en_text = english_preprocess(en_text)
-                en_text = numprize_text(en_text, en_dict)  
-                ar_text = arabic_preprocess(ar_text) 
-                ar_text = numprize_text(ar_text, ar_dict) 
-                
-                if en_text.shape[0] > c.max_en or ar_text.shape[0] > c.max_ar or wave.shape[0] > c.max_wave:
+                if len(en_text.split()) > c.max_en or len(ar_text.split()) > c.max_ar or \
+                        wave.shape[0] > c.max_wave or  wave.shape[0] < c.min_wave:
                     continue
+                
+                en_text = english_preprocess(en_text)
+                # en_text =  en_token.enocde_line(en_text)[0]
+                ar_text = arabic_preprocess(ar_text) 
+                # ar_text = ar_token.enocde_line(ar_text)[0] 
+                
+                
 
                 if len(en_text) < c.min_en:
-                    en_text = repeat(en_text, c.min_en, c.max_en)
+                    en_text = ' '.join(repeat(en_text.split(), c.min_en))
 
                 if len(ar_text) < c.min_ar:
-                    ar_text = repeat(ar_text, c.min_ar, c.max_ar)
-
-                if wave.shape[0] < c.min_wave:
-                    wave = repeat_wave(wave, c.min_wave, c.max_wave)
+                    ar_text = ' '.join(repeat(ar_text.split(), c.min_ar))                
                 
-                en_text = padd(en_text, c.max_en)  
-                ar_text = padd(ar_text, c.max_ar) 
                 wave = padd(wave, c.max_wave) 
                 en[i] = en_text
-                ar[i] = ar_text
+                ar[i] = ar_text.encode()
                 waves[i] = wave
                 i += 1
             except StopIteration as e:
@@ -95,8 +94,8 @@ def create_batch(c: Config):
         with h5py.File(join(c.save_folder, f'batch_{j}.h5'), 'w') as fp:
             
             fp.create_dataset('en', data=en)
-            fp.create_dataset('ar', dtype=np.int32, data=ar)
-            fp.create_dataset('waves', dtype=np.float32, data=waves)
+            fp.create_dataset('ar', data=ar)
+            fp.create_dataset('waves',data=waves)
             del en, ar, waves
             
             print('done')
@@ -109,8 +108,8 @@ def create_batch(c: Config):
 
 if __name__ == '__main__':
     config = Config(r"D:\Study\GitHub\dev\text\dev.en", r"D:\Study\GitHub\dev\text\dev.ar",
-                    r"D:\Study\GitHub\dev\text\dev.yaml.yaml", r"D:\Study\GitHub\dev\vocublary\en.txt",
-                    r"D:\Study\GitHub\dev\vocublary\ar.txt", r"D:\Study\GitHub\dev\wav", r'D:\Study\GitHub\dev\btached',
+                    r"D:\Study\GitHub\dev\text\dev.yaml.yaml", #r"D:\Study\GitHub\dev\vocublary\en.txt", r"D:\Study\GitHub\dev\vocublary\ar.txt"
+                    r"D:\Study\GitHub\dev\wav", r'D:\Study\GitHub\dev\btached',
                     16000, 5, 500, 5, 7, 16000, 25, 25, 16000*20)
     
     create_batch(config)
