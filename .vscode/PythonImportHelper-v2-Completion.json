@@ -1,11 +1,370 @@
 [
     {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "unicodedata",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unicodedata",
+        "description": "unicodedata",
+        "detail": "unicodedata",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "os",
         "description": "os",
         "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "join",
+        "importPath": "os.path",
+        "description": "os.path",
+        "isExtraImport": true,
+        "detail": "os.path",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "ndarray",
+        "importPath": "numpy",
+        "description": "numpy",
+        "isExtraImport": true,
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "ndarray",
+        "importPath": "numpy",
+        "description": "numpy",
+        "isExtraImport": true,
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "ndarray",
+        "importPath": "numpy",
+        "description": "numpy",
+        "isExtraImport": true,
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "ndarray",
+        "importPath": "numpy",
+        "description": "numpy",
+        "isExtraImport": true,
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "ndarray",
+        "importPath": "numpy",
+        "description": "numpy",
+        "isExtraImport": true,
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "ndarray",
+        "importPath": "numpy",
+        "description": "numpy",
+        "isExtraImport": true,
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "librosa",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "librosa",
+        "description": "librosa",
+        "detail": "librosa",
+        "documentation": {}
+    },
+    {
+        "label": "h5py",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "h5py",
+        "description": "h5py",
+        "detail": "h5py",
+        "documentation": {}
+    },
+    {
+        "label": "TokenHandler",
+        "importPath": "manager",
+        "description": "manager",
+        "isExtraImport": true,
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "gc",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gc",
+        "description": "gc",
+        "detail": "gc",
+        "documentation": {}
+    },
+    {
+        "label": "strip_tatweel",
+        "importPath": "pyarabic.araby",
+        "description": "pyarabic.araby",
+        "isExtraImport": true,
+        "detail": "pyarabic.araby",
+        "documentation": {}
+    },
+    {
+        "label": "strip_lastharaka",
+        "importPath": "pyarabic.araby",
+        "description": "pyarabic.araby",
+        "isExtraImport": true,
+        "detail": "pyarabic.araby",
+        "documentation": {}
+    },
+    {
+        "label": "strip_tatweel",
+        "importPath": "pyarabic.araby",
+        "description": "pyarabic.araby",
+        "isExtraImport": true,
+        "detail": "pyarabic.araby",
+        "documentation": {}
+    },
+    {
+        "label": "strip_lastharaka",
+        "importPath": "pyarabic.araby",
+        "description": "pyarabic.araby",
+        "isExtraImport": true,
+        "detail": "pyarabic.araby",
+        "documentation": {}
+    },
+    {
+        "label": "strip_tatweel",
+        "importPath": "pyarabic.araby",
+        "description": "pyarabic.araby",
+        "isExtraImport": true,
+        "detail": "pyarabic.araby",
+        "documentation": {}
+    },
+    {
+        "label": "strip_lastharaka",
+        "importPath": "pyarabic.araby",
+        "description": "pyarabic.araby",
+        "isExtraImport": true,
+        "detail": "pyarabic.araby",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_digits",
+        "importPath": "pyarabic.trans",
+        "description": "pyarabic.trans",
+        "isExtraImport": true,
+        "detail": "pyarabic.trans",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_digits",
+        "importPath": "pyarabic.trans",
+        "description": "pyarabic.trans",
+        "isExtraImport": true,
+        "detail": "pyarabic.trans",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_digits",
+        "importPath": "pyarabic.trans",
+        "description": "pyarabic.trans",
+        "isExtraImport": true,
+        "detail": "pyarabic.trans",
+        "documentation": {}
+    },
+    {
+        "label": "Tokenizer",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "decoders",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "Tokenizer",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "normalizers",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "pre_tokenizers",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "decoders",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "trainers",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "Tokenizer",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "decoders",
+        "importPath": "tokenizers",
+        "description": "tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "WordPiece",
+        "importPath": "tokenizers.models",
+        "description": "tokenizers.models",
+        "isExtraImport": true,
+        "detail": "tokenizers.models",
+        "documentation": {}
+    },
+    {
+        "label": "Whitespace",
+        "importPath": "tokenizers.pre_tokenizers",
+        "description": "tokenizers.pre_tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers.pre_tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "Digits",
+        "importPath": "tokenizers.pre_tokenizers",
+        "description": "tokenizers.pre_tokenizers",
+        "isExtraImport": true,
+        "detail": "tokenizers.pre_tokenizers",
+        "documentation": {}
+    },
+    {
+        "label": "NFD",
+        "importPath": "tokenizers.normalizers",
+        "description": "tokenizers.normalizers",
+        "isExtraImport": true,
+        "detail": "tokenizers.normalizers",
+        "documentation": {}
+    },
+    {
+        "label": "StripAccents",
+        "importPath": "tokenizers.normalizers",
+        "description": "tokenizers.normalizers",
+        "isExtraImport": true,
+        "detail": "tokenizers.normalizers",
+        "documentation": {}
+    },
+    {
+        "label": "TemplateProcessing",
+        "importPath": "tokenizers.processors",
+        "description": "tokenizers.processors",
+        "isExtraImport": true,
+        "detail": "tokenizers.processors",
         "documentation": {}
     },
     {
@@ -274,63 +633,6 @@
         "documentation": {}
     },
     {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
         "label": "Union",
         "importPath": "typing",
         "description": "typing",
@@ -435,22 +737,6 @@
         "documentation": {}
     },
     {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
         "label": "SinuSoidal",
         "importPath": "posEncoders",
         "description": "posEncoders",
@@ -483,14 +769,6 @@
         "documentation": {}
     },
     {
-        "label": "dataclass",
-        "importPath": "dataclasses",
-        "description": "dataclasses",
-        "isExtraImport": true,
-        "detail": "dataclasses",
-        "documentation": {}
-    },
-    {
         "label": "SinuSoidal",
         "importPath": "utils.posEncoders",
         "description": "utils.posEncoders",
@@ -504,6 +782,330 @@
         "description": "utils.encoder",
         "isExtraImport": true,
         "detail": "utils.encoder",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "class Config:\n    en_file: str\n    ar_file: str\n    yaml_path: str\n    en_token: str\n    ar_token: str \n    wave_folder: str\n    save_folder: str\n    sr: int\n    n_batch: int",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "digit_convertor",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def digit_convertor(text):\n    return normalize_digits(text, source='all', out='east')\ndef arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "arabic_normlizer",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "unicode_to_ascii",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:\n        ASCII file\n    Converts the unicode file to ascii\n    For each character:\n                        there are two normal forms: normal form C and normal form D. \n                                                    - Normal form D (NFD) is also known as canonical decomposition,",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "arabic_preprocess",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def arabic_preprocess(s):\n    '''\n    Args:\n        s : A single sentence \n    '''\n    s = arabic_normlizer(s)\n    s = unicode_to_ascii(s.strip())\n#         s = re.sub(r\"([?.!,¿؟])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^أ-ۿ١-٩اءئ؟!.':,?_،إ]+\", \" \", s)",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "english_preprocess",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def english_preprocess(s):\n#    s = re.sub(r\"([?.!,¿])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^a-zA-Z0-9?.'!:_,¿]+\", \" \", s)\n    s = s.rstrip().strip()\n#     s = f'<start> {s} <end>'\n    return s\ndef get_en(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "get_en",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def get_en(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "get_ar",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "get_ymal",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            line = line.strip('- {').strip('}\\n')\n            line = line.split(',')\n            times = tuple(map(fun, line[:2]))",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "get_form_wave",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def get_form_wave(offset, duration, wave_path, sr):\n    audio, sr = librosa.load(wave_path, sr=sr, offset=offset, duration=duration)\n    return audio\n# --------------------------------------------\ndef repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:\n            r = random.random()\n            if r < p:",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "repeat",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:\n            r = random.random()\n            if r < p:\n                new_items.append(i)\n                new_items.append(i)\n            else:\n                new_items.append(i)",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "padd",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def padd(items, max_len, pad=0):\n    return np.pad(items, (0, np.max([0, max_len-len(items)])), 'constant', constant_values=(0, pad))\n@dataclass\nclass Config:\n    en_file: str\n    ar_file: str\n    yaml_path: str\n    en_token: str\n    ar_token: str \n    wave_folder: str",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "create_batch",
+        "kind": 2,
+        "importPath": "task1.batch",
+        "description": "task1.batch",
+        "peekOfCode": "def create_batch(c: Config):\n    en_token = TokenHandler(c.en_token)\n    ar_token = TokenHandler(c.ar_token)\n    os.makedirs(c.save_folder, exist_ok=True)\n    en_data   = get_en(c.en_file)\n    ar_data   = get_ar(c.ar_file)\n    yaml_data = get_ymal(c.yaml_path)\n    f = False\n    gc.enable()\n    gc.set_threshold(3, 2, 1)",
+        "detail": "task1.batch",
+        "documentation": {}
+    },
+    {
+        "label": "save_data",
+        "kind": 2,
+        "importPath": "task1.dict",
+        "description": "task1.dict",
+        "peekOfCode": "def save_data(file, save_dir, lang='en'):\n    os.makedirs(save_dir, exist_ok=True)\n    os.makedirs(f'{save_dir}/vocublary', exist_ok=True)\n    processor = english_preprocess if  lang == 'en' else arabic_preprocess\n    with open(file, mode=\"r\", encoding='utf-8-sig') as f: \n        voc = GetVoc()\n        i = 0\n        for text in f:\n            print(end='\\r')\n            print('AT Line',i , end='')",
+        "detail": "task1.dict",
+        "documentation": {}
+    },
+    {
+        "label": "GetVoc",
+        "kind": 6,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "class GetVoc:\n    def __init__(self, unk=1, start=2, end=3, pad=4):\n        self.voc = dict()\n        self.voc['<unk>'] = unk\n        self.voc['<s>'] = start\n        self.voc['<\\s>'] = end\n        self.voc['<pad>'] = pad\n        self.freq = dict()\n        self.freq['<unk>'] = 1\n        self.freq['<s>'] = 1",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "digit_convertor",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def digit_convertor(text):\n    return normalize_digits(text, source='all', out='east')\ndef arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "arabic_normlizer",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "unicode_to_ascii",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:\n        ASCII file\n    Converts the unicode file to ascii\n    For each character:\n                        there are two normal forms: normal form C and normal form D. \n                                                    - Normal form D (NFD) is also known as canonical decomposition,",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "arabic_preprocess",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def arabic_preprocess(s):\n    '''\n    Args:\n        s : A single sentence \n    '''\n    s = arabic_normlizer(s)\n    s = unicode_to_ascii(s.strip())\n#         s = re.sub(r\"([?.!,¿؟])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^أ-ۿ١-٩اءئ؟!.':,?_،إ]+\", \" \", s)",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "english_preprocess",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def english_preprocess(s):\n    '''\n    Args:\n        s : A single sentence \n    Returns:\n        s : Single normalize sentence \n    Convert Unicode to ASCII\n    Creating a space between a word and the punctuation following it\n    eg: \"he is a boy.\" => \"he is a boy .\" \n    Reference:- https://stackoverflow.com/questions/3645931/python-padding-punctuation-with-white-spaces-keeping-punctuation",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "sort_freq",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def sort_freq(pair):\n            return pair[1]\nclass GetVoc:\n    def __init__(self, unk=1, start=2, end=3, pad=4):\n        self.voc = dict()\n        self.voc['<unk>'] = unk\n        self.voc['<s>'] = start\n        self.voc['<\\s>'] = end\n        self.voc['<pad>'] = pad\n        self.freq = dict()",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "get_en",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def get_en(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "get_ar",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "get_ymal",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            line = line.strip('- {').strip('}\\n')\n            line = line.split(',')\n            times = tuple(map(fun, line[:2]))",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "get_form_wave",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def get_form_wave(offset, duration, wave_path, sr):\n    audio, sr = librosa.load(wave_path, sr=sr, offset=offset, duration=duration)\n    return audio\n# --------------------------------------------\ndef repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:\n            r = random.random()\n            if r < p:",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "repeat",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:\n            r = random.random()\n            if r < p:\n                new_items.append(i)\n                new_items.append(i)\n            else:\n                new_items.append(i)",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "padd",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def padd(items, max_len, pad=0):\n    return np.pad(items, (0, np.max([0, max_len-len(items)])), 'constant', constant_values=(0, pad))\ndef load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "load_dict",
+        "kind": 2,
+        "importPath": "task1.hepler",
+        "description": "task1.hepler",
+        "peekOfCode": "def load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')\n            key, value = line.split('==')\n            data[key.strip()] = int(value.strip())",
+        "detail": "task1.hepler",
+        "documentation": {}
+    },
+    {
+        "label": "TokenHandler",
+        "kind": 6,
+        "importPath": "task1.manager",
+        "description": "task1.manager",
+        "peekOfCode": "class TokenHandler:\n    def __init__(self, json_path):\n        self.tok = Tokenizer.from_file(json_path)\n        self.tok.decoder = decoders.WordPiece()\n        self.tok.enable_padding(pad_id=self.get_id(\"<PAD>\"), pad_token=\"<PAD>\")\n    def enocde_line(self, text):\n        out = self.tok.encode(text)\n        return out.ids, out.tokens\n    def get_id(self, token):\n        return self.tok.token_to_id(token)",
+        "detail": "task1.manager",
+        "documentation": {}
+    },
+    {
+        "label": "digit_convertor",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def digit_convertor(text):\n    return normalize_digits(text, source='all', out='east')\ndef arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:",
+        "detail": "task1.tokenizer",
+        "documentation": {}
+    },
+    {
+        "label": "arabic_normlizer",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:",
+        "detail": "task1.tokenizer",
+        "documentation": {}
+    },
+    {
+        "label": "unicode_to_ascii",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:\n        ASCII file\n    Converts the unicode file to ascii\n    For each character:\n                        there are two normal forms: normal form C and normal form D. \n                                                    - Normal form D (NFD) is also known as canonical decomposition,",
+        "detail": "task1.tokenizer",
+        "documentation": {}
+    },
+    {
+        "label": "arabic_preprocess",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def arabic_preprocess(s):\n    '''\n    Args:\n        s : A single sentence \n    '''\n    s = arabic_normlizer(s)\n    s = unicode_to_ascii(s.strip())\n#         s = re.sub(r\"([?.!,¿؟])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^أ-ۿ١-٩اءئ؟!.':,?_،إ]+\", \" \", s)",
+        "detail": "task1.tokenizer",
+        "documentation": {}
+    },
+    {
+        "label": "english_preprocess",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def english_preprocess(s):\n#    s = re.sub(r\"([?.!,¿])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^a-zA-Z0-9?.'!:_,¿]+\", \" \", s)\n    s = s.rstrip().strip()\n#     s = f'<start> {s} <end>'\n    return s\ndef gen(file, preprocess):\n    for ff in file:\n        with open(ff, encoding='utf-8-sig') as f:",
+        "detail": "task1.tokenizer",
+        "documentation": {}
+    },
+    {
+        "label": "gen",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def gen(file, preprocess):\n    for ff in file:\n        with open(ff, encoding='utf-8-sig') as f:\n            for line in f:\n                try: \n                    line = line.decode()\n                except:\n                    line = line\n                # sys.stdout.buffer.write(line.encode())\n                yield preprocess(line)",
+        "detail": "task1.tokenizer",
+        "documentation": {}
+    },
+    {
+        "label": "get_tokenizer",
+        "kind": 2,
+        "importPath": "task1.tokenizer",
+        "description": "task1.tokenizer",
+        "peekOfCode": "def get_tokenizer(files, save_dir, file_name, preprocess):\n    unk_token = \"<UNK>\"  # token for unknown words\n    spl_tokens = [\"<UNK>\", \"<SEP>\", \"<MASK>\", \"<CLS>\", \"<PAD>\"]  # special tokens\n    tokenizer = Tokenizer(WordPiece(unk_token = unk_token))\n    normalizer = normalizers.Sequence([NFD(), StripAccents()])\n    pre_tokenizer = Whitespace()\n    pre_tokenizer = pre_tokenizers.Sequence([Whitespace(), Digits(individual_digits=True)])\n    tokenizer.normalizer = normalizer\n    tokenizer.pre_tokenizer = pre_tokenizer\n    tokenizer.post_processor = TemplateProcessing(single=\"[CLS] $A [SEP]\",",
+        "detail": "task1.tokenizer",
         "documentation": {}
     },
     {
@@ -765,6 +1367,42 @@
         "description": "task3.bert1.0",
         "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom utils.posEncoders import SinuSoidal\nfrom utils.encoder import EncoderLayer\nclass Bert(keras.Model):\n    def __init__(self, vocab_size: int, emp_dim: int, max_sent_lenght: int,",
         "detail": "task3.bert1.0",
+        "documentation": {}
+    },
+    {
+        "label": "TokenHandler",
+        "kind": 6,
+        "importPath": "task3.pre_data",
+        "description": "task3.pre_data",
+        "peekOfCode": "class TokenHandler:\n    def __init__(self, json_path):\n        self.tok = Tokenizer.from_file(json_path)\n        self.tok.decoder = decoders.WordPiece()\n        self.tok.enable_padding(pad_id=self.get_id(\"<PAD>\"), pad_token=\"<PAD>\")\n    def enocde_line(self, text):\n        out = self.tok.encode(text)\n        return out.ids, out.tokens\n    def get_id(self, token):\n        return self.tok.token_to_id(token)",
+        "detail": "task3.pre_data",
+        "documentation": {}
+    },
+    {
+        "label": "ar_json",
+        "kind": 5,
+        "importPath": "task3.pre_data",
+        "description": "task3.pre_data",
+        "peekOfCode": "ar_json = r\"D:\\Study\\GitHub\\data\\dict\\ar_tokenizer.json\"\nen_json = r\"D:\\Study\\GitHub\\data\\dict\\en_tokenizer.json\"\nh5_path = [r\"D:\\Study\\GitHub\\data\\h5_data\\batch_0.h5\"]",
+        "detail": "task3.pre_data",
+        "documentation": {}
+    },
+    {
+        "label": "en_json",
+        "kind": 5,
+        "importPath": "task3.pre_data",
+        "description": "task3.pre_data",
+        "peekOfCode": "en_json = r\"D:\\Study\\GitHub\\data\\dict\\en_tokenizer.json\"\nh5_path = [r\"D:\\Study\\GitHub\\data\\h5_data\\batch_0.h5\"]",
+        "detail": "task3.pre_data",
+        "documentation": {}
+    },
+    {
+        "label": "h5_path",
+        "kind": 5,
+        "importPath": "task3.pre_data",
+        "description": "task3.pre_data",
+        "peekOfCode": "h5_path = [r\"D:\\Study\\GitHub\\data\\h5_data\\batch_0.h5\"]",
+        "detail": "task3.pre_data",
         "documentation": {}
     },
     {

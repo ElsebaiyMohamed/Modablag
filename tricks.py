@@ -16,3 +16,8 @@ class Dog:
     @name.deleter
     def name(self):
         self.name = None
+        
+import h5py
+
+with h5py.File(r"D:\Study\GitHub\dev\btached\batch_0.h5", 'r') as f:
+    print(f['en'][()])
