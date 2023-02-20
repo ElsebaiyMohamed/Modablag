@@ -1,4 +1,4 @@
 try:
     import utils
 except ImportError:
-    import task3.utils
+    import S2T.utils
