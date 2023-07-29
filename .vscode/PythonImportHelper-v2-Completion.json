@@ -1,20 +1,187 @@
 [
     {
-        "label": "re",
-        "kind": 6,
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
         "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
+        "detail": "dataclasses",
         "documentation": {}
     },
     {
-        "label": "unicodedata",
+        "label": "field",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "unicodedata",
-        "description": "unicodedata",
-        "detail": "unicodedata",
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn.functional",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn.functional",
+        "description": "torch.nn.functional",
+        "detail": "torch.nn.functional",
+        "documentation": {}
+    },
+    {
+        "label": "pytorch_lightning",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytorch_lightning",
+        "description": "pytorch_lightning",
+        "detail": "pytorch_lightning",
+        "documentation": {}
+    },
+    {
+        "label": "CosineAnnealingWarmRestarts",
+        "importPath": "torch.optim.lr_scheduler",
+        "description": "torch.optim.lr_scheduler",
+        "isExtraImport": true,
+        "detail": "torch.optim.lr_scheduler",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn",
+        "description": "torch.nn",
+        "detail": "torch.nn",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "Callback",
+        "importPath": "pytorch_lightning.callbacks",
+        "description": "pytorch_lightning.callbacks",
+        "isExtraImport": true,
+        "detail": "pytorch_lightning.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "RichProgressBar",
+        "importPath": "pytorch_lightning.callbacks",
+        "description": "pytorch_lightning.callbacks",
+        "isExtraImport": true,
+        "detail": "pytorch_lightning.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "ModelCheckpoint",
+        "importPath": "pytorch_lightning.callbacks",
+        "description": "pytorch_lightning.callbacks",
+        "isExtraImport": true,
+        "detail": "pytorch_lightning.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "StochasticWeightAveraging",
+        "importPath": "pytorch_lightning.callbacks",
+        "description": "pytorch_lightning.callbacks",
+        "isExtraImport": true,
+        "detail": "pytorch_lightning.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "RichProgressBarTheme",
+        "importPath": "pytorch_lightning.callbacks.progress.rich_progress",
+        "description": "pytorch_lightning.callbacks.progress.rich_progress",
+        "isExtraImport": true,
+        "detail": "pytorch_lightning.callbacks.progress.rich_progress",
+        "documentation": {}
+    },
+    {
+        "label": "torchmetrics.functional",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torchmetrics.functional",
+        "description": "torchmetrics.functional",
+        "detail": "torchmetrics.functional",
+        "documentation": {}
+    },
+    {
+        "label": "print",
+        "importPath": "rich",
+        "description": "rich",
+        "isExtraImport": true,
+        "detail": "rich",
+        "documentation": {}
+    },
+    {
+        "label": "torchaudio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torchaudio",
+        "description": "torchaudio",
+        "detail": "torchaudio",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "Dataset",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "CLoader",
+        "importPath": "yaml",
+        "description": "yaml",
+        "isExtraImport": true,
+        "detail": "yaml",
         "documentation": {}
     },
     {
@@ -27,15 +194,6 @@
         "documentation": {}
     },
     {
-        "label": "random",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "random",
-        "description": "random",
-        "detail": "random",
-        "documentation": {}
-    },
-    {
         "label": "join",
         "importPath": "os.path",
         "description": "os.path",
@@ -44,207 +202,28 @@
         "documentation": {}
     },
     {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "ndarray",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "librosa",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "librosa",
-        "description": "librosa",
-        "detail": "librosa",
-        "documentation": {}
-    },
-    {
-        "label": "h5py",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "h5py",
-        "description": "h5py",
-        "detail": "h5py",
-        "documentation": {}
-    },
-    {
         "label": "TokenHandler",
-        "importPath": "manager",
-        "description": "manager",
+        "importPath": "aang.utils.lang",
+        "description": "aang.utils.lang",
         "isExtraImport": true,
-        "detail": "manager",
+        "detail": "aang.utils.lang",
         "documentation": {}
     },
     {
-        "label": "dataclass",
-        "importPath": "dataclasses",
-        "description": "dataclasses",
+        "label": "normalize_digits",
+        "importPath": "pyarabic.trans",
+        "description": "pyarabic.trans",
         "isExtraImport": true,
-        "detail": "dataclasses",
+        "detail": "pyarabic.trans",
         "documentation": {}
     },
     {
-        "label": "dataclass",
-        "importPath": "dataclasses",
-        "description": "dataclasses",
-        "isExtraImport": true,
-        "detail": "dataclasses",
-        "documentation": {}
-    },
-    {
-        "label": "gc",
+        "label": "re",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "gc",
-        "description": "gc",
-        "detail": "gc",
-        "documentation": {}
-    },
-    {
-        "label": "strip_tatweel",
-        "importPath": "pyarabic.araby",
-        "description": "pyarabic.araby",
-        "isExtraImport": true,
-        "detail": "pyarabic.araby",
-        "documentation": {}
-    },
-    {
-        "label": "strip_lastharaka",
-        "importPath": "pyarabic.araby",
-        "description": "pyarabic.araby",
-        "isExtraImport": true,
-        "detail": "pyarabic.araby",
-        "documentation": {}
-    },
-    {
-        "label": "strip_tatweel",
-        "importPath": "pyarabic.araby",
-        "description": "pyarabic.araby",
-        "isExtraImport": true,
-        "detail": "pyarabic.araby",
-        "documentation": {}
-    },
-    {
-        "label": "strip_lastharaka",
-        "importPath": "pyarabic.araby",
-        "description": "pyarabic.araby",
-        "isExtraImport": true,
-        "detail": "pyarabic.araby",
-        "documentation": {}
-    },
-    {
-        "label": "strip_tatweel",
-        "importPath": "pyarabic.araby",
-        "description": "pyarabic.araby",
-        "isExtraImport": true,
-        "detail": "pyarabic.araby",
-        "documentation": {}
-    },
-    {
-        "label": "strip_lastharaka",
-        "importPath": "pyarabic.araby",
-        "description": "pyarabic.araby",
-        "isExtraImport": true,
-        "detail": "pyarabic.araby",
-        "documentation": {}
-    },
-    {
-        "label": "normalize_digits",
-        "importPath": "pyarabic.trans",
-        "description": "pyarabic.trans",
-        "isExtraImport": true,
-        "detail": "pyarabic.trans",
-        "documentation": {}
-    },
-    {
-        "label": "normalize_digits",
-        "importPath": "pyarabic.trans",
-        "description": "pyarabic.trans",
-        "isExtraImport": true,
-        "detail": "pyarabic.trans",
-        "documentation": {}
-    },
-    {
-        "label": "normalize_digits",
-        "importPath": "pyarabic.trans",
-        "description": "pyarabic.trans",
-        "isExtraImport": true,
-        "detail": "pyarabic.trans",
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
         "documentation": {}
     },
     {
@@ -256,1180 +235,205 @@
         "documentation": {}
     },
     {
-        "label": "decoders",
-        "importPath": "tokenizers",
-        "description": "tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "Tokenizer",
-        "importPath": "tokenizers",
-        "description": "tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "normalizers",
-        "importPath": "tokenizers",
-        "description": "tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "pre_tokenizers",
-        "importPath": "tokenizers",
-        "description": "tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "decoders",
-        "importPath": "tokenizers",
-        "description": "tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "trainers",
-        "importPath": "tokenizers",
-        "description": "tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "Tokenizer",
-        "importPath": "tokenizers",
-        "description": "tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "decoders",
-        "importPath": "tokenizers",
-        "description": "tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "WordPiece",
-        "importPath": "tokenizers.models",
-        "description": "tokenizers.models",
-        "isExtraImport": true,
-        "detail": "tokenizers.models",
-        "documentation": {}
-    },
-    {
-        "label": "Whitespace",
-        "importPath": "tokenizers.pre_tokenizers",
-        "description": "tokenizers.pre_tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers.pre_tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "Digits",
-        "importPath": "tokenizers.pre_tokenizers",
-        "description": "tokenizers.pre_tokenizers",
-        "isExtraImport": true,
-        "detail": "tokenizers.pre_tokenizers",
-        "documentation": {}
-    },
-    {
-        "label": "NFD",
-        "importPath": "tokenizers.normalizers",
-        "description": "tokenizers.normalizers",
-        "isExtraImport": true,
-        "detail": "tokenizers.normalizers",
-        "documentation": {}
-    },
-    {
-        "label": "StripAccents",
-        "importPath": "tokenizers.normalizers",
-        "description": "tokenizers.normalizers",
-        "isExtraImport": true,
-        "detail": "tokenizers.normalizers",
-        "documentation": {}
-    },
-    {
-        "label": "TemplateProcessing",
-        "importPath": "tokenizers.processors",
-        "description": "tokenizers.processors",
-        "isExtraImport": true,
-        "detail": "tokenizers.processors",
-        "documentation": {}
-    },
-    {
-        "label": "Layer",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Layer",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Layer",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "LayerNormalization",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Add",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Dropout",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Dense",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Layer",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "LayerNormalization",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Layer",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "MultiHeadAttention",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "LayerNormalization",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "Add",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "serialize",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "deserialize",
-        "importPath": "tensorflow.keras.layers",
-        "description": "tensorflow.keras.layers",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras.layers",
-        "documentation": {}
-    },
-    {
-        "label": "tensorflow",
+        "label": "setuptools",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "detail": "tensorflow",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "detail": "setuptools",
         "documentation": {}
     },
     {
-        "label": "Tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
+        "label": "DDPStrategy",
+        "importPath": "pytorch_lightning.strategies",
+        "description": "pytorch_lightning.strategies",
         "isExtraImport": true,
-        "detail": "tensorflow",
+        "detail": "pytorch_lightning.strategies",
         "documentation": {}
     },
     {
-        "label": "Tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
+        "label": "MuSTCDataset",
+        "importPath": "aang.utils.data",
+        "description": "aang.utils.data",
         "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "is_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "convert_to_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "float32",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "Tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "cast",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "float32",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "newaxis",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "is_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "convert_to_tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "float32",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "Tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "keras",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "Tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "keras",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "Tensor",
-        "importPath": "tensorflow",
-        "description": "tensorflow",
-        "isExtraImport": true,
-        "detail": "tensorflow",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Tuple",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Sequential",
-        "importPath": "tensorflow.keras",
-        "description": "tensorflow.keras",
-        "isExtraImport": true,
-        "detail": "tensorflow.keras",
-        "documentation": {}
-    },
-    {
-        "label": "SinuSoidal",
-        "importPath": "posEncoders",
-        "description": "posEncoders",
-        "isExtraImport": true,
-        "detail": "posEncoders",
+        "detail": "aang.utils.data",
         "documentation": {}
     },
     {
         "label": "*",
-        "importPath": "baseT",
-        "description": "baseT",
+        "importPath": "aang.utils.callback",
+        "description": "aang.utils.callback",
         "isExtraImport": true,
-        "detail": "baseT",
+        "detail": "aang.utils.callback",
         "documentation": {}
     },
     {
-        "label": "BTConfig",
-        "importPath": "baseT",
-        "description": "baseT",
+        "label": "Speech2TextArcht",
+        "importPath": "aang.model.S2T",
+        "description": "aang.model.S2T",
         "isExtraImport": true,
-        "detail": "baseT",
+        "detail": "aang.model.S2T",
         "documentation": {}
     },
     {
-        "label": "BTransformer",
-        "importPath": "baseT",
-        "description": "baseT",
+        "label": "multiprocessing",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "baseT",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "detail": "multiprocessing",
         "documentation": {}
     },
     {
-        "label": "SinuSoidal",
-        "importPath": "utils.posEncoders",
-        "description": "utils.posEncoders",
+        "label": "ArgumentParser",
+        "importPath": "argparse",
+        "description": "argparse",
         "isExtraImport": true,
-        "detail": "utils.posEncoders",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "HPrams",
+        "kind": 6,
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.model.S2T",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.model.S2T",
+        "peekOfCode": "class HPrams:\n    wave_param: dict     = field(default_factory=dict)\n    encoder_params: dict = field(default_factory=dict)\n    decoder_params: dict = field(default_factory=dict)\n    head_names: dict     = field(default_factory=dict)\n    head_params: dict    = field(default_factory=dict)\nclass Model(nn.Module):  \n    def __init__(self, wave_param: dict, encoder_params: dict, decoder_params: dict, head_names: dict, head_params: dict):\n        super(Model, self).__init__()\n        self.hparams = HPrams(wave_param=wave_param, encoder_params=encoder_params, decoder_params=decoder_params, ",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.model.S2T",
+        "documentation": {}
+    },
+    {
+        "label": "Model",
+        "kind": 6,
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.model.S2T",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.model.S2T",
+        "peekOfCode": "class Model(nn.Module):  \n    def __init__(self, wave_param: dict, encoder_params: dict, decoder_params: dict, head_names: dict, head_params: dict):\n        super(Model, self).__init__()\n        self.hparams = HPrams(wave_param=wave_param, encoder_params=encoder_params, decoder_params=decoder_params, \n                              head_names=head_names, head_params=head_params)\n        self.wave_enc = Wave2Chunk(**self.hparams.wave_param)\n        self.context_enc = Encoder(**self.hparams.encoder_params)\n        self.context_dec = Decoder(**self.hparams.decoder_params)\n        self.heads = nn.ModuleDict()\n        for h, pad_idx in self.hparams.head_names.items():",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.model.S2T",
+        "documentation": {}
+    },
+    {
+        "label": "Speech2TextArcht",
+        "kind": 6,
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.model.S2T",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.model.S2T",
+        "peekOfCode": "class Speech2TextArcht(pl.LightningModule):\n    def __init__(self, wave_param: dict, encoder_params: dict, decoder_params: dict, head_names: list, head_params: dict, lr: float):\n        super(Speech2TextArcht, self).__init__()\n        self.save_hyperparameters()\n        self.model = Model(wave_param, encoder_params, decoder_params, head_names, head_params)\n        self.model.init_weights()\n#         torch._dynamo.reset()\n#         self.model = torch.compile(self.model, dynamic=True)\n    def forward(self, wave, target: dict, training=False, wave_mask=False, need_enc_weights=False, enc_mask=False,\n                target_mask=False, need_dec_weights=False, dec_mask=False):",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.model.S2T",
         "documentation": {}
     },
     {
         "label": "EncoderLayer",
-        "importPath": "utils.encoder",
-        "description": "utils.encoder",
-        "isExtraImport": true,
-        "detail": "utils.encoder",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
         "kind": 6,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "class Config:\n    en_file: str\n    ar_file: str\n    yaml_path: str\n    en_token: str\n    ar_token: str \n    wave_folder: str\n    save_folder: str\n    sr: int\n    n_batch: int",
-        "detail": "data.batch",
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
+        "peekOfCode": "class EncoderLayer(nn.Module):\n    def __init__(self, **kwargs):\n        \"\"\"@params:\n                    d_model, nhead, nch, dropout=0.3, batch_first=True\n        \"\"\"\n        super(EncoderLayer, self).__init__()\n        self.config = kwargs        \n        self.pre_norm = nn.LayerNorm(self.config['d_model'])\n        self.mha      = nn.MultiheadAttention(embed_dim=self.config['d_model'], num_heads=self.config['nhead'], dropout=self.config['dropout'], \n                                               bias=True, add_bias_kv=True, batch_first=self.config['batch_first'])",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
         "documentation": {}
     },
     {
-        "label": "digit_convertor",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def digit_convertor(text):\n    return normalize_digits(text, source='all', out='east')\ndef arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "arabic_normlizer",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "unicode_to_ascii",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:\n        ASCII file\n    Converts the unicode file to ascii\n    For each character:\n                        there are two normal forms: normal form C and normal form D. \n                                                    - Normal form D (NFD) is also known as canonical decomposition,",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "arabic_preprocess",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def arabic_preprocess(s):\n    '''\n    Args:\n        s : A single sentence \n    '''\n    s = arabic_normlizer(s)\n    s = unicode_to_ascii(s.strip())\n#         s = re.sub(r\"([?.!,¿؟])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^أ-ۿ١-٩اءئ؟!.':,?_،إ]+\", \" \", s)",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "english_preprocess",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def english_preprocess(s):\n#    s = re.sub(r\"([?.!,¿])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^a-zA-Z0-9?.'!:_,¿]+\", \" \", s)\n    s = s.rstrip().strip()\n#     s = f'<start> {s} <end>'\n    return s\ndef get_en(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "get_en",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def get_en(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "get_ar",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "get_ymal",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            line = line.strip('- {').strip('}\\n')\n            line = line.split(',')\n            times = tuple(map(fun, line[:2]))",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "get_form_wave",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def get_form_wave(offset, duration, wave_path, sr):\n    audio, sr = librosa.load(wave_path, sr=sr, offset=offset, duration=duration)\n    return audio\n# --------------------------------------------\ndef repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:\n            r = random.random()\n            if r < p:",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "repeat",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:\n            r = random.random()\n            if r < p:\n                new_items.append(i)\n                new_items.append(i)\n            else:\n                new_items.append(i)",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "padd",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def padd(items, max_len, pad=0):\n    return np.pad(items, (0, np.max([0, max_len-len(items)])), 'constant', constant_values=(0, pad))\n@dataclass\nclass Config:\n    en_file: str\n    ar_file: str\n    yaml_path: str\n    en_token: str\n    ar_token: str \n    wave_folder: str",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "create_batch",
-        "kind": 2,
-        "importPath": "data.batch",
-        "description": "data.batch",
-        "peekOfCode": "def create_batch(c: Config):\n    en_token = TokenHandler(c.en_token)\n    ar_token = TokenHandler(c.ar_token)\n    os.makedirs(c.save_folder, exist_ok=True)\n    en_data   = get_en(c.en_file)\n    ar_data   = get_ar(c.ar_file)\n    yaml_data = get_ymal(c.yaml_path)\n    f = False\n    gc.enable()\n    gc.set_threshold(3, 2, 1)",
-        "detail": "data.batch",
-        "documentation": {}
-    },
-    {
-        "label": "save_data",
-        "kind": 2,
-        "importPath": "data.dict",
-        "description": "data.dict",
-        "peekOfCode": "def save_data(file, save_dir, lang='en'):\n    os.makedirs(save_dir, exist_ok=True)\n    os.makedirs(f'{save_dir}/vocublary', exist_ok=True)\n    processor = english_preprocess if  lang == 'en' else arabic_preprocess\n    with open(file, mode=\"r\", encoding='utf-8-sig') as f: \n        voc = GetVoc()\n        i = 0\n        for text in f:\n            print(end='\\r')\n            print('AT Line',i , end='')",
-        "detail": "data.dict",
-        "documentation": {}
-    },
-    {
-        "label": "GetVoc",
+        "label": "Encoder",
         "kind": 6,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "class GetVoc:\n    def __init__(self, unk=1, start=2, end=3, pad=4):\n        self.voc = dict()\n        self.voc['<unk>'] = unk\n        self.voc['<s>'] = start\n        self.voc['<\\s>'] = end\n        self.voc['<pad>'] = pad\n        self.freq = dict()\n        self.freq['<unk>'] = 1\n        self.freq['<s>'] = 1",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "digit_convertor",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def digit_convertor(text):\n    return normalize_digits(text, source='all', out='east')\ndef arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "arabic_normlizer",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "unicode_to_ascii",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:\n        ASCII file\n    Converts the unicode file to ascii\n    For each character:\n                        there are two normal forms: normal form C and normal form D. \n                                                    - Normal form D (NFD) is also known as canonical decomposition,",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "arabic_preprocess",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def arabic_preprocess(s):\n    '''\n    Args:\n        s : A single sentence \n    '''\n    s = arabic_normlizer(s)\n    s = unicode_to_ascii(s.strip())\n#         s = re.sub(r\"([?.!,¿؟])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^أ-ۿ١-٩اءئ؟!.':,?_،إ]+\", \" \", s)",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "english_preprocess",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def english_preprocess(s):\n    '''\n    Args:\n        s : A single sentence \n    Returns:\n        s : Single normalize sentence \n    Convert Unicode to ASCII\n    Creating a space between a word and the punctuation following it\n    eg: \"he is a boy.\" => \"he is a boy .\" \n    Reference:- https://stackoverflow.com/questions/3645931/python-padding-punctuation-with-white-spaces-keeping-punctuation",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "sort_freq",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def sort_freq(pair):\n            return pair[1]\nclass GetVoc:\n    def __init__(self, unk=1, start=2, end=3, pad=4):\n        self.voc = dict()\n        self.voc['<unk>'] = unk\n        self.voc['<s>'] = start\n        self.voc['<\\s>'] = end\n        self.voc['<pad>'] = pad\n        self.freq = dict()",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "get_en",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def get_en(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "get_ar",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def get_ar(file_path):\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            yield line.strip().strip('\\n').strip()\ndef get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "get_ymal",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def get_ymal(file_path):\n    def fun(text):\n        _, value = text.split(':')\n        value = value.strip()\n        return float(value)\n    with open(file_path, encoding='utf-8-sig') as f:\n        for line in f:\n            line = line.strip('- {').strip('}\\n')\n            line = line.split(',')\n            times = tuple(map(fun, line[:2]))",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "get_form_wave",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def get_form_wave(offset, duration, wave_path, sr):\n    audio, sr = librosa.load(wave_path, sr=sr, offset=offset, duration=duration)\n    return audio\n# --------------------------------------------\ndef repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:\n            r = random.random()\n            if r < p:",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "repeat",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def repeat(items, min_len, max_len, p=0.2):\n    new_items = []\n    while len(items) < min_len:\n        for i in items:\n            r = random.random()\n            if r < p:\n                new_items.append(i)\n                new_items.append(i)\n            else:\n                new_items.append(i)",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "padd",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def padd(items, max_len, pad=0):\n    return np.pad(items, (0, np.max([0, max_len-len(items)])), 'constant', constant_values=(0, pad))\ndef load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "load_dict",
-        "kind": 2,
-        "importPath": "data.hepler",
-        "description": "data.hepler",
-        "peekOfCode": "def load_dict(path):\n    data = dict()\n    with open(path, 'r', encoding='utf-8-sig') as f:\n        for line in f:\n            try:\n                line = line.decode().strip('\\n')\n            except:\n                line = line.strip('\\n')\n            key, value = line.split('==')\n            data[key.strip()] = int(value.strip())",
-        "detail": "data.hepler",
-        "documentation": {}
-    },
-    {
-        "label": "TokenHandler",
-        "kind": 6,
-        "importPath": "data.manager",
-        "description": "data.manager",
-        "peekOfCode": "class TokenHandler:\n    def __init__(self, json_path):\n        self.tok = Tokenizer.from_file(json_path)\n        self.tok.decoder = decoders.WordPiece()\n        self.tok.enable_padding(pad_id=self.get_id(\"<PAD>\"), pad_token=\"<PAD>\")\n    def enocde_line(self, text):\n        out = self.tok.encode(text)\n        return out.ids, out.tokens\n    def get_id(self, token):\n        return self.tok.token_to_id(token)",
-        "detail": "data.manager",
-        "documentation": {}
-    },
-    {
-        "label": "digit_convertor",
-        "kind": 2,
-        "importPath": "data.tokenizer",
-        "description": "data.tokenizer",
-        "peekOfCode": "def digit_convertor(text):\n    return normalize_digits(text, source='all', out='east')\ndef arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:",
-        "detail": "data.tokenizer",
-        "documentation": {}
-    },
-    {
-        "label": "arabic_normlizer",
-        "kind": 2,
-        "importPath": "data.tokenizer",
-        "description": "data.tokenizer",
-        "peekOfCode": "def arabic_normlizer(text):\n    text = digit_convertor(text)\n    text = strip_tatweel(text)\n    text = strip_lastharaka(text)\n    return text\ndef unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:",
-        "detail": "data.tokenizer",
-        "documentation": {}
-    },
-    {
-        "label": "unicode_to_ascii",
-        "kind": 2,
-        "importPath": "data.tokenizer",
-        "description": "data.tokenizer",
-        "peekOfCode": "def unicode_to_ascii(s):\n    '''\n    Args:\n        s : UniCode file\n    Returns:\n        ASCII file\n    Converts the unicode file to ascii\n    For each character:\n                        there are two normal forms: normal form C and normal form D. \n                                                    - Normal form D (NFD) is also known as canonical decomposition,",
-        "detail": "data.tokenizer",
-        "documentation": {}
-    },
-    {
-        "label": "arabic_preprocess",
-        "kind": 2,
-        "importPath": "data.tokenizer",
-        "description": "data.tokenizer",
-        "peekOfCode": "def arabic_preprocess(s):\n    '''\n    Args:\n        s : A single sentence \n    '''\n    s = arabic_normlizer(s)\n    s = unicode_to_ascii(s.strip())\n#         s = re.sub(r\"([?.!,¿؟])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^أ-ۿ١-٩اءئ؟!.':,?_،إ]+\", \" \", s)",
-        "detail": "data.tokenizer",
-        "documentation": {}
-    },
-    {
-        "label": "english_preprocess",
-        "kind": 2,
-        "importPath": "data.tokenizer",
-        "description": "data.tokenizer",
-        "peekOfCode": "def english_preprocess(s):\n#    s = re.sub(r\"([?.!,¿])\", r\" \\1 \", s)\n    s = re.sub(r'[\" \"]+', \" \", s)\n    s = re.sub(r\"[^a-zA-Z0-9?.'!:_,¿]+\", \" \", s)\n    s = s.rstrip().strip()\n#     s = f'<start> {s} <end>'\n    return s\ndef gen(file, preprocess):\n    for ff in file:\n        with open(ff, encoding='utf-8-sig') as f:",
-        "detail": "data.tokenizer",
-        "documentation": {}
-    },
-    {
-        "label": "gen",
-        "kind": 2,
-        "importPath": "data.tokenizer",
-        "description": "data.tokenizer",
-        "peekOfCode": "def gen(file, preprocess):\n    for ff in file:\n        with open(ff, encoding='utf-8-sig') as f:\n            for line in f:\n                try: \n                    line = line.decode()\n                except:\n                    line = line\n                # sys.stdout.buffer.write(line.encode())\n                yield preprocess(line)",
-        "detail": "data.tokenizer",
-        "documentation": {}
-    },
-    {
-        "label": "get_tokenizer",
-        "kind": 2,
-        "importPath": "data.tokenizer",
-        "description": "data.tokenizer",
-        "peekOfCode": "def get_tokenizer(files, save_dir, file_name, preprocess):\n    unk_token = \"<UNK>\"  # token for unknown words\n    spl_tokens = [\"<UNK>\", \"<SEP>\", \"<MASK>\", \"<CLS>\", \"<PAD>\"]  # special tokens\n    tokenizer = Tokenizer(WordPiece(unk_token = unk_token))\n    normalizer = normalizers.Sequence([NFD(), StripAccents()])\n    pre_tokenizer = Whitespace()\n    pre_tokenizer = pre_tokenizers.Sequence([Whitespace(), Digits(individual_digits=True)])\n    tokenizer.normalizer = normalizer\n    tokenizer.pre_tokenizer = pre_tokenizer\n    tokenizer.post_processor = TemplateProcessing(single=\"[CLS] $A [SEP]\",",
-        "detail": "data.tokenizer",
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
+        "peekOfCode": "class Encoder(nn.Module):\n    def __init__(self, **kwargs):\n        '''d_model=512, nhead=4, nch=5, dropout=0.3, batch_first=True, size'''\n        super().__init__()\n        self.config = kwargs\n        assert self.config['d_model'] % self.config['nhead'] == 0, 'd_model should be dvisible by num of heads'\n        self.enc_stack = nn.ModuleList([EncoderLayer(d_model=self.config['d_model'], nch=self.config['nch'], nhead=self.config['nhead'], \n                                                     dropout=self.config['dropout'], batch_first=self.config['batch_first']) \n                                        for _ in range(self.config['size'])])\n    def forward(self, x, padding_mask=None, need_weights=False, training=False):",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
         "documentation": {}
     },
     {
         "label": "DecoderLayer",
         "kind": 6,
-        "importPath": "S2T.utils.decoder",
-        "description": "S2T.utils.decoder",
-        "peekOfCode": "class DecoderLayer(Layer):\n    '''\n    the decoder structure from the paper. consist of SelfAttention & CrossAttention & FeedForward\n    '''\n    def __init__(self, key_dim:int , num_heads: int, output_shape: int, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
-        "detail": "S2T.utils.decoder",
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
+        "peekOfCode": "class DecoderLayer(nn.Module):\n    def __init__(self, **kwargs):\n        \"\"\"@params:\n                    d_model, nhead, nch, dropout=0.3, batch_first=True\n        \"\"\"\n        super(DecoderLayer, self).__init__()\n        self.config = kwargs\n        self.pre_norm1 = nn.LayerNorm(self.config['d_model'])\n        self.smha      = nn.MultiheadAttention(embed_dim=self.config['d_model'], num_heads=self.config['nhead'], dropout=self.config['dropout'], \n                                               bias=True, add_bias_kv=True, batch_first=self.config['batch_first'])",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
         "documentation": {}
     },
     {
-        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
+        "label": "Decoder",
+        "kind": 6,
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
+        "peekOfCode": "class Decoder(nn.Module):\n    def __init__(self, **kwargs):\n        '''d_model=512, nhead=4, nch=5, dropout=0.3, batch_first=True, size'''\n        super().__init__()\n        self.config = kwargs\n        assert self.config['d_model'] % self.config['nhead'] == 0, 'd_model should be dvisible by num of heads'\n        self.dec_stack = nn.ModuleList([DecoderLayer(d_model=self.config['d_model'], nch=self.config['nch'], nhead=self.config['nhead'], \n                                                     dropout=self.config['dropout'], batch_first=self.config['batch_first']) \n                                        for _ in range(self.config['size'])])\n    def forward(self, query, key, query_mask=None, key_mask=None, need_weights=False, training=False):",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.former",
+        "documentation": {}
+    },
+    {
+        "label": "Head",
+        "kind": 6,
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.heads",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.heads",
+        "peekOfCode": "class Head(nn.Module):\n    def __init__(self, **kwargs):\n        '''d_model, voc_size'''\n        super().__init__()\n        self.config = kwargs\n        self.layer1 =  nn.Sequential(nn.Linear(self.config['d_model'], self.config['voc_size'] // 3),\n                                     nn.Tanhshrink())\n        self.norm1 = nn.BatchNorm1d(self.config['voc_size'] // 3)\n        self.layer2 = nn.Sequential(nn.Dropout(0.5),\n                                    nn.Linear(self.config['voc_size'] // 3, self.config['voc_size']))",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.heads",
+        "documentation": {}
+    },
+    {
+        "label": "Wave2Chunk",
+        "kind": 6,
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.wave",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.wave",
+        "peekOfCode": "class Wave2Chunk(nn.Module):\n    def __init__(self, **kwargs):\n        '''frame_size, frame_stride, b1, b2, b3, b4, out_dim=512'''\n        super(Wave2Chunk, self).__init__()\n        self.config = kwargs\n        assert self.config['frame_size'] >= 2000, \"the frame size minimum should be greater than or equal 2000\"\n        assert not self.config['frame_size'] % self.config['b4'], 'frame size should be divisible by num of fiinal chanels'\n        pram_per_layer = [(19, 5, 0, 3), (19, 5, 0, 2), (2, 2, 0, 1),\n                          (7, 1, 0, 1), (7, 2, 0, 1), (3, 3, 0, 1),\n                          (5, 2, 0, 1), (5, 2, 0, 1), (2, 1, 0, 1),   ",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.modules.wave",
+        "documentation": {}
+    },
+    {
+        "label": "Predictions",
+        "kind": 6,
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
+        "peekOfCode": "class Predictions(Callback):\n    def __init__(self, config):\n        self.tokenizers = dict()\n        for k, v in config.items():\n            self.tokenizers[k] = TokenHandler(v, k)\n    def on_train_batch_end(self, trainer, pl_module, outputs, batch, batch_idx, *args, **kwargs):\n        if not batch_idx % 100:\n            wave, en, ar = batch\n            ground_truth = {'en': en[:, 1:], 'ar': ar[:, 1:]}\n            with torch.no_grad():",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
+        "documentation": {}
+    },
+    {
+        "label": "progress_bar",
         "kind": 5,
-        "importPath": "S2T.utils.decoder",
-        "description": "S2T.utils.decoder",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\ntry:\n    from selfAttention import Former\n    from feedForward import FForward\nexcept ImportError:\n    from .selfAttention import Former\n    from .feedForward import FForward\nfrom tensorflow.keras.layers import Layer\nfrom tensorflow import Tensor\nfrom numpy import ndarray",
-        "detail": "S2T.utils.decoder",
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
+        "peekOfCode": "progress_bar = RichProgressBar(theme=RichProgressBarTheme(description=\"green_yellow\",\n                                                          progress_bar=\"green1\",\n                                                          progress_bar_finished=\"green1\",\n                                                          progress_bar_pulse=\"#6206E0\",\n                                                          batch_progress=\"green_yellow\",\n                                                          time=\"grey82\",\n                                                          processing_speed=\"grey82\",\n                                                          metrics=\"green1\",\n                                                        ))\nckp = ModelCheckpoint(every_n_train_steps=1000, save_last=True, auto_insert_metric_name=False)",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
         "documentation": {}
     },
     {
-        "label": "FEncoderLayer",
-        "kind": 6,
-        "importPath": "S2T.utils.encoder",
-        "description": "S2T.utils.encoder",
-        "peekOfCode": "class FEncoderLayer(Layer):\n    '''\n    the encoder structure from the paper. consist of SelfAttention & FeedForward\n    '''\n    def __init__(self, key_dim: int, num_heads: int, output_shape: int=None, dropout=0.1):\n        '''\n        num_heads:     int.    Number of attention heads. \n        key_dim:       int.    Size of each attention head for query and key.\n        dropout=0.1:   float.  Dropout probability.\n        output_shape:  int.    The expected shape of an output tensor, besides the batch and sequence dims. ",
-        "detail": "S2T.utils.encoder",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
+        "label": "ckp",
         "kind": 5,
-        "importPath": "S2T.utils.encoder",
-        "description": "S2T.utils.encoder",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\ntry:\n    from selfAttention import Former\n    from feedForward import FForward\nexcept ImportError:\n    from .selfAttention import Former\n    from .feedForward import FForward\nfrom tensorflow.keras.layers import Layer\nfrom tensorflow import Tensor\nfrom numpy import ndarray",
-        "detail": "S2T.utils.encoder",
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
+        "peekOfCode": "ckp = ModelCheckpoint(every_n_train_steps=1000, save_last=True, auto_insert_metric_name=False)\nswa = StochasticWeightAveraging(swa_lrs=1e-2, annealing_epochs=2)\nif __name__ == '__main__':\n    pass",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
         "documentation": {}
     },
     {
-        "label": "FForward",
-        "kind": 6,
-        "importPath": "S2T.utils.feedForward",
-        "description": "S2T.utils.feedForward",
-        "peekOfCode": "class FForward(Layer):\n    '''\n    FeedForward part in the encoder from the paper.\n    '''\n    def __init__(self, units: Tuple, dropout=0.1):\n        '''\n        @params:\n                units:   Tuple.  Number of units at each dense layer, make sure that the number of\n                                      units at the last layer same as the inputs to the layer.\n                dropout: float. dropout ratio before Add&Normlize layer",
-        "detail": "S2T.utils.feedForward",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
+        "label": "swa",
         "kind": 5,
-        "importPath": "S2T.utils.feedForward",
-        "description": "S2T.utils.feedForward",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras import Sequential\nfrom tensorflow.keras.layers import (Layer, LayerNormalization, Add, Dropout, Dense)\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nfrom numpy import ndarray\nfrom typing import Union, Tuple\nclass FForward(Layer):\n    '''\n    FeedForward part in the encoder from the paper.\n    '''",
-        "detail": "S2T.utils.feedForward",
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
+        "peekOfCode": "swa = StochasticWeightAveraging(swa_lrs=1e-2, annealing_epochs=2)\nif __name__ == '__main__':\n    pass",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.callback",
         "documentation": {}
     },
     {
-        "label": "SinuSoidal",
+        "label": "DFMap",
         "kind": 6,
-        "importPath": "S2T.utils.posEncoders",
-        "description": "S2T.utils.posEncoders",
-        "peekOfCode": "class SinuSoidal(Layer):\n    '''add position empedding vector to empeding vector and normlize'''\n    def __init__(self, n: int=10000):\n        super().__init__()\n        self.n = n\n        self.normalizer = LayerNormalization()\n    def __call__(self, x_emp):\n        assert len(x_emp.shape) > 1 and len(x_emp.shape) < 4, f\"expected 2D tensor for unbatched tensor or 3d for batched but get {len(x_emp.shape)}D tensor\"\n        if len(x_emp.shape) == 2:\n            T, E = x_emp.shape",
-        "detail": "S2T.utils.posEncoders",
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.data",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.data",
+        "peekOfCode": "class DFMap(Dataset):\n    def __init__(self, df, ar_config: dict, en_config: dict, wav_config, **kwargs):\n        self.df = df\n        self.ar_config  = ar_config.copy()\n        self.en_config  = en_config.copy()\n        self.wav_config = wav_config.copy()\n        self.ar_config['tokenizer'] = TokenHandler(self.ar_config['tokenizer'], 'ar')\n        self.en_config['tokenizer'] = TokenHandler(self.en_config['tokenizer'], 'en')\n    def __len__(self):\n        return len(self.df)",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.data",
         "documentation": {}
     },
     {
-        "label": "sin_soidal",
-        "kind": 2,
-        "importPath": "S2T.utils.posEncoders",
-        "description": "S2T.utils.posEncoders",
-        "peekOfCode": "def sin_soidal(length: int, depth: int, n: int=10000):\n    '''create positionalemppeding matrix\n    @params:\n            length:  Max number of tokens in as sentence that the model will deal with it during inference.\n            depth:   Empeddingdim\n            n:       Hyper-parameter from the paper \n    '''\n    positions = np.arange(length)[:, np.newaxis]     # (seq, 1)  [0, 1, 2, 3 ... length-1]\n    depths = np.arange(depth)[np.newaxis, :]/depth   # (1, depth) [0 / depth, 1 / depth, 2/depth, 3/depth ... length-1/depth]\n    angle_rates = 1 / (n**depths)             # (1, depth)",
-        "detail": "S2T.utils.posEncoders",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
-        "kind": 5,
-        "importPath": "S2T.utils.posEncoders",
-        "description": "S2T.utils.posEncoders",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\n# Don't worry of warning under Tensorflow it's ok.\nfrom tensorflow.keras.layers import Layer, LayerNormalization\nfrom tensorflow import cast, float32, newaxis\nimport numpy as np\nclass SinuSoidal(Layer):\n    '''add position empedding vector to empeding vector and normlize'''\n    def __init__(self, n: int=10000):\n        super().__init__()\n        self.n = n",
-        "detail": "S2T.utils.posEncoders",
-        "documentation": {}
-    },
-    {
-        "label": "BaseAttention",
+        "label": "MuSTCDataset",
         "kind": 6,
-        "importPath": "S2T.utils.selfAttention",
-        "description": "S2T.utils.selfAttention",
-        "peekOfCode": "class BaseAttention(Layer):\n    '''\n    the structure of self attention from the paper.\n    consist of MultiHeadAttention and Add&Normlize block \n    '''\n    def __init__(self, num_heads: int, key_dim: int, **kwargs):\n        '''\n        @params:\n                num_heads:                          int.    Number of attention heads. \n                key_dim:                            int.    Size of each attention head for query and key.",
-        "detail": "S2T.utils.selfAttention",
-        "documentation": {}
-    },
-    {
-        "label": "Former",
-        "kind": 6,
-        "importPath": "S2T.utils.selfAttention",
-        "description": "S2T.utils.selfAttention",
-        "peekOfCode": "class Former(BaseAttention):\n    '''\n    self attention part in the encoder from the paper. consist of MultiHeadAttention and Add&Normlize block \n    '''\n    def call(self, query: Union[Tensor, ndarray, List], key: Union[Tensor, ndarray, List],\n             value: Union[Tensor, ndarray, List], causal_mask: bool=False, \n             return_score=False, training=False, **kwargs): \n        '''\n        @params\n            query:          3D matrix.  Query Tensor of shape (B, T, dim).",
-        "detail": "S2T.utils.selfAttention",
-        "documentation": {}
-    },
-    {
-        "label": "Conformer",
-        "kind": 6,
-        "importPath": "S2T.utils.selfAttention",
-        "description": "S2T.utils.selfAttention",
-        "peekOfCode": "class Conformer(BaseAttention):\n    pass\nclass Branchformer(BaseAttention):\n    pass",
-        "detail": "S2T.utils.selfAttention",
-        "documentation": {}
-    },
-    {
-        "label": "Branchformer",
-        "kind": 6,
-        "importPath": "S2T.utils.selfAttention",
-        "description": "S2T.utils.selfAttention",
-        "peekOfCode": "class Branchformer(BaseAttention):\n    pass",
-        "detail": "S2T.utils.selfAttention",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
-        "kind": 5,
-        "importPath": "S2T.utils.selfAttention",
-        "description": "S2T.utils.selfAttention",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow.keras.layers import (Layer, MultiHeadAttention, LayerNormalization, \n                                     Add, serialize, deserialize)\nfrom tensorflow import is_tensor, convert_to_tensor, float32, Tensor\nfrom numpy import ndarray\nfrom typing import Union, List\nclass BaseAttention(Layer):\n    '''\n    the structure of self attention from the paper.\n    consist of MultiHeadAttention and Add&Normlize block ",
-        "detail": "S2T.utils.selfAttention",
-        "documentation": {}
-    },
-    {
-        "label": "create_dummy",
-        "kind": 2,
-        "importPath": "S2T.utils.unit_test",
-        "description": "S2T.utils.unit_test",
-        "peekOfCode": "def create_dummy(voc_size, batch, time_step, feature=None):\n    if feature is None:\n        return np.random.randint(0, voc_size, (batch, time_step))\n    return np.random.randn(batch, time_step, feature)\ndef test_SinuSoidal(): #voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero\n    for v in tqdm(np.arange(1_000, 70_000, 1_000)):          #voc_size: int,\n        for o in np.arange(100, 700, 100):  #output_dim: int,\n            for m in np.arange(0, 2_000, 200):      #max_sent_lenght: int,\n                dummy = create_dummy(v, 128, m)\n                # for ms in mask_zero:",
-        "detail": "S2T.utils.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "test_SinuSoidal",
-        "kind": 2,
-        "importPath": "S2T.utils.unit_test",
-        "description": "S2T.utils.unit_test",
-        "peekOfCode": "def test_SinuSoidal(): #voc_size: int, output_dim: int, max_sent_lenght: int, mask_zero\n    for v in tqdm(np.arange(1_000, 70_000, 1_000)):          #voc_size: int,\n        for o in np.arange(100, 700, 100):  #output_dim: int,\n            for m in np.arange(0, 2_000, 200):      #max_sent_lenght: int,\n                dummy = create_dummy(v, 128, m)\n                # for ms in mask_zero:\n                opj = SinuSoidal(v, o, m)\n                try:\n                    opj(dummy)\n                    # opj.compute_mask(dummy)",
-        "detail": "S2T.utils.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "test_self_attention",
-        "kind": 2,
-        "importPath": "S2T.utils.unit_test",
-        "description": "S2T.utils.unit_test",
-        "peekOfCode": "def test_self_attention():\n    pass\ndef test_feed_forward():\n    pass\ndef test_enc_layer():\n    pass\ndef test_dec_layer():\n    pass\ndef test_enc():\n    pass",
-        "detail": "S2T.utils.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "test_feed_forward",
-        "kind": 2,
-        "importPath": "S2T.utils.unit_test",
-        "description": "S2T.utils.unit_test",
-        "peekOfCode": "def test_feed_forward():\n    pass\ndef test_enc_layer():\n    pass\ndef test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass",
-        "detail": "S2T.utils.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "test_enc_layer",
-        "kind": 2,
-        "importPath": "S2T.utils.unit_test",
-        "description": "S2T.utils.unit_test",
-        "peekOfCode": "def test_enc_layer():\n    pass\ndef test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    dummy = create_dummy(10000, 128, 10)",
-        "detail": "S2T.utils.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "test_dec_layer",
-        "kind": 2,
-        "importPath": "S2T.utils.unit_test",
-        "description": "S2T.utils.unit_test",
-        "peekOfCode": "def test_dec_layer():\n    pass\ndef test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    dummy = create_dummy(10000, 128, 10)\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1",
-        "detail": "S2T.utils.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "test_enc",
-        "kind": 2,
-        "importPath": "S2T.utils.unit_test",
-        "description": "S2T.utils.unit_test",
-        "peekOfCode": "def test_enc():\n    pass\ndef test_dec():\n    pass\ndef test_model():\n    dummy = create_dummy(10000, 128, 10)\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # # e_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    # # d_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers",
-        "detail": "S2T.utils.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "test_dec",
-        "kind": 2,
-        "importPath": "S2T.utils.unit_test",
-        "description": "S2T.utils.unit_test",
-        "peekOfCode": "def test_dec():\n    pass\ndef test_model():\n    dummy = create_dummy(10000, 128, 10)\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # # e_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    # # d_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    config_e = (10000, 512, 50, 8, 256, 3)\n    config_d = (2000, 512, 40, 8, 256, 3)",
-        "detail": "S2T.utils.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "test_model",
-        "kind": 2,
-        "importPath": "S2T.utils.unit_test",
-        "description": "S2T.utils.unit_test",
-        "peekOfCode": "def test_model():\n    dummy = create_dummy(10000, 128, 10)\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # #, vocab_size, emp_dim, max_sent_lenght, key_dim, n_heads, n_layers=1\n    # # e_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    # # d_config: vocab_size, emp_dim, max_sent_lenght, num_heads, key_dim, n_layers\n    config_e = (10000, 512, 50, 8, 256, 3)\n    config_d = (2000, 512, 40, 8, 256, 3)\n    m = BTransformer(config_e, config_d)\n    try:",
-        "detail": "S2T.utils.unit_test",
-        "documentation": {}
-    },
-    {
-        "label": "BTConfig",
-        "kind": 6,
-        "importPath": "S2T.baseT",
-        "description": "S2T.baseT",
-        "peekOfCode": "class BTConfig:\n    '''\n        @params:\n                - out_heads: Dict.  Size of the soruce lang vocabulary, i.e. maximum integer index + 1.\n                - max_seq_size:    int.                Max number of tokens in as sentence that the model will \n                                                        deal with it during inference.\n                - enc_heads:    int.                Number of attention heads at each encoder. \n                - enc_key:      int.                Size of each attention head for query and key for each encoder.\n                - dec_heads:    int.                Number of attention heads at each decoder. \n                - dec_key:      int.                Size of each attention head for query and key for each decoder.",
-        "detail": "S2T.baseT",
-        "documentation": {}
-    },
-    {
-        "label": "OutputHead",
-        "kind": 6,
-        "importPath": "S2T.baseT",
-        "description": "S2T.baseT",
-        "peekOfCode": "class OutputHead(keras.layers.Layer):\n    def __init__(self, projection,  units=[], name=None):\n        super().__init__()\n        if name is None:\n            self.name = 'untitled_Head'\n        else:\n            self.name = name\n        layers = [keras.layers.Dense(u) for u in units]\n        layers.append(keras.layers.Dense(projection))\n        self.head = keras.Sequential(layers)",
-        "detail": "S2T.baseT",
-        "documentation": {}
-    },
-    {
-        "label": "BTransformer",
-        "kind": 6,
-        "importPath": "S2T.baseT",
-        "description": "S2T.baseT",
-        "peekOfCode": "class BTransformer(keras.Model):\n    '''\n    the Transformer Module from the paper. consist of Encoder Module & Decoder Module. This class also Implement\n    Greedy and Beam search decoding.\n    '''\n    def __init__(self, config: BTConfig, task='multi'):\n        super().__init__()\n        self.config: BTConfig = config\n        self.pos = SinuSoidal()\n        self.enc = keras.Sequential([FEncoderLayer(self.config.enc_key, self.config.enc_heads) ",
-        "detail": "S2T.baseT",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
-        "kind": 5,
-        "importPath": "S2T.baseT",
-        "description": "S2T.baseT",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom dataclasses import dataclass\ntry:\n    from utils.posEncoders import SinuSoidal\n    from utils.encoder import FEncoderLayer",
-        "detail": "S2T.baseT",
-        "documentation": {}
-    },
-    {
-        "label": "Bert",
-        "kind": 6,
-        "importPath": "S2T.bert1.0",
-        "description": "S2T.bert1.0",
-        "peekOfCode": "class Bert(keras.Model):\n    def __init__(self, vocab_size: int, emp_dim: int, max_sent_lenght: int,\n                 key_dim: int, n_heads: int, n_layers: int=1):\n        '''\n        @params:\n                vocab_size:        int.  Size of the vocabulary, i.e. maximum integer index + 1.\n                emp_dim:         int.  Dimension of the dense embedding.\n                max_sent_lenght: int.  Max number of tokens in as sentence that the model will \n                                          deal with it during inference.\n                num_heads:       int.  Number of attention heads. ",
-        "detail": "S2T.bert1.0",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
-        "kind": 5,
-        "importPath": "S2T.bert1.0",
-        "description": "S2T.bert1.0",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nfrom tensorflow import keras\nfrom tensorflow import Tensor\nimport numpy as np\nfrom numpy import ndarray\nfrom typing import Union, List\nfrom utils.posEncoders import SinuSoidal\nfrom utils.encoder import EncoderLayer\nclass Bert(keras.Model):\n    def __init__(self, vocab_size: int, emp_dim: int, max_sent_lenght: int,",
-        "detail": "S2T.bert1.0",
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.data",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.data",
+        "peekOfCode": "class MuSTCDataset(pl.LightningDataModule):\n    def __init__(self, data_config, loader_config=None):\n        super().__init__()\n        self.data_config = data_config\n        self.loader_config = loader_config\n    def setup(self, stage: str):\n        self.data = self.load_from_dir(self.data_config['dir_path'])\n    def load_from_dir(self, root):\n        # split_name = root.split(os.sep)[-1]\n        split_names = ['train', 'dev']",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.data",
         "documentation": {}
     },
     {
         "label": "TokenHandler",
         "kind": 6,
-        "importPath": "S2T.pre_data",
-        "description": "S2T.pre_data",
-        "peekOfCode": "class TokenHandler:\n    def __init__(self, json_path):\n        self.tok = Tokenizer.from_file(json_path)\n        self.tok.decoder = decoders.WordPiece()\n        self.tok.enable_padding(pad_id=self.get_id(\"<PAD>\"), pad_token=\"<PAD>\")\n    def enocde_line(self, text):\n        out = self.tok.encode(text)\n        return out.ids, out.tokens\n    def get_id(self, token):\n        return self.tok.token_to_id(token)",
-        "detail": "S2T.pre_data",
-        "documentation": {}
-    },
-    {
-        "label": "ar_json",
-        "kind": 5,
-        "importPath": "S2T.pre_data",
-        "description": "S2T.pre_data",
-        "peekOfCode": "ar_json = r\"D:\\Study\\GitHub\\data\\dict\\ar_tokenizer.json\"\nen_json = r\"D:\\Study\\GitHub\\data\\dict\\en_tokenizer.json\"\nh5_path = [r\"D:\\Study\\GitHub\\data\\h5_data\\batch_0.h5\"]",
-        "detail": "S2T.pre_data",
-        "documentation": {}
-    },
-    {
-        "label": "en_json",
-        "kind": 5,
-        "importPath": "S2T.pre_data",
-        "description": "S2T.pre_data",
-        "peekOfCode": "en_json = r\"D:\\Study\\GitHub\\data\\dict\\en_tokenizer.json\"\nh5_path = [r\"D:\\Study\\GitHub\\data\\h5_data\\batch_0.h5\"]",
-        "detail": "S2T.pre_data",
-        "documentation": {}
-    },
-    {
-        "label": "h5_path",
-        "kind": 5,
-        "importPath": "S2T.pre_data",
-        "description": "S2T.pre_data",
-        "peekOfCode": "h5_path = [r\"D:\\Study\\GitHub\\data\\h5_data\\batch_0.h5\"]",
-        "detail": "S2T.pre_data",
-        "documentation": {}
-    },
-    {
-        "label": "Custom_loss",
-        "kind": 6,
-        "importPath": "S2T.train_base",
-        "description": "S2T.train_base",
-        "peekOfCode": "class Custom_loss(tf.losses.Loss):\n    def __init__(self, reduction=tf.losses_utils.ReductionV2.AUTO, name=None):\n        super().__init__(reduction, name)\n        self.reduction = reduction\n    def call(self, y_true, y_predict):\n        outputs = tf.losses.sparse_categorical_crossentropy(y_true, y_predict)\n        return outputs * self.reduction\nclass Train:\n    def __init__(self, model, loss, optimizer, metric=[]):\n        self.model  = model",
-        "detail": "S2T.train_base",
-        "documentation": {}
-    },
-    {
-        "label": "Train",
-        "kind": 6,
-        "importPath": "S2T.train_base",
-        "description": "S2T.train_base",
-        "peekOfCode": "class Train:\n    def __init__(self, model, loss, optimizer, metric=[]):\n        self.model  = model\n        self._loss_fun   = loss\n        self._opt    = optimizer\n        self._metric = metric\n        self.train_loss = 0\n        self.val_loss   = 0\n    def __call__(self, train_set, val_set, epochs):\n        for i in tqdm(range(epochs)):",
-        "detail": "S2T.train_base",
-        "documentation": {}
-    },
-    {
-        "label": "Dog",
-        "kind": 6,
-        "importPath": "tricks",
-        "description": "tricks",
-        "peekOfCode": "class Dog:\n    def __init__(self, name) -> None:\n        self.name = name\n    @property\n    def name(self):\n        return self._name\n    @name.setter\n    def name(self, name):\n        assert name.isalpha()\n        self._name = name",
-        "detail": "tricks",
+        "importPath": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.lang",
+        "description": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.lang",
+        "peekOfCode": "class TokenHandler:\n    def __init__(self, json_path: str, lang='en', ):\n        self.tok = Tokenizer.from_file(json_path)\n        self.tok.enable_padding(pad_id=self.get_id(\"<PAD>\"), pad_token=\"<PAD>\")\n        if lang == 'en':\n            self.pre = self.english_preprocess\n        elif lang == 'ar':\n            self.pre = self.arabic_preprocess\n        else:\n            raise NotImplementedError('This class suports En and Ar language only for now')",
+        "detail": "Code.AI_Part.4-DirectSpeech2TextTranslation.Training.aang.utils.lang",
         "documentation": {}
     }
 ]
