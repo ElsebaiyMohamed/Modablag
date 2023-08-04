@@ -24,11 +24,10 @@ Automatic video dubbing faces several challenges:
 
 ## Methodology  
 
-                        Dubbing Process
+Dubbing Process
 ![Ai part for dubbing](assests/ai%20pip.png)
 
-                        Speech Translator
-
+Speech Translator
 ![Translator Block](assests/ai%20in%20depth.png)
 
 The proposed methodology involves:
