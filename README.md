@@ -24,6 +24,13 @@ Automatic video dubbing faces several challenges:
 
 ## Methodology  
 
+                        Dubbing Process
+![Ai part for dubbing](assests/ai%20pip.png)
+
+                        Speech Translator
+
+![Translator Block](assests/ai%20in%20depth.png)
+
 The proposed methodology involves:
 
 1. Separating the audio and video from the source English video
@@ -37,6 +44,8 @@ To improve the results, two additional models are used in speech translator:
 - Tashkeel model to add diacritical marks to Arabic text
 
 ## System Architecture
+
+![Alt text](assests/image2.png)
 
 The system follows a modular architecture consisting of:
 
@@ -52,6 +61,8 @@ The application server handles user management, video uploads/downloads, and int
 
 ## Speech Recognition
 
+![as](assests/Picture1.jpg)
+
 - Experiments compared Wave2Vec2.0 and Google Speech Recognition APIs.
 
 - Wave2Vec2.0 gave lower Word Error Rates by pretraining on large unlabeled speech data followed by finetuning on a small labeled dataset.
@@ -60,31 +71,59 @@ The application server handles user management, video uploads/downloads, and int
 
 ## Machine Translation
 
-- Google's Neural MT architecture has an encoder-decoder structure.
+![Alt text](assests/image.png)
 
-- Training uses parallel English-Arabic corpora like MuST-C dataset.
+Google's NMT architecture utilizes LSTM layers with attention mechanism:
 
-- Residual connections in the model improve gradient flow during training.
+- Encoder LSTM converts source text into vector representations
+- Attention module aligns source representations to each target word
+- Decoder LSTM predicts target words sequentially based on context vectors
+
+Key optimizations include:
+
+1) Byte-pair encoding of words into subwords to handle rare words
+2) Residual connections in stacked LSTM layers to improve gradient flow
+3) Beam search decoding to reduce errors and find optimal translations
 
 ## Text to Speech
 
-- WaveNet generates audio waveforms directly using dilated causal convolutional layers.
-- Causal dilated convolutional layers to model audio sample dependencies
-- Residual blocks with skip connections to improve training convergence
-- Separate conditioning on linguistic and acoustic features
-- Parallel waveform generation with WaveNet vocoders during inference
+![fd](assests/Picture2.png)
 
-Advancements like FastSpeech 2 have reduced training time by allowing non-autoregressive generation during inference while maintaining voice quality.
+1. FastSpeech2 is a non-autoregressive neural TTS model, allowing faster synthesis compared to autoregressive models like WaveNet during inference.
+2. The model takes text as input and predicts mel-spectrogram acoustic features using a Transformer encoder-decoder architecture.
+3. Instead of dilated convolutions, multi-layer perceptrons (MLPs) with convolutional processing are used in the model architecture. This provides local feature modeling.
+4. Additional variance predictors are incorporated to model speech attributes like pitch, duration and energy profiles. This improves prosody and naturalness.
+
+In summary, the key aspects are:
+
+- Non-autoregressive parallel synthesis
+- Transformer encoder-decoder
+- MLP layers for local context
+- Variance predictors capture speech profiles
+
+This allows FastSpeech2 to generate high quality mel-spectrograms from text in parallel during inference while maintaining natural prosody and voice characteristics.
 
 ## Results
 
-The system is evaluated using metrics like:
+Based on the subjective evaluations done as part of the testing process, some of the key areas identified for further improvement in translation and dubbing quality were:
 
-- Perplexity
-- Word Error Rate (WER)  
-- BLEU score
+- Lip synchronization: More work needed to finely tune the timing and duration of dubbed speech to better match lip movements.
 
-Promising results are achieved on benchmark evaluation datasets.
+- Expression: Capturing the emotion and emphasis in the original speech through appropriate intonation and prosody in the dubbed speech.
+
+- Fluency: Some unnaturalness detected in the translated Arabic speech in terms of fluidity of sentences.
+
+- Terminology: Domain-specific vocabulary posed challenges, especially technical jargon. Performance decreased for specialized domains.
+
+- Speaker similarity: While multiple speaker models were created, more personalization is required to better mimic the original speaker voice.
+
+- Background noise: Reduction of background artifacts and improvement of audio clarity for the dubbed speech.
+
+- Grammar: Better grammatical analysis during translation required to produce perfectly coherent Arabic sentences.
+
+- Dialectal speech: Handling informal language, dialects and slang terms needs more sophisticated capabilities.
+
+So in summary, the areas requiring additional enhancements are: synchronization, emotion/emphasis, fluency, terminology, speaker similarity, audio quality, grammar, and dialectal speech. Addressing these areas through better datasets, customized models and training techniques would further boost the translation and dubbing accuracy.
 
 ## Conclusion
 
