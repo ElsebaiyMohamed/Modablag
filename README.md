@@ -107,3 +107,23 @@ Based on the subjective evaluations done as part of the testing process, some of
 * Background noise: Reduction of background artifacts and improvement of audio clarity for the dubbed speech.
 * Grammar: Better grammatical analysis during translation required to produce perfectly coherent Arabic sentences.
 * Dialectal speech: Handling informal language, dialects and slang.
+
+## References
+
+* [Alexei Baevski, H. Z.-r. (2020 ). wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations. NeurIPS. META.](https://proceedings.neurips.cc/paper/2020/file/92d1e1eb1cd6f9fba3227870bb6d7f07-Paper.pdf)
+* [Anmol Gulati, J. Q.-C. (2020). Conformer: Convolution-augmented Transformer for Speech Recognition. NeurIPS.](https://arxiv.org/abs/2005.08100)
+* [Ashish Vaswani, N. S. (2017). Attention Is All You Need. NeurIPS.](https://papers.nips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html)
+* [Chenxu Hu1, Q. T. (2021). Neural Dubber: Dubbing for Videos According to Scripts. NeurIPS.](https://proceedings.neurips.cc/paper/2021/hash/8a9c8ac001d3ef9e4ce39b1177295e03-Abstract.html)
+* [Marcello Federico, R. E.-C. (2020). From Speech-to-Speech Translation to Automatic Dubbing. Proceedings of the 17th International Conference on Spoken Language Translation (pp. 257–264). Association for Computational Linguistics.](https://aclanthology.org/2020.iwslt-1.31/)
+* [Nigel G. Ward, J. E. (2022). Dialogs Re-enacted Across Languages. UTEP-CS-22-108.](https://arxiv.org/pdf/2307.04123.pdf)
+* [Rong Ye, M. W. (2022). Cross-modal Contrastive Learning for Speech Translation. NAACL.](https://openreview.net/forum?id=rfGNRomMSb9)
+* [Wei-Ning Hsu, B. B.-H. (2021). HuBERT: Self-Supervised Speech Representation Learning by Masked Prediction of Hidden Units. NeurIPS (p. 10). META.](https://arxiv.org/abs/2106.07447)
+* [Yifan Peng, S. D. (2022). Branchformer: Parallel MLP-Attention Architectures to Capture Local and Global Context for Speech Recognition and Understanding. ICML.](https://arxiv.org/abs/2207.02971)
+* [Yihan Wu, J. G. (2023 ). VideoDubber: Machine Translation with Speech-Aware Length Control for Video Dubbing. AAAI .](https://arxiv.org/abs/2211.16934)
+* [klaam project](https://github.com/ARBML/klaam)
+* [nemo toolkit from Nvidia](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/stable/starthere/tutorials.html)
+* [huggingface](https://huggingface.co/docs/transformers/index)
+* [The Illustrated Transformer article](https://jalammar.github.io/illustrated-transformer/)
+* [The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/)
+* [Self-training and pre-training, understanding the wav2vec series](https://maelfabien.github.io/machinelearning/wav2vec/#)
+* [BERT Explained: State of the art language model for NLP](https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270)
