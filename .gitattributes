@@ -1,0 +1,4 @@
+# Count Jupyter Notebook files as Python in GitHub's language statistics
+# instead of a separate "Jupyter Notebook" category.
+# Reference: https://github.com/github-linguist/linguist/blob/main/docs/overrides.md
+*.ipynb linguist-language=Python
